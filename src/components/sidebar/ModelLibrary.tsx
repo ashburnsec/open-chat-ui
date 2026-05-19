@@ -218,7 +218,7 @@ function ModelCard({
         className={cn(
           'group flex w-full items-center gap-2.5 rounded-lg px-2 py-2 text-left transition-all duration-150',
           isActive
-            ? 'bg-foreground text-background'
+            ? 'ring-2 ring-foreground bg-accent text-foreground'
             : 'text-foreground hover:bg-accent',
         )}
       >
@@ -234,23 +234,18 @@ function ModelCard({
         {/* Name + description */}
         <div className="flex min-w-0 flex-1 flex-col">
           <div className="flex items-center justify-between gap-1">
-            <span className={cn('truncate text-[13px] font-medium leading-tight')}>
+            <span className="truncate text-[13px] font-medium leading-tight">
               {model.displayName}
             </span>
             {isActive && (
               <Check
-                className="h-3 w-3 shrink-0 opacity-80"
+                className="h-3 w-3 shrink-0 text-foreground"
                 strokeWidth={2.5}
               />
             )}
           </div>
           {model.description && (
-            <p
-              className={cn(
-                'mt-0.5 line-clamp-1 text-[11px] leading-snug',
-                isActive ? 'text-background/60' : 'text-muted-foreground',
-              )}
-            >
+            <p className="mt-0.5 line-clamp-1 text-[11px] leading-snug text-muted-foreground">
               {model.description}
             </p>
           )}
