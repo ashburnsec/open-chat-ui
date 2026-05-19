@@ -38,6 +38,15 @@ async function proxy(
   req: Request,
   ctx: { params: Promise<{ path: string[] }> },
 ): Promise<Response> {
+  // Mock mode: short-circuit to local fixtures without touching the network.
+  if (process.env.NEXT_PUBLIC_USE_MOCK === 'true') {
+    const { path: pathSegments } = await ctx.params;
+    const upstreamPath = '/' + pathSegments.join('/');
+    const { mockNewapi } = await import('@/mocks/server');
+    const data = await mockNewapi(upstreamPath);
+    return NextResponse.json(data);
+  }
+
   // CSRF gate for unsafe methods. GET/HEAD pass through.
   if (req.method !== 'GET' && req.method !== 'HEAD') {
     const csrf = ensureSameOrigin(req);
