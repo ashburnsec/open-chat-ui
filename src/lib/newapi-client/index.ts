@@ -30,15 +30,24 @@ export async function newapiFetch<T = unknown>(
 ): Promise<NewApiResponse<T>> {
   const { cookie, baseUrl, headers, ...rest } = init;
   const base = baseUrl ?? process.env.NEWAPI_INTERNAL_URL ?? 'http://localhost:3000';
-  const res = await fetch(`${base}${path}`, {
-    ...rest,
-    headers: {
-      'Content-Type': 'application/json',
-      ...(cookie ? { Cookie: cookie } : {}),
-      ...headers,
-    },
-  });
-  return res.json() as Promise<NewApiResponse<T>>;
+  let res: Response;
+  try {
+    res = await fetch(`${base}${path}`, {
+      ...rest,
+      headers: {
+        'Content-Type': 'application/json',
+        ...(cookie ? { Cookie: cookie } : {}),
+        ...headers,
+      },
+    });
+  } catch (err) {
+    return { success: false, message: err instanceof Error ? err.message : 'network error' } as NewApiResponse<T>;
+  }
+  try {
+    return (await res.json()) as NewApiResponse<T>;
+  } catch {
+    return { success: false, message: `upstream returned non-JSON (HTTP ${res.status})` } as NewApiResponse<T>;
+  }
 }
 
 // ----- public/system -----
