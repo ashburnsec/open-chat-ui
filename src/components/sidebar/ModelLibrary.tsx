@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Search, Check } from 'lucide-react';
+import { Search, Check, MessageSquare, Image, Video, Music, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { VendorMonogram } from '@/components/chat/VendorMonogram';
 import { resolveModelId, type ModelCategory } from '@/lib/models-catalog';
@@ -11,38 +11,20 @@ import { loadDynamicCatalog, visibleModels, type DynamicModel } from '@/lib/dyna
 const MODEL_PREF_KEY = 'cp:last-model';
 const MODEL_CHANGED_EVENT = 'cp:model-changed';
 
-/** Filter tabs at the top — competitor-style horizontal chip row. */
 type FilterKey = 'all' | ModelCategory;
 
-const FILTERS: ReadonlyArray<{ key: FilterKey; labelKey: string; emoji: string }> = [
-  { key: 'all', labelKey: 'all', emoji: '🌐' },
-  { key: 'chat', labelKey: 'chat', emoji: '💬' },
-  { key: 'image', labelKey: 'image', emoji: '🎨' },
-  { key: 'video', labelKey: 'video', emoji: '🎬' },
-  { key: 'audio', labelKey: 'audio', emoji: '🔊' },
+const FILTERS: ReadonlyArray<{
+  key: FilterKey;
+  labelKey: string;
+  Icon: React.ComponentType<{ className?: string }>;
+}> = [
+  { key: 'all',   labelKey: 'all',   Icon: Globe },
+  { key: 'chat',  labelKey: 'chat',  Icon: MessageSquare },
+  { key: 'image', labelKey: 'image', Icon: Image },
+  { key: 'video', labelKey: 'video', Icon: Video },
+  { key: 'audio', labelKey: 'audio', Icon: Music },
 ];
 
-/**
- * M29-I: redesigned model library — competitor-style horizontal filter
- * chips at the top, larger model cards (icon + name + description +
- * multi-source badge) below. Replaces the M29-C collapsible category
- * tree, which got too dense once the catalog grew past ~40 entries.
- *
- * Sidebar layout (260 px wide):
- *   ┌ search box                 ┐
- *   ├ filter chips (5 categories)│
- *   │ ┌ model card               │
- *   │ │ [icon]  Display name [N源]
- *   │ │         60-80 字描述...   │
- *   │ │         (description)    │
- *   │ └                          │
- *   │ … (vertical scroll)        │
- *   └                            ┘
- *
- * Selection bus is unchanged — clicking a card writes
- * `cp:last-model` and dispatches `cp:model-changed`. ChatPanel listens
- * and updates its current-model state.
- */
 export function ModelLibrary() {
   const t = useTranslations('sidebar.modelLibrary');
   const tCat = useTranslations('sidebar.modelCategory');
@@ -56,9 +38,7 @@ export function ModelLibrary() {
     void loadDynamicCatalog().then((entries) => {
       if (!cancelled) setCatalog(entries);
     });
-    return () => {
-      cancelled = true;
-    };
+    return () => { cancelled = true; };
   }, []);
 
   useEffect(() => {
@@ -90,62 +70,133 @@ export function ModelLibrary() {
     window.dispatchEvent(new CustomEvent(MODEL_CHANGED_EVENT, { detail: id }));
   }
 
+  // Group visible models by category for section headers
+  const sections = useMemo(() => {
+    if (filter !== 'all') return null;
+    const order: ModelCategory[] = ['chat', 'image', 'video', 'audio'];
+    const byCategory = new Map<ModelCategory, DynamicModel[]>();
+    for (const m of visible) {
+      const cat = (m.category ?? 'chat') as ModelCategory;
+      if (!byCategory.has(cat)) byCategory.set(cat, []);
+      byCategory.get(cat)!.push(m);
+    }
+    return order
+      .filter((c) => byCategory.has(c))
+      .map((c) => ({ category: c, models: byCategory.get(c)! }));
+  }, [visible, filter]);
+
   return (
-    <div className="flex h-full flex-col">
-      <div className="space-y-2 px-3 pt-2">
+    <div className="flex h-full flex-col gap-0">
+      {/* Header */}
+      <div className="px-3 pt-3 pb-2">
+        <p className="mb-2 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/60">
+          {t('title')}
+        </p>
+        {/* Search */}
         <div className="relative">
-          <Search className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
+          <Search className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground/50" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder={t('searchPlaceholder')}
-            className="w-full rounded-md border bg-background py-1.5 pl-8 pr-2 text-xs outline-none transition-colors focus:border-primary"
+            className="w-full rounded-md border border-border bg-background py-1.5 pl-8 pr-3 text-[13px] text-foreground placeholder:text-muted-foreground/50 outline-none transition-all focus:border-foreground/30 focus:ring-0"
           />
         </div>
-        {/* M30: horizontal scroll keeps the 5 filter chips on a single
-         *  row inside the narrow mobile sheet (320 px). Desktop sidebar
-         *  has the room and stays as a normal wrap row. */}
-        <div className="-mx-1 flex gap-1 overflow-x-auto px-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-          {FILTERS.map((f) => {
-            const active = filter === f.key;
-            return (
-              <button
-                key={f.key}
-                type="button"
-                onClick={() => setFilter(f.key)}
-                className={cn(
-                  'inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-md px-2 py-1 text-[11px] transition-colors',
-                  active
-                    ? 'bg-accent text-primary font-medium'
-                    : 'text-muted-foreground hover:bg-card hover:text-foreground',
-                )}
-              >
-                <span className="leading-none">{f.emoji}</span>
-                <span>{tCat(f.labelKey)}</span>
-              </button>
-            );
-          })}
-        </div>
       </div>
-      <div className="mt-2 flex-1 overflow-y-auto px-2 pb-2">
+
+      {/* Filter tabs */}
+      <div className="flex items-center gap-px overflow-x-auto px-3 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {FILTERS.map((f) => {
+          const active = filter === f.key;
+          const Icon = f.Icon;
+          return (
+            <button
+              key={f.key}
+              type="button"
+              onClick={() => setFilter(f.key)}
+              className={cn(
+                'inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-md px-2 py-1.5 text-[12px] font-medium transition-all duration-150',
+                active
+                  ? 'bg-foreground text-background'
+                  : 'text-muted-foreground hover:bg-accent hover:text-foreground',
+              )}
+            >
+              <Icon className="h-3 w-3" />
+              <span>{tCat(f.labelKey)}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Divider */}
+      <div className="mx-3 h-px bg-border" />
+
+      {/* Model list */}
+      <div className="flex-1 overflow-y-auto px-2 py-2 [scrollbar-width:thin] [scrollbar-color:var(--border)_transparent]">
         {catalog === null ? (
-          <p className="px-3 py-2 text-xs text-muted-foreground">{t('loading')}</p>
+          <div className="flex flex-col gap-2 px-1 py-2">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <div key={i} className="flex items-center gap-2.5 rounded-lg p-2">
+                <div className="h-8 w-8 shrink-0 animate-pulse rounded-full bg-muted" />
+                <div className="flex flex-1 flex-col gap-1.5">
+                  <div className="h-3 w-24 animate-pulse rounded bg-muted" />
+                  <div className="h-2.5 w-full animate-pulse rounded bg-muted/60" />
+                </div>
+              </div>
+            ))}
+          </div>
         ) : visible.length === 0 ? (
-          <p className="px-3 py-4 text-xs text-muted-foreground">{t('noMatch')}</p>
+          <p className="px-3 py-6 text-center text-[13px] text-muted-foreground">{t('noMatch')}</p>
+        ) : sections ? (
+          // Grouped by category
+          <div className="space-y-3">
+            {sections.map(({ category, models }) => (
+              <div key={category}>
+                <CategoryLabel category={category} tCat={tCat} />
+                <ul className="space-y-px">
+                  {models.map((m) => (
+                    <ModelCard key={m.id} model={m} isActive={m.id === currentId} onPick={pick} />
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         ) : (
-          <ul className="space-y-1">
+          // Flat list (filtered)
+          <ul className="space-y-px">
             {visible.map((m) => (
-              <ModelCard
-                key={m.id}
-                model={m}
-                isActive={m.id === currentId}
-                onPick={pick}
-              />
+              <ModelCard key={m.id} model={m} isActive={m.id === currentId} onPick={pick} />
             ))}
           </ul>
         )}
       </div>
+    </div>
+  );
+}
+
+const CATEGORY_LABEL_MAP: Record<ModelCategory, string> = {
+  chat: '对话',
+  code: '编程',
+  image: '图像',
+  video: '视频',
+  audio: '音频',
+};
+
+function CategoryLabel({
+  category,
+  tCat,
+}: {
+  category: ModelCategory;
+  tCat: (key: string) => string;
+}) {
+  const label = tCat(category) || CATEGORY_LABEL_MAP[category] || category;
+  return (
+    <div className="mb-1 flex items-center gap-2 px-2 py-1">
+      <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/50">
+        {label}
+      </span>
+      <div className="h-px flex-1 bg-border/60" />
     </div>
   );
 }
@@ -165,29 +216,41 @@ function ModelCard({
         type="button"
         onClick={() => onPick(model.id)}
         className={cn(
-          'flex w-full items-start gap-2 rounded-lg border p-2 text-left text-xs transition-colors duration-150',
+          'group flex w-full items-center gap-2.5 rounded-lg px-2 py-2 text-left transition-all duration-150',
           isActive
-            ? 'border-primary/40 bg-accent'
-            : 'border-transparent bg-card hover:border-border hover:bg-card/80',
+            ? 'bg-foreground text-background'
+            : 'text-foreground hover:bg-accent',
         )}
       >
-        <div className="mt-0.5 shrink-0">
-          <VendorMonogram model={model.id} size={28} iconOverride={model.icon} />
+        {/* Vendor icon */}
+        <div className="shrink-0">
+          <VendorMonogram
+            model={model.id}
+            size={26}
+            iconOverride={model.icon}
+          />
         </div>
-        <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-          <div className="flex items-center gap-1.5">
-            <span
-              className={cn(
-                'truncate text-sm font-medium',
-                isActive && 'text-primary',
-              )}
-            >
+
+        {/* Name + description */}
+        <div className="flex min-w-0 flex-1 flex-col">
+          <div className="flex items-center justify-between gap-1">
+            <span className={cn('truncate text-[13px] font-medium leading-tight')}>
               {model.displayName}
             </span>
-            {isActive && <Check className="h-3 w-3 shrink-0 text-primary" />}
+            {isActive && (
+              <Check
+                className="h-3 w-3 shrink-0 opacity-80"
+                strokeWidth={2.5}
+              />
+            )}
           </div>
           {model.description && (
-            <p className="line-clamp-3 text-[11px] leading-snug text-muted-foreground">
+            <p
+              className={cn(
+                'mt-0.5 line-clamp-1 text-[11px] leading-snug',
+                isActive ? 'text-background/60' : 'text-muted-foreground',
+              )}
+            >
               {model.description}
             </p>
           )}

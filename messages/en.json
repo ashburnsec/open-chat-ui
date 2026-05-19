@@ -1046,6 +1046,7 @@
   },
   "sidebar": {
     "modelLibrary": {
+      "title": "Models",
       "searchPlaceholder": "Search models…",
       "loading": "Loading…",
       "noMatch": "No matching models"

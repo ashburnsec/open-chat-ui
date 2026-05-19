@@ -786,7 +786,7 @@
         "promptTokens": "输入 token",
         "completionTokens": "输出 token",
         "elapsedSec": "耗时 (秒)",
-        "costUsd": "花�� (USD)"
+        "costUsd": "花��� (USD)"
       }
     },
     "tokenSelect": {
@@ -978,7 +978,7 @@
         "perCall": "单次",
         "group": "分组"
       },
-      "perCallNone": "—",
+      "perCallNone": "��",
       "channelLabel": "通道"
     }
   },
@@ -1046,6 +1046,7 @@
   },
   "sidebar": {
     "modelLibrary": {
+      "title": "模型",
       "searchPlaceholder": "搜索模型…",
       "loading": "加载中…",
       "noMatch": "没有匹配的模型"
@@ -1628,7 +1629,7 @@
       "headlineNote": "注册即送试用额度",
       "perks": [
         "实时按调用计费，余额耗尽自动停",
-        "上游官方价 1:1，不加价不分润",
+        "上游官方价 1:1，不加价不��润",
         "兑换码 / 邀请奖励多种充值途径",
         "可随时导出全部对话记录"
       ],
