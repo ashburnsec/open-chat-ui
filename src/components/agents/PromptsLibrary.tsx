@@ -226,31 +226,31 @@ export function PromptsLibrary() {
   const displayedTags = tagsExpanded ? tagCloud : tagCloud.slice(0, TOP_TAG_COUNT);
 
   return (
-    <div className="mx-auto w-full max-w-6xl space-y-5 p-6">
+    <div className="mx-auto w-full max-w-6xl space-y-6 p-6">
       {/* 标题 + 创建按钮 */}
-      <div className="flex flex-wrap items-start justify-between gap-3">
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-xl font-semibold">{tLib('title')}</h1>
-          <p className="mt-1 text-sm text-muted-foreground">{tLib('subtitle')}</p>
+          <h1 className="text-lg font-semibold tracking-tight">{tLib('title')}</h1>
+          <p className="mt-0.5 text-[13px] text-muted-foreground">{tLib('subtitle')}</p>
         </div>
-        <Button asChild>
+        <Button asChild size="sm" variant="outline" className="h-8 gap-1.5 text-[13px]">
           <Link href={'/agents/new' as never}>
-            <Plus className="h-4 w-4" /> {t('create')}
+            <Plus className="h-3.5 w-3.5" /> {t('create')}
           </Link>
         </Button>
       </div>
 
       {/* Tabs: 所有 / 我的 */}
-      <div className="flex gap-1 border-b border-border">
+      <div className="flex gap-0.5 border-b border-border">
         {(['all', 'mine'] as TabKey[]).map((k) => (
           <button
             key={k}
             type="button"
             onClick={() => setTab(k)}
             className={cn(
-              '-mb-px border-b-2 px-3 py-2 text-sm transition-colors',
+              '-mb-px border-b-2 px-3 py-2 text-[13px] font-medium transition-colors',
               tab === k
-                ? 'border-ink text-foreground'
+                ? 'border-foreground text-foreground'
                 : 'border-transparent text-muted-foreground hover:text-foreground',
             )}
           >
@@ -259,46 +259,44 @@ export function PromptsLibrary() {
         ))}
       </div>
 
-      {/* 模型 picker */}
-      <div className="flex flex-wrap items-center gap-2 rounded-[12px] border bg-card px-3 py-2 text-sm">
-        <span className="text-muted-foreground">{t('startWithModel')}</span>
-        <ModelPicker value={selectedModel} options={models} onChange={setSelectedModel} />
-      </div>
-
-      {/* 搜索 + 排序 */}
+      {/* 工具栏：搜索 + 排序 + 模型 picker */}
       <div className="flex flex-wrap items-center gap-2">
-        <div className="relative w-full sm:w-72">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+        <div className="relative w-full sm:w-64">
+          <Search className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground/60" />
           <Input
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder={t('searchPlaceholder')}
-            className="pl-9"
+            className="h-8 pl-8 text-[13px]"
           />
         </div>
         <select
           value={sort}
           onChange={(e) => setSort(e.target.value as SortKey)}
-          className="h-9 rounded-[10px] border border-border bg-card px-3 text-xs text-foreground"
+          className="h-8 rounded-md border border-border bg-background px-2.5 text-[13px] text-foreground outline-none transition-colors hover:border-foreground/30"
         >
           <option value="popular">{tLib('sort.popular')}</option>
           <option value="recent">{tLib('sort.recent')}</option>
           <option value="alphabetical">{tLib('sort.alphabetical')}</option>
         </select>
+        <div className="flex items-center gap-2 rounded-md border border-border bg-background px-2.5 py-1.5 text-[13px]">
+          <span className="text-muted-foreground">{t('startWithModel')}</span>
+          <ModelPicker value={selectedModel} options={models} onChange={setSelectedModel} />
+        </div>
       </div>
 
       {/* 分类 chip 行 */}
-      <div className="-mx-1 flex gap-1 overflow-x-auto px-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] sm:-mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
+      <div className="flex gap-1.5 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:flex-wrap">
         {CATEGORY_KEYS.map((k) => (
           <button
             key={k}
             type="button"
             onClick={() => setCat(k)}
             className={cn(
-              'shrink-0 whitespace-nowrap rounded-full border px-3 py-1.5 text-xs transition-colors',
+              'shrink-0 whitespace-nowrap rounded-full border px-3 py-1 text-[12px] font-medium transition-all duration-150',
               cat === k
-                ? 'border-ink bg-canvas-soft text-ink'
-                : 'border-border text-muted-foreground hover:bg-accent',
+                ? 'border-foreground bg-foreground text-background'
+                : 'border-border text-muted-foreground hover:border-foreground/30 hover:text-foreground',
             )}
           >
             {t(`categories.${k}`)}
@@ -306,19 +304,19 @@ export function PromptsLibrary() {
         ))}
       </div>
 
-      {/* tag 云 (仅当 curated 数据上来后才有意义; tagCloud 空时不渲染) */}
+      {/* tag 云 */}
       {tagCloud.length > 0 && (
-        <div className="space-y-2 rounded-[12px] border bg-card/50 p-3">
+        <div className="space-y-2 rounded-lg border border-border bg-background p-3">
           <div className="flex items-center justify-between">
-            <span className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
-              <Tag className="h-3.5 w-3.5" />
+            <span className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/60">
+              <Tag className="h-3 w-3" />
               {tLib('tagCloud')}
             </span>
             {tagCloud.length > TOP_TAG_COUNT && (
               <button
                 type="button"
                 onClick={() => setTagsExpanded((v) => !v)}
-                className="text-xs text-ink hover:underline"
+                className="text-[12px] text-muted-foreground hover:text-foreground"
               >
                 {tagsExpanded ? tLib('collapseTags') : tLib('expandTags')}
               </button>
@@ -329,7 +327,7 @@ export function PromptsLibrary() {
               <button
                 type="button"
                 onClick={() => setTagFilter(null)}
-                className="rounded-full border border-ink bg-canvas-soft px-2.5 py-0.5 text-[11px] text-ink"
+                className="rounded-full border border-foreground bg-foreground px-2.5 py-0.5 text-[11px] text-background"
               >
                 #{tagFilter} ×
               </button>
@@ -340,13 +338,13 @@ export function PromptsLibrary() {
                 type="button"
                 onClick={() => setTagFilter(tagItem.tag === tagFilter ? null : tagItem.tag)}
                 className={cn(
-                  'rounded-full border px-2.5 py-0.5 text-[11px] transition-colors',
+                  'rounded-full border px-2.5 py-0.5 text-[11px] transition-all duration-150',
                   tagItem.tag === tagFilter
-                    ? 'border-ink bg-canvas-soft text-ink'
-                    : 'border-border text-muted-foreground hover:border-ink hover:text-foreground',
+                    ? 'border-foreground bg-foreground text-background'
+                    : 'border-border text-muted-foreground hover:border-foreground/30 hover:text-foreground',
                 )}
               >
-                #{tagItem.tag} <span className="text-[9px] opacity-60">{tagItem.count}</span>
+                #{tagItem.tag} <span className="opacity-50">{tagItem.count}</span>
               </button>
             ))}
           </div>
@@ -355,17 +353,22 @@ export function PromptsLibrary() {
 
       {/* Cards grid */}
       {filtered === null ? (
-        <div className="flex h-32 items-center justify-center text-muted-foreground">
-          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-          {tCommon('loading')}
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <div key={i} className="flex flex-col items-center gap-2 rounded-xl border border-border p-4">
+              <div className="h-12 w-12 animate-pulse rounded-full bg-muted" />
+              <div className="h-3 w-20 animate-pulse rounded bg-muted" />
+              <div className="h-2.5 w-14 animate-pulse rounded bg-muted/60" />
+            </div>
+          ))}
         </div>
       ) : filtered.length === 0 ? (
-        <div className="flex h-40 flex-col items-center justify-center gap-2 text-sm text-muted-foreground">
-          <Sparkles className="h-6 w-6 text-muted-foreground/60" />
+        <div className="flex h-40 flex-col items-center justify-center gap-2 text-[13px] text-muted-foreground">
+          <Sparkles className="h-5 w-5 opacity-40" />
           <p>{tab === 'mine' ? tLib('mineEmpty') : tLib('noResults')}</p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
           {filtered.map((a) => (
             <PromptCard
               key={a.id}
@@ -393,64 +396,70 @@ function PromptCard({
   onDelete: () => void;
 }) {
   const t = useTranslations('agents');
+  const chips = agent.tags && agent.tags.length > 0 ? agent.tags.slice(0, 2) : [agent.category];
+
   return (
     <button
       type="button"
       onClick={onStart}
       disabled={busy}
       className={cn(
-        'group relative flex flex-col items-center gap-2 rounded-md border border-border bg-card p-4 text-center transition-all',
-        'hover:-translate-y-1 hover:border-ink hover:shadow-[var(--shadow-3)]',
-        busy && 'opacity-60',
+        'group relative flex flex-col items-start gap-3 rounded-xl border border-border bg-background p-3.5 text-left',
+        'transition-all duration-150 hover:-translate-y-0.5 hover:border-foreground/25 hover:shadow-[var(--shadow-3)]',
+        busy && 'opacity-50 pointer-events-none',
       )}
     >
-      {/* 圆 avatar */}
-      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent text-3xl shadow-inner">
-        {busy ? <Loader2 className="h-5 w-5 animate-spin" /> : agent.avatar}
+      {/* Avatar 行 */}
+      <div className="flex w-full items-start justify-between">
+        <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-accent text-xl shadow-[var(--shadow-1)]">
+          {busy ? <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" /> : agent.avatar}
+        </div>
+        {/* 编辑/删除操作 — hover 显 */}
+        {agent.editable && (
+          <div className="flex gap-0.5 opacity-0 transition-opacity group-hover:opacity-100">
+            <Link
+              href={`/agents/${encodeURIComponent(agent.slug)}/edit` as never}
+              onClick={(e) => e.stopPropagation()}
+              aria-label={t('edit')}
+              className="rounded-md p-1 text-muted-foreground hover:bg-accent hover:text-foreground"
+            >
+              <Pencil className="h-3 w-3" />
+            </Link>
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); onDelete(); }}
+              aria-label={t('delete')}
+              className="rounded-md p-1 text-muted-foreground hover:bg-accent hover:text-destructive"
+            >
+              <Trash2 className="h-3 w-3" />
+            </button>
+          </div>
+        )}
       </div>
-      {/* 名字 */}
-      <h3 className="line-clamp-1 max-w-full text-sm font-medium">{agent.name}</h3>
-      {/* tag chip 行 (最多 2 个; 没 tag 时显 category) */}
-      <div className="flex flex-wrap justify-center gap-1">
-        {(agent.tags && agent.tags.length > 0 ? agent.tags.slice(0, 2) : [agent.category]).map((tg) => (
+
+      {/* 名字 + 描述 */}
+      <div className="flex min-w-0 flex-col gap-1">
+        <h3 className="line-clamp-1 text-[13px] font-semibold leading-tight text-foreground">
+          {agent.name}
+        </h3>
+        {agent.description && (
+          <p className="line-clamp-2 text-[11px] leading-snug text-muted-foreground">
+            {agent.description}
+          </p>
+        )}
+      </div>
+
+      {/* Tag chips */}
+      <div className="flex flex-wrap gap-1">
+        {chips.map((tg) => (
           <span
             key={tg}
-            className="rounded-full bg-muted px-1.5 py-0.5 text-[10px] text-muted-foreground"
+            className="rounded-full border border-border px-2 py-0.5 text-[10px] font-medium text-muted-foreground"
           >
-            #{tg}
+            {tg}
           </span>
         ))}
       </div>
-      {/* description hover 显示, 默认隐藏 (避免卡片高度抖动) */}
-      {agent.description && (
-        <p className="line-clamp-2 hidden text-[11px] text-muted-foreground sm:group-hover:block">
-          {agent.description}
-        </p>
-      )}
-      {/* 用户私有 agent 显示编辑/删除按钮 (绝对定位右上, hover 才出) */}
-      {agent.editable && (
-        <div className="absolute right-1 top-1 flex gap-1 opacity-100 transition-opacity sm:opacity-0 sm:group-hover:opacity-100">
-          <Link
-            href={`/agents/${encodeURIComponent(agent.slug)}/edit` as never}
-            onClick={(e) => e.stopPropagation()}
-            aria-label={t('edit')}
-            className="rounded-md p-1 text-muted-foreground hover:bg-accent hover:text-foreground"
-          >
-            <Pencil className="h-3 w-3" />
-          </Link>
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              onDelete();
-            }}
-            aria-label={t('delete')}
-            className="rounded-md p-1 text-muted-foreground hover:bg-accent hover:text-destructive"
-          >
-            <Trash2 className="h-3 w-3" />
-          </button>
-        </div>
-      )}
     </button>
   );
 }
