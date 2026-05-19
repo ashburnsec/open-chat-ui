@@ -786,7 +786,7 @@
         "promptTokens": "输入 token",
         "completionTokens": "输出 token",
         "elapsedSec": "耗时 (秒)",
-        "costUsd": "花费 (USD)"
+        "costUsd": "花�� (USD)"
       }
     },
     "tokenSelect": {
@@ -984,7 +984,7 @@
   },
   "memory": {
     "title": "长期记忆",
-    "subtitle": "助手会在你聊天时自动记下「关于你的稳定事实和偏好」，下次对话自动召回。这里可以查看、修改或删除任意一条。",
+    "subtitle": "助手会在你聊天时自动记下「关于你的稳定事实和偏��」，下次对话自动召回。这里可以查看、修改或删除任意一条。",
     "empty": "还没有任何记忆。多和助手聊几轮，它会自动从对话里抽取「关于你」的稳定信息。",
     "search": "搜索记忆",
     "category": "分类",
@@ -1396,9 +1396,9 @@
         "failedTile": "失败"
       },
       "models": {
-        "gemini-2.5-flash-image": "Nano Banana",
+        "gemini-2_5-flash-image": "Nano Banana",
         "gemini-3-pro-image-preview": "Nano Banana Pro",
-        "gemini-3.1-flash-image-preview": "Nano Banana 2"
+        "gemini-3_1-flash-image-preview": "Nano Banana 2"
       },
       "errors": {
         "callFailed": "调用失败",
@@ -1464,7 +1464,7 @@
         "ecom_listing": {
           "title": "电商详情页文案",
           "desc": "标题 + 卖点 + 详情段落一键出",
-          "prompt": "我有一款产品，请帮我写一份完整的电商详情页文案：包括 5 个候选标题、5 个核心卖点、3 段详细介绍（场景化描述）。产品信息：\n\n（在这里描述产品）"
+          "prompt": "我有一款产品，请帮我写一份完���的电商详情页文案：包括 5 个候选标题、5 个核心卖点、3 段详细介绍（场景化描述）。产品信息：\n\n（在这里描述产品）"
         },
         "meeting_notes": {
           "title": "会议纪要整理",

@@ -1396,9 +1396,9 @@
         "failedTile": "failed"
       },
       "models": {
-        "gemini-2.5-flash-image": "Nano Banana",
+        "gemini-2_5-flash-image": "Nano Banana",
         "gemini-3-pro-image-preview": "Nano Banana Pro",
-        "gemini-3.1-flash-image-preview": "Nano Banana 2"
+        "gemini-3_1-flash-image-preview": "Nano Banana 2"
       },
       "errors": {
         "callFailed": "Call failed",
