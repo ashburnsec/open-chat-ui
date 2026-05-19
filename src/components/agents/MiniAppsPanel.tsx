@@ -3,9 +3,12 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { ArrowRight, Boxes, Loader2 } from 'lucide-react';
+import {
+  ArrowRight, Boxes, Loader2,
+  ImagePlus, Clapperboard, ShoppingBag, Layout,
+  Wand2, Sparkles,
+} from 'lucide-react';
 import { toast } from 'sonner';
-import { Card, CardContent } from '@/components/ui/card';
 import type { Agent } from '@/components/agents/AgentsPanel';
 import { cn } from '@/lib/utils';
 
@@ -94,70 +97,182 @@ export function MiniAppsPanel() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-5xl space-y-5 p-6">
-      <header className="space-y-1">
+    <div className="mx-auto w-full max-w-5xl space-y-8 p-6">
+      {/* Header */}
+      <header className="space-y-1.5">
         <div className="flex items-center gap-2">
-          <Boxes className="h-5 w-5 text-ink" />
-          <h1 className="text-lg font-semibold tracking-tight text-foreground">{t('title')}</h1>
+          <Boxes className="h-4 w-4 text-muted-foreground" />
+          <h1 className="text-lg font-semibold tracking-tight">{t('title')}</h1>
         </div>
-        <p className="text-sm text-muted-foreground">{t('subtitle')}</p>
+        <p className="text-[13px] text-muted-foreground">{t('subtitle')}</p>
       </header>
 
       {agents === null ? (
-        <div className="flex items-center gap-2 rounded-lg border border-dashed border-border p-6 text-sm text-muted-foreground">
-          <Loader2 className="h-4 w-4 animate-spin" /> {t('loading')}
+        /* Skeleton */
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div key={i} className="flex flex-col gap-4 rounded-xl border border-border p-5">
+              <div className="flex items-start justify-between">
+                <div className="h-12 w-12 animate-pulse rounded-xl bg-muted" />
+                <div className="h-5 w-16 animate-pulse rounded-full bg-muted" />
+              </div>
+              <div className="space-y-2">
+                <div className="h-4 w-32 animate-pulse rounded bg-muted" />
+                <div className="h-3 w-full animate-pulse rounded bg-muted/60" />
+                <div className="h-3 w-3/4 animate-pulse rounded bg-muted/60" />
+              </div>
+              <div className="flex gap-1.5">
+                {Array.from({ length: 4 }).map((_, j) => (
+                  <div key={j} className="h-5 w-12 animate-pulse rounded-full bg-muted/60" />
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       ) : agents.length === 0 ? (
-        <div className="rounded-lg border border-dashed border-border p-8 text-center text-sm text-muted-foreground">
-          {t('empty')}
+        <div className="flex flex-col items-center justify-center gap-3 rounded-xl border border-dashed border-border py-16 text-center">
+          <Sparkles className="h-8 w-8 text-muted-foreground/30" />
+          <p className="text-[13px] text-muted-foreground">{t('empty')}</p>
         </div>
       ) : (
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {agents.map((a) => (
-            <button
+            <MiniAppCard
               key={a.id}
-              type="button"
-              onClick={() => void startWizard(a)}
-              disabled={busy != null}
-              className={cn(
-                'group block w-full text-left',
-                'disabled:cursor-wait',
-              )}
-            >
-              <Card
-                className={cn(
-                  'border-border bg-card transition-colors duration-150',
-                  'hover:border-ink',
-                )}
-              >
-                <CardContent className="flex items-start gap-3 p-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent text-xl">
-                    {a.avatar || '🪄'}
-                  </div>
-                  <div className="min-w-0 flex-1 space-y-1">
-                    <div className="flex items-center gap-2">
-                      <h3 className="truncate text-sm font-semibold text-foreground">{a.name}</h3>
-                      <span className="rounded-md bg-accent px-1.5 py-0.5 text-[10px] font-medium text-ink">
-                        {t('badge')}
-                      </span>
-                    </div>
-                    {a.description && (
-                      <p className="line-clamp-2 text-xs text-muted-foreground">
-                        {a.description}
-                      </p>
-                    )}
-                  </div>
-                  {busy === a.id ? (
-                    <Loader2 className="mt-1 h-4 w-4 animate-spin text-ink" />
-                  ) : (
-                    <ArrowRight className="mt-1 h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100 group-hover:text-ink" />
-                  )}
-                </CardContent>
-              </Card>
-            </button>
+              agent={a}
+              busy={busy === a.id}
+              disabled={busy != null && busy !== a.id}
+              onStart={() => void startWizard(a)}
+              badge={t('badge')}
+            />
           ))}
         </div>
       )}
     </div>
+  );
+}
+
+// ── Icon + colour mapping ────────────────────────────────────────────
+
+type IconSpec = {
+  Icon: React.ComponentType<{ className?: string }>;
+  bg: string;
+  fg: string;
+  steps: string[];
+};
+
+const SLUG_SPEC: Record<string, IconSpec> = {
+  'wf-one-click-image': {
+    Icon: ImagePlus,
+    bg: 'bg-violet-100 dark:bg-violet-950',
+    fg: 'text-violet-600 dark:text-violet-400',
+    steps: ['输入描述', 'AI 出方向', '生成图片', '精修完成'],
+  },
+  'wf-storyboard': {
+    Icon: Clapperboard,
+    bg: 'bg-amber-100 dark:bg-amber-950',
+    fg: 'text-amber-600 dark:text-amber-400',
+    steps: ['描述场景', 'AI 分镜', '生成画面', '导出'],
+  },
+  'wf-ecommerce': {
+    Icon: ShoppingBag,
+    bg: 'bg-emerald-100 dark:bg-emerald-950',
+    fg: 'text-emerald-600 dark:text-emerald-400',
+    steps: ['上传商品图', 'AI 规划', '生成方案', '导出'],
+  },
+  'wf-poster': {
+    Icon: Layout,
+    bg: 'bg-sky-100 dark:bg-sky-950',
+    fg: 'text-sky-600 dark:text-sky-400',
+    steps: ['填写信息', 'AI 排版', '生成海报', '下载'],
+  },
+};
+
+const FALLBACK_SPEC: IconSpec = {
+  Icon: Wand2,
+  bg: 'bg-muted',
+  fg: 'text-muted-foreground',
+  steps: ['开始', '处理', '生成', '完成'],
+};
+
+function resolveSpec(agent: Agent): IconSpec {
+  return SLUG_SPEC[agent.slug] ?? FALLBACK_SPEC;
+}
+
+// ── MiniAppCard ──────────────────────────────────────────────────────
+
+function MiniAppCard({
+  agent,
+  busy,
+  disabled,
+  onStart,
+  badge,
+}: {
+  agent: Agent;
+  busy: boolean;
+  disabled: boolean;
+  onStart: () => void;
+  badge: string;
+}) {
+  const { Icon, bg, fg, steps } = resolveSpec(agent);
+
+  return (
+    <button
+      type="button"
+      onClick={onStart}
+      disabled={disabled || busy}
+      className={cn(
+        'group flex flex-col items-start gap-4 rounded-xl border border-border bg-background p-5 text-left',
+        'transition-all duration-150 hover:-translate-y-0.5 hover:border-foreground/25 hover:shadow-[var(--shadow-4)]',
+        (disabled || busy) && 'cursor-wait opacity-60',
+      )}
+    >
+      {/* Top row: icon + badge */}
+      <div className="flex w-full items-start justify-between">
+        <div className={cn('flex h-12 w-12 items-center justify-center rounded-xl', bg)}>
+          {busy
+            ? <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
+            : <Icon className={cn('h-6 w-6', fg)} strokeWidth={1.75} />
+          }
+        </div>
+        <span className="rounded-full border border-border px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+          {badge}
+        </span>
+      </div>
+
+      {/* Name + description */}
+      <div className="flex min-w-0 flex-col gap-1.5">
+        <h3 className="text-[15px] font-semibold leading-tight tracking-tight text-foreground">
+          {agent.name}
+        </h3>
+        {agent.description && (
+          <p className="line-clamp-2 text-[12px] leading-relaxed text-muted-foreground">
+            {agent.description}
+          </p>
+        )}
+      </div>
+
+      {/* Step pipeline */}
+      <div className="flex w-full items-center gap-0">
+        {steps.map((step, idx) => (
+          <div key={step} className="flex min-w-0 flex-1 items-center">
+            <span className="truncate rounded-md bg-accent px-2 py-1 text-[11px] font-medium text-muted-foreground">
+              {step}
+            </span>
+            {idx < steps.length - 1 && (
+              <ArrowRight className="mx-0.5 h-3 w-3 shrink-0 text-border" strokeWidth={2} />
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* CTA hint */}
+      <div className="flex w-full items-center justify-end">
+        <span className="flex items-center gap-1 text-[12px] font-medium text-muted-foreground transition-colors group-hover:text-foreground">
+          立即使用
+          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" strokeWidth={2} />
+        </span>
+      </div>
+    </button>
   );
 }
