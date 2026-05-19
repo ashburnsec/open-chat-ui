@@ -1,0 +1,2 @@
+# Reserved for static assets (favicon, robots.txt, og images).
+# Next.js serves anything in this directory at the site root.

@@ -1,0 +1,408 @@
+@import "tailwindcss";
+
+/* highlight.js — GitHub light theme inlined so we don't ship the full CSS bundle.
+ * Only the token classes the rehype-highlight pipeline actually emits. */
+.hljs { color: var(--color-foreground); background: transparent; }
+.hljs-comment, .hljs-quote { color: #6a737d; font-style: italic; }
+.hljs-keyword, .hljs-selector-tag, .hljs-subst { color: #d73a49; }
+.hljs-number, .hljs-literal, .hljs-variable, .hljs-template-variable, .hljs-tag .hljs-attr { color: #005cc5; }
+.hljs-string, .hljs-doctag { color: #032f62; }
+.hljs-title, .hljs-section, .hljs-selector-id { color: #6f42c1; font-weight: 600; }
+.hljs-type, .hljs-class .hljs-title { color: #6f42c1; }
+.hljs-tag, .hljs-name, .hljs-attribute { color: #22863a; }
+.hljs-regexp, .hljs-link { color: #032f62; }
+.hljs-symbol, .hljs-bullet { color: #e36209; }
+.hljs-built_in, .hljs-builtin-name { color: #005cc5; }
+.hljs-meta { color: #6a737d; }
+.hljs-deletion { color: #b31d28; background: #ffeef0; }
+.hljs-addition { color: #22863a; background: #f0fff4; }
+.hljs-emphasis { font-style: italic; }
+.hljs-strong { font-weight: 700; }
+/* Dark mode variants — applied when our theme provider sets html.dark. */
+:where(.dark) .hljs-comment, :where(.dark) .hljs-quote { color: #8b949e; }
+:where(.dark) .hljs-keyword, :where(.dark) .hljs-selector-tag, :where(.dark) .hljs-subst { color: #ff7b72; }
+:where(.dark) .hljs-number, :where(.dark) .hljs-literal, :where(.dark) .hljs-variable, :where(.dark) .hljs-template-variable, :where(.dark) .hljs-tag .hljs-attr { color: #79c0ff; }
+:where(.dark) .hljs-string, :where(.dark) .hljs-doctag { color: #a5d6ff; }
+:where(.dark) .hljs-title, :where(.dark) .hljs-section, :where(.dark) .hljs-selector-id { color: #d2a8ff; }
+:where(.dark) .hljs-type, :where(.dark) .hljs-class .hljs-title { color: #ffa657; }
+:where(.dark) .hljs-tag, :where(.dark) .hljs-name, :where(.dark) .hljs-attribute { color: #7ee787; }
+:where(.dark) .hljs-built_in, :where(.dark) .hljs-builtin-name { color: #ffa657; }
+
+/* M44 · Vercel DESIGN.md 应用 (Stage 1)
+ *
+ * 来源: /Users/ashburn/资料/Dev/z01/chat-portal/DESIGN.md (Vercel design system).
+ * 核心: 单一 ink #171717 黑 CTA / canvas-soft #fafafa 98% 白底 / 5 级 stacked
+ *   shadow + 1px inset hairline / sans-only (Inter + Noto Sans SC + JetBrains
+ *   Mono) / 圆角 marketing 100px pill + nav 6px sm + 卡 8px md.
+ * 完全去紫: 删 #5e40df + #f0e8ff accent; 紫色仅保留作 mesh gradient stop.
+ *
+ * Legacy 兼容: `--color-foreground` `--color-card` `--color-border` 等旧名保留 alias,
+ * 让 51 个旧组件在 Stage 1 deploy 后 className 不破 (Stage 2-3 内部清理).
+ *
+ * Dark mode: M40 暂保留 slate-900 base (后续 Stage 4 单独按 Vercel 暗段打磨).
+ */
+@theme {
+  /* === Vercel ink + canvas === */
+  --color-ink: hsl(0 0% 9%);                   /* #171717 — heading + body + CTA */
+  --color-body: hsl(0 0% 30%);                 /* #4d4d4d — secondary text */
+  --color-mute: hsl(0 0% 53%);                 /* #888888 — placeholder / fine print */
+  --color-canvas: hsl(0 0% 100%);              /* #ffffff — 卡 / 模态 */
+  --color-canvas-soft: hsl(0 0% 98%);          /* #fafafa — 页面底 */
+  --color-canvas-soft-2: hsl(0 0% 96%);        /* #f5f5f5 — code editor 内底 */
+  --color-hairline: hsl(0 0% 92%);             /* #ebebeb — 1px divider */
+  --color-hairline-strong: hsl(0 0% 63%);      /* #a1a1a1 — disabled / 强 divider */
+
+  /* === Semantic === */
+  --color-link: hsl(212 100% 47%);             /* #0070f3 — link 蓝 (唯一允许的非中性色) */
+  --color-link-deep: hsl(212 100% 42%);        /* #0761d1 */
+  --color-link-bg-soft: hsl(212 100% 92%);     /* #d3e5ff */
+  --color-success: hsl(212 100% 47%);          /* = link */
+  --color-error: hsl(0 100% 47%);              /* #ee0000 */
+  --color-error-soft: hsl(357 70% 90%);        /* #f7d4d6 */
+  --color-error-deep: hsl(0 100% 39%);         /* #c50000 */
+  --color-warning: hsl(36 91% 55%);            /* #f5a623 */
+  --color-warning-soft: hsl(43 100% 91%);      /* #ffefcf */
+  --color-warning-deep: hsl(28 89% 36%);       /* #ab570a */
+
+  /* === Brand gradient stops (mesh gradient only, landing hero) === */
+  --color-grad-develop-start: hsl(208 100% 47%);   /* #007cf0 — blue */
+  --color-grad-develop-end: hsl(178 100% 44%);     /* #00dfd8 — teal */
+  --color-grad-preview-start: hsl(275 67% 47%);    /* #7928ca — violet (紫色唯一存活处) */
+  --color-grad-preview-end: hsl(330 100% 50%);     /* #ff0080 — magenta */
+  --color-grad-ship-start: hsl(0 100% 65%);        /* #ff4d4d — coral */
+  --color-grad-ship-end: hsl(45 95% 57%);          /* #f9cb28 — amber */
+
+  /* === Vendor brand colors 保留 (VendorMonogram 用) === */
+  --color-brand-openai: hsl(160 60% 38%);
+  --color-brand-anthropic: hsl(20 70% 55%);
+  --color-brand-google: hsl(212 70% 50%);
+  --color-brand-meta: hsl(220 70% 55%);
+  --color-brand-xai: hsl(0 0% 30%);
+  --color-brand-deepseek: hsl(255 60% 55%);
+  --color-brand-mistral: hsl(15 90% 55%);
+  --color-brand-default: hsl(215 16% 47%);
+
+  /* === Legacy alias (51 业务组件兼容 — Stage 2-3 清理) === */
+  --color-background: var(--color-canvas-soft);
+  --color-foreground: var(--color-ink);
+  --color-card: var(--color-canvas);
+  --color-card-foreground: var(--color-ink);
+  --color-border: var(--color-hairline);
+  --color-input: var(--color-hairline);
+  --color-ring: var(--color-ink);
+  --color-primary: var(--color-ink);            /* ★ CTA = ink, 不再紫 */
+  --color-primary-foreground: var(--color-canvas);
+  --color-secondary: var(--color-canvas-soft);
+  --color-secondary-foreground: var(--color-ink);
+  --color-accent: var(--color-canvas-soft);     /* ★ accent = canvas-soft (不再浅紫) */
+  --color-accent-foreground: var(--color-ink);
+  --color-muted: var(--color-canvas-soft);
+  --color-muted-foreground: var(--color-body);
+  --color-destructive: var(--color-error);
+  --color-destructive-foreground: var(--color-canvas);
+
+  /* === Radius === */
+  --radius-xs: 4px;
+  --radius-sm: 6px;          /* nav / form-input (--geist-radius) */
+  --radius-md: 8px;          /* card-marketing (--geist-marketing-radius) */
+  --radius-lg: 12px;         /* pricing-card / dialog */
+  --radius-xl: 16px;
+  --radius-pill-sm: 64px;    /* tab-ghost */
+  --radius-pill: 100px;      /* marketing CTA */
+  --radius-full: 9999px;
+  --radius: 6px;             /* default = sm */
+
+  /* === Fonts (Inter + Noto Sans SC + JetBrains Mono, layout.tsx 引入 next/font) === */
+  --font-sans: var(--font-inter), var(--font-noto-sc), system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, 'SF Mono', Menlo,
+    Consolas, 'Liberation Mono', monospace;
+  /* M44: 删 --font-display (Vercel sans only); 旧 .font-display class 见 base layer */
+}
+
+/* === 5 级 stacked shadow ladder (Vercel Level 0-5) === */
+:root {
+  --shadow-1-inset: 0 0 0 1px hsl(0 0% 0% / 0.08) inset;
+  --shadow-2: 0 1px 1px hsl(0 0% 0% / 0.02), 0 2px 2px hsl(0 0% 0% / 0.04),
+    var(--shadow-1-inset);
+  --shadow-3: 0 2px 2px hsl(0 0% 0% / 0.04), 0 8px 8px -8px hsl(0 0% 0% / 0.04),
+    var(--shadow-1-inset);
+  --shadow-4: 0 2px 2px hsl(0 0% 0% / 0.04), 0 8px 16px -4px hsl(0 0% 0% / 0.04),
+    var(--shadow-1-inset);
+  --shadow-5: 0 1px 1px hsl(0 0% 0% / 0.02), 0 8px 16px -4px hsl(0 0% 0% / 0.04),
+    0 24px 32px -8px hsl(0 0% 0% / 0.06), var(--shadow-1-inset);
+
+  /* Legacy alias (51 业务组件 shadow-[var(--shadow-soft)] 等引用兼容) */
+  --shadow-soft: var(--shadow-2);
+  --shadow-card-hover: var(--shadow-4);
+  --shadow-button: var(--shadow-1-inset);
+}
+
+/* === Dark mode (M40 暂保留 slate base, Stage 4 单独打磨 Vercel 暗段) === */
+@layer base {
+  :where(.dark) {
+    --color-ink: hsl(210 40% 98%);             /* 反转: ink → 白 */
+    --color-body: hsl(215 20% 65%);
+    --color-mute: hsl(215 20% 50%);
+    --color-canvas: hsl(0 0% 9%);              /* 反转: canvas → ink */
+    --color-canvas-soft: hsl(0 0% 6%);
+    --color-canvas-soft-2: hsl(0 0% 12%);
+    --color-hairline: hsl(0 0% 18%);
+    --color-hairline-strong: hsl(0 0% 35%);
+
+    /* legacy alias */
+    --color-background: var(--color-canvas-soft);
+    --color-foreground: var(--color-ink);
+    --color-card: var(--color-canvas);
+    --color-card-foreground: var(--color-ink);
+    --color-border: var(--color-hairline);
+    --color-input: var(--color-hairline);
+    --color-ring: var(--color-ink);
+    --color-primary: var(--color-ink);
+    --color-primary-foreground: hsl(0 0% 9%);
+    --color-secondary: var(--color-canvas-soft);
+    --color-secondary-foreground: var(--color-ink);
+    --color-accent: var(--color-canvas-soft-2);
+    --color-accent-foreground: var(--color-ink);
+    --color-muted: var(--color-canvas-soft-2);
+    --color-muted-foreground: var(--color-body);
+    --color-destructive: hsl(0 70% 60%);
+    --color-destructive-foreground: hsl(0 0% 100%);
+
+    --color-brand-openai: hsl(160 50% 50%);
+    --color-brand-anthropic: hsl(20 70% 60%);
+    --color-brand-google: hsl(212 70% 60%);
+    --color-brand-meta: hsl(220 70% 65%);
+    --color-brand-xai: hsl(0 0% 70%);
+    --color-brand-deepseek: hsl(255 60% 65%);
+    --color-brand-mistral: hsl(15 90% 65%);
+    --color-brand-default: hsl(215 20% 65%);
+
+    --shadow-1-inset: 0 0 0 1px hsl(0 0% 100% / 0.06) inset;
+    --shadow-2: 0 1px 2px hsl(0 0% 0% / 0.5), var(--shadow-1-inset);
+    --shadow-3: 0 2px 4px hsl(0 0% 0% / 0.5), var(--shadow-1-inset);
+    --shadow-4: 0 4px 12px hsl(0 0% 0% / 0.5), var(--shadow-1-inset);
+    --shadow-5: 0 8px 32px hsl(0 0% 0% / 0.6), var(--shadow-1-inset);
+    --shadow-soft: var(--shadow-2);
+    --shadow-card-hover: var(--shadow-4);
+    --shadow-button: var(--shadow-1-inset);
+  }
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--color-hairline);
+  }
+  body {
+    background: var(--color-canvas-soft);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01", "ss02";
+  }
+  /* M44: .font-display 兼容 — Vercel sans only, 旧引用回落到 sans 但保留紧字距. */
+  .font-display {
+    font-family: var(--font-sans);
+    letter-spacing: -0.02em;
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+/* ────────────────────────────────────────────────────────────────────
+ * M19 landing-page animations.
+ *
+ * All keyframes live here so SSR's first paint already has the
+ * stagger applied (no FOUC). The reveal-on-scroll system is paired
+ * with `useReveal()` (a tiny IntersectionObserver hook); elements
+ * stay invisible until they receive `data-revealed="true"`.
+ * ──────────────────────────────────────────────────────────────────── */
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translate3d(0, 18px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33%      { transform: translate3d(40px, -30px, 0) scale(1.05); }
+  66%      { transform: translate3d(-30px, 20px, 0) scale(0.96); }
+}
+
+/* Hero stagger: each `[data-stagger]` child fades up with an
+ * incrementing delay. Used inline-only in the Hero — the rest of the
+ * page uses the scroll-reveal pattern below. */
+[data-stagger] {
+  animation: fade-up 0.7s ease-out backwards;
+}
+[data-stagger="1"] { animation-delay: 0.05s; }
+[data-stagger="2"] { animation-delay: 0.15s; }
+[data-stagger="3"] { animation-delay: 0.30s; }
+[data-stagger="4"] { animation-delay: 0.45s; }
+[data-stagger="5"] { animation-delay: 0.60s; }
+
+/* Scroll-reveal: opacity/translate gated by data-revealed. The hook
+ * sets data-revealed="true" the moment the element enters viewport. */
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
+}
+[data-reveal][data-revealed="true"] {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Drifting gradient orbs behind the hero — purely decorative. */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  will-change: transform;
+  animation: drift 22s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-stagger],
+  .orb {
+    animation: none;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────────────
+ * M36 wizard 一键生图 mini-app 动效.
+ *
+ * `wizard-step-in` — step 切换时整块淡入 (StepInputV2 / StepDirections / ...).
+ * `wizard-card-pop` — 方向卡 / 候选图卡片入场 (配合 [animation-delay] 实现 stagger).
+ * `wizard-pulse` — WizardProgressBar 当前段 ring 节奏脉冲.
+ * `number-flip` — BalancePill 余额数字变化时一次反弹.
+ * ──────────────────────────────────────────────────────────────────── */
+
+@keyframes wizard-step-in {
+  from { opacity: 0; transform: translate3d(0, 8px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* M39: 更轻的 fade (无 translate), 给 chat shell 二级容器 / 列表项 用,
+ * 区别 wizard-step-in (带 8px 上移, 主区切换感更强). */
+@keyframes wizard-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes wizard-card-pop {
+  0%   { opacity: 0; transform: scale(0.96); }
+  60%  { transform: scale(1.02); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes wizard-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 hsl(var(--color-primary) / 0.35); }
+  50%      { box-shadow: 0 0 0 6px hsl(var(--color-primary) / 0); }
+}
+
+@keyframes number-flip {
+  0%   { transform: translateY(0); opacity: 1; }
+  40%  { transform: translateY(-6px); opacity: 0.5; }
+  60%  { transform: translateY(4px); opacity: 0.8; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [class*="wizard-step-in"],
+  [class*="wizard-card-pop"],
+  [class*="wizard-pulse"],
+  [class*="number-flip"] {
+    animation: none !important;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────────────
+ * M36 补漏 · 顶级 chrome polish.
+ *
+ * `[data-topnav-actions] > *:hover` — TopNav 右侧 action 按钮组 (签到/
+ * 公告/帮助/语言/主题) hover 时整体微放大, 给点弹性反馈.
+ *
+ * `@keyframes ripple` — ChatComposer 发送按钮按下时的 ripple 涟漪.
+ * ──────────────────────────────────────────────────────────────────── */
+
+[data-topnav-actions] > * {
+  transition: transform 0.18s ease-out;
+}
+[data-topnav-actions] > *:hover {
+  transform: scale(1.08);
+}
+[data-topnav-actions] > *:active {
+  transform: scale(0.96);
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ChatComposer 发送按钮按下时一次性 ripple 涟漪. 用 ::after 伪元素 +
+ * active 触发 keyframe, animation-fill-mode 用默认 (none) 让它结束后回
+ * 到 scale(0) opacity 0.5 — 不可见, 不破坏布局. */
+[data-composer-send] {
+  position: relative;
+  overflow: hidden;
+}
+[data-composer-send]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: hsl(0 0% 100% / 0.35);
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+[data-composer-send]:not(:disabled):active::after {
+  animation: ripple 0.5s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-topnav-actions] > * {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────────────
+ * M39 · 跨页面 surface 一致性 utilities.
+ *
+ * `.surface-soft` — 静态卡 / 列表项 / 子区块的统一表达 (warm beige bg
+ *   + 1 级阴影 + 半透明 border). 替代散落在各组件里的 `bg-card border
+ *   border-border/60 shadow-[var(--shadow-soft)]` 重复.
+ * `.surface-elevated` — surface-soft 加 hover 升一级 (轻微上浮 + 强阴影
+ *   + border 加亮). Mini-app card / agent card / 一键生图历史卡 hover 用.
+ * ──────────────────────────────────────────────────────────────────── */
+
+@layer components {
+  .surface-soft {
+    @apply rounded-2xl border border-border/60 bg-card shadow-[var(--shadow-soft)] transition-all duration-200;
+  }
+  .surface-elevated {
+    @apply rounded-2xl border border-border/60 bg-card shadow-[var(--shadow-soft)] transition-all duration-200;
+  }
+  .surface-elevated:hover {
+    @apply -translate-y-0.5 border-primary/30 shadow-[var(--shadow-card-hover)];
+  }
+}

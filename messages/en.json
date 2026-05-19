@@ -1,0 +1,1749 @@
+{
+  "app": {
+    "title": "Open Chat",
+    "description": "The unified AI workbench, built for builders."
+  },
+  "common": {
+    "loading": "Loading…",
+    "save": "Save",
+    "saving": "Saving…",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "deleting": "Deleting…",
+    "confirm": "Confirm",
+    "close": "Close",
+    "edit": "Edit",
+    "create": "Create",
+    "creating": "Creating…",
+    "submit": "Submit",
+    "submitting": "Submitting…",
+    "copy": "Copy",
+    "copied": "Copied",
+    "retry": "Retry",
+    "back": "Back",
+    "ok": "OK",
+    "error": "Error",
+    "success": "Success",
+    "yes": "Yes",
+    "no": "No",
+    "more": "More",
+    "language": "Language",
+    "loadFailed": "Failed to load",
+    "networkError": "Network error",
+    "unknownError": "Unknown error",
+    "signingOut": "Signing out…",
+    "signOut": "Sign out",
+    "toggleTheme": "Toggle theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "System"
+  },
+  "checkin": {
+    "label": "Check in",
+    "alreadyToday": "Checked today",
+    "hint": "Check in for ${min} ~ ${max}",
+    "success": "Checked in — credited ${amount}",
+    "failed": "Check-in failed"
+  },
+  "announcement": {
+    "openLabel": "View announcement",
+    "title": "Announcements",
+    "empty": "No announcements yet",
+    "dismiss": "Got it",
+    "viewMore": "View past announcements"
+  },
+  "helpMenu": {
+    "openLabel": "Help",
+    "faq": "FAQ",
+    "contact": "Contact us",
+    "version": "Version {version}"
+  },
+  "nav": {
+    "chat": "Chat",
+    "memory": "Memory",
+    "usage": "Usage",
+    "keys": "API Keys",
+    "purchase": "Top up",
+    "subscription": "Subscription",
+    "settings": "Settings",
+    "logout": "Sign out",
+    "newChat": "New chat",
+    "balance": "Balance",
+    "newConversation": "New chat",
+    "usageInfo": "Usage",
+    "api": "API",
+    "topUp": "Top up",
+    "subscriptionShort": "Subscription",
+    "memoryShort": "Memory",
+    "agentsShort": "Agents",
+    "adminModels": "Model display",
+    "topChat": "Chat",
+    "topMiniApps": "Mini-apps",
+    "topAgents": "Agents",
+    "topHistory": "History",
+    "topApi": "API",
+    "topUsage": "Usage",
+    "history": "History",
+    "accountMenu": "Account menu",
+    "openSidebar": "Open sidebar",
+    "toggleLanguage": "Switch language (placeholder)",
+    "balanceTooltip": "Internal quota: {quota} (every {perUnit} = $1)",
+    "workspace": {
+      "title": "Workspace",
+      "open": "Open workspace",
+      "collapse": "Collapse workspace",
+      "tabs": {
+        "files": "Files",
+        "plugins": "Plugins"
+      },
+      "empty": {
+        "files": "Open a conversation to see uploaded images here",
+        "filesInConv": "No images uploaded in this conversation yet",
+        "plugins": "Open a conversation to see the current model's built-in tools"
+      },
+      "toolsForModel": "Tools for {model}",
+      "toolSupported": "Supported",
+      "toolUnsupported": "Not supported",
+      "callCount": "{count} call(s)",
+      "tools": {
+        "webSearch": {
+          "name": "Web search",
+          "hint": "Live retrieval via the web_search tool"
+        },
+        "imageGen": {
+          "name": "Image generation",
+          "hint": "Generate / edit on the Draw page"
+        },
+        "reasoning": {
+          "name": "Deep reasoning",
+          "hint": "Tunable via reasoning_effort"
+        }
+      }
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "Sign in",
+      "subtitle": "Sign in to your Open Chat account",
+      "username": "Username / Email",
+      "password": "Password",
+      "submit": "Sign in",
+      "submitting": "Signing in…",
+      "loginFailed": "Sign-in failed",
+      "twoFA": {
+        "title": "Enter the 6-digit Authenticator code",
+        "placeholder": "123456",
+        "hint": "A backup code can be used once instead of the 6-digit code (hyphen optional).",
+        "submit": "Verify",
+        "submitting": "Verifying…",
+        "verifyFailed": "Verification failed",
+        "back": "Back"
+      },
+      "passkey": {
+        "or": "or",
+        "submit": "Sign in with Passkey",
+        "submitting": "Verifying…",
+        "unsupported": "This browser does not support Passkey / WebAuthn",
+        "beginFailed": "Failed to start Passkey sign-in",
+        "verifyFailed": "Passkey verification failed",
+        "cancelled": "Cancelled",
+        "failed": "Passkey sign-in failed"
+      },
+      "signUpPrompt": "No account yet?",
+      "signUpLink": "Sign up",
+      "forgotPassword": "Forgot password?",
+      "cardSubtitle": "Sign in to start chatting",
+      "noAccountPrompt": "No account?"
+    },
+    "signUp": {
+      "title": "Sign up",
+      "subtitle": "Create your Open Chat account",
+      "username": "Username",
+      "email": "Email",
+      "emailOptional": "Email (optional)",
+      "verificationCode": "Verification code",
+      "sendCode": "Send code",
+      "sendingCode": "Sending…",
+      "codeSent": "Verification code sent to your email",
+      "fillEmailFirst": "Please enter your email first",
+      "codeSendFailed": "Failed to send code",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "passwordMismatch": "Passwords do not match",
+      "submit": "Sign up & sign in",
+      "submitting": "Signing up…",
+      "registerFailed": "Sign-up failed",
+      "loginFailed": "Sign-in failed, please continue from the sign-in page",
+      "signInPrompt": "Already have an account?",
+      "signInLink": "Sign in",
+      "cardSubtitle": "Create a new account",
+      "affApplied": "Invite code <code>{aff}</code> applied — both of you get rewards on successful sign-up."
+    },
+    "reset": {
+      "title": "Reset password",
+      "request": {
+        "subtitle": "Enter your registered email and we'll send a reset link",
+        "email": "Email",
+        "submit": "Send reset email",
+        "submitting": "Sending…",
+        "sent": "If the email exists, a reset link has been sent",
+        "failed": "Failed to send",
+        "cardSubtitle": "Enter your email to receive a reset link, then click the link to return here and finish",
+        "sentInfo": "Reset email sent — check your inbox and click the link to continue.",
+        "rememberPrompt": "Remembered it?",
+        "directSignIn": "Sign in directly"
+      },
+      "confirm": {
+        "subtitle": "Set a new password",
+        "newPassword": "New password",
+        "confirmPassword": "Confirm new password",
+        "submit": "Reset & sign in",
+        "submitting": "Resetting…",
+        "passwordMismatch": "Passwords do not match",
+        "failed": "Reset failed",
+        "expired": "Link expired, please request a new one",
+        "cardSubtitle": "Click \"Confirm reset\" to generate a new password",
+        "aboutTo": "About to reset the password for <strong>{email}</strong>. Clicking below generates a new password — shown only once.",
+        "confirmReset": "Confirm reset",
+        "generating": "Generating…",
+        "successTitle": "Password reset successfully",
+        "newPasswordLabel": "New password (write it down now — won't be shown again after refresh)",
+        "changeLater": "After signing in, change it to something memorable in Settings.",
+        "gotoSignIn": "Go to sign-in"
+      }
+    },
+    "oauth": {
+      "divider": "or",
+      "signInWith": "Sign in with {name}",
+      "stateFailed": "Failed to obtain OAuth state"
+    }
+  },
+  "chat": {
+    "welcome": {
+      "title": "Hi, what shall we talk about today?",
+      "subtitle": "Type a message to start, or pick a model to explore",
+      "promoStrip": "AI creation workspace",
+      "greeting": "Welcome to <brand>{systemName}</brand> — how can I help?",
+      "quickStarts": {
+        "newChat": "New chat",
+        "image": "One-click image",
+        "agents": "Agents",
+        "code": "Discuss code",
+        "email": "Write email"
+      },
+      "suggestions": {
+        "writingTitle": "Writing helper",
+        "writingPrompt": "Write a 200-word product blurb for a unified chat client that supports many AI models.",
+        "codingTitle": "Coding help",
+        "codingPrompt": "Write a TypeScript debounce function with leading-edge invocation and a cancel method.",
+        "translateTitle": "Translate",
+        "translatePrompt": "Translate this into idiomatic English: 人工智能正在重塑我们获取信息和创造内容的方式。",
+        "brainstormTitle": "Brainstorm",
+        "brainstormPrompt": "I want a name for a developer-focused AI chat product — give me 5 creative options."
+      }
+    },
+    "composer": {
+      "placeholder": "Type a message (Shift+Enter for newline)",
+      "placeholderWithImages": "Ask anything (paste or drag images)",
+      "placeholderDefault": "Ask anything",
+      "placeholderAsk": "Ask anything",
+      "pickModelFirst": "Pick a model in the top-right first",
+      "send": "Send",
+      "rateLimitedTitle": "Rate limited; retry in {sec}s",
+      "rateLimitedAria": "Rate limit cooldown, {sec} seconds remaining",
+      "stop": "Stop",
+      "stopGenerating": "Stop generating",
+      "attach": "Attach",
+      "model": "Model",
+      "search": "Web search",
+      "imageMode": "Generate image",
+      "thinking": "Reasoning",
+      "thinkingMinimal": "Minimal",
+      "thinkingLow": "Fast",
+      "thinkingMedium": "Standard",
+      "thinkingHigh": "Deep",
+      "thinkingShortLow": "Low",
+      "thinkingShortMedium": "Med",
+      "thinkingShortHigh": "High",
+      "thinkingShortMinimal": "Min",
+      "thinkingShortXhigh": "Max",
+      "thinkingShort": "Reasoning",
+      "thinkingPickerTitle": "Reasoning: {level} (click to cycle)",
+      "thinkingPickerOff": "Reasoning (off)",
+      "toggleOn": "on",
+      "toggleOff": "off",
+      "toggleTitle": "{label} ({state})",
+      "uploadImage": "Upload image",
+      "uploadFile": "Upload file",
+      "imagesOnly": "Images only",
+      "imagesOnlyError": "Only image files are supported",
+      "tooManyImages": "Up to {max} images at a time",
+      "tooManyDocs": "Up to {max} documents at a time",
+      "unsupportedFileType": "Unsupported file type: {name}",
+      "docsNeedConversation": "Documents need a conversation — send a text message first, then attach.",
+      "docUploading": "Parsing…",
+      "docUploadFailed": "Document upload failed",
+      "truncatedTag": "truncated",
+      "fileTooLarge": "File too large, max {maxMB} MB",
+      "fileTooLargeNamed": "\"{name}\" exceeds {maxMB}MB limit",
+      "removeAttachment": "Remove {name}",
+      "uploading": "Uploading…",
+      "uploadFailed": "Upload failed",
+      "videoDuration": "{sec}s",
+      "videoResolutionTitle": "Resolution {res} (tap to cycle)",
+      "videoResolutionAria": "Resolution {res}",
+      "videoAspectTitle": "Aspect {aspect} (tap to cycle)",
+      "videoAspectAria": "Aspect {aspect}",
+      "videoLastFrameLabel": "Last frame",
+      "videoLastFrameLabelSet": "Last frame ✓",
+      "videoLastFrameEmpty": "Upload last frame (Veo 3.1 first+last)",
+      "videoLastFrameSet": "Last frame set — tap to remove",
+      "videoLastFrameAria": "Upload last frame",
+      "videoFirstFrameLabel": "First frame",
+      "videoFirstFrameLabelSet": "First frame ✓",
+      "videoFirstFrameEmpty": "Upload first frame (image-to-video)",
+      "videoFirstFrameSet": "First frame set — tap to remove",
+      "videoFirstFrameAria": "Upload first frame",
+      "videoDurationTitle": "Video duration: {sec}s (click to switch)",
+      "videoDurationAria": "Video duration {sec} seconds",
+      "audioPlaceholder": "Text to read aloud…",
+      "audioVoiceTitle": "Voice: {voice} (click to switch)",
+      "audioVoiceAria": "Voice {voice}"
+    },
+    "video": {
+      "promptPlaceholder": "Describe the video you want to generate…",
+      "generating": "Generating video",
+      "etaHint": "Usually takes 1–2 minutes, please keep this page open",
+      "savedHint": "Recommend downloading locally for long-term storage",
+      "download": "Download video",
+      "downloadFailed": "Download failed",
+      "failed": "Video generation failed",
+      "retryHint": "Try again with a different prompt"
+    },
+    "audio": {
+      "speak": "Read aloud",
+      "stop": "Stop",
+      "loading": "Synthesising…",
+      "failed": "Read aloud failed: {reason}",
+      "playFailed": "Audio playback failed"
+    },
+    "collaboration": {
+      "btn": "Multi-model",
+      "activeLabel": "+{n} collab",
+      "modalTitle": "Multi-model collaboration",
+      "modalDescription": "Pick 1–{max} extra models to answer alongside the primary; a reducer merges the answers into one synthesis.",
+      "emptyAvailable": "No models available for collaboration",
+      "latencyHint": "Running N models in parallel plus a reducer takes 5–30s. Token cost is roughly (N+1)×.",
+      "clear": "Clear",
+      "cancel": "Cancel",
+      "confirm": "Confirm ({n})",
+      "panelLabel": "Show {n} original answers",
+      "failedSuffix": "{n} failed"
+    },
+    "modelPill": {
+      "switchSource": "{name} · switch source"
+    },
+    "style": {
+      "image": {
+        "realistic": "Realistic",
+        "anime": "Anime",
+        "oil": "Oil",
+        "watercolor": "Watercolor",
+        "pixel": "Pixel",
+        "3d": "3D",
+        "cyberpunk": "Cyberpunk",
+        "minimal": "Minimal",
+        "chinese": "Chinese ink",
+        "poster": "Poster",
+        "doodle": "Doodle",
+        "steampunk": "Steampunk"
+      },
+      "video": {
+        "cinematic": "Cinematic",
+        "anime": "Anime",
+        "vlog": "Vlog",
+        "ad": "Ad",
+        "documentary": "Documentary",
+        "fashion": "Fashion"
+      }
+    },
+    "modelPicker": {
+      "title": "Pick a model",
+      "search": "Search models",
+      "noResult": "No matching model",
+      "default": "Default",
+      "loadFailed": "Failed to load models",
+      "pick": "Pick a model",
+      "empty": "No models available",
+      "adminHint": "No models configured yet — create a channel in the admin console first.",
+      "vendorOther": "Other"
+    },
+    "message": {
+      "user": "You",
+      "assistant": "Assistant",
+      "thinking": "Thinking…",
+      "regenerate": "Regenerate",
+      "edit": "Edit",
+      "editResend": "Edit & resend",
+      "copy": "Copy",
+      "copied": "Copied",
+      "copyFailed": "Could not write to clipboard — check browser permissions",
+      "copyCode": "Copy code",
+      "delete": "Delete",
+      "speak": "Read aloud",
+      "stop": "Stop",
+      "thinkingBlock": "Reasoning",
+      "expandThinking": "Show reasoning",
+      "collapseThinking": "Hide reasoning",
+      "reasoning": "Reasoning",
+      "thinkingElapsed": "Thinking · {sec}s",
+      "thinkingNoStream": "(this model doesn't stream reasoning — final answer will appear when ready)",
+      "cancelEdit": "Cancel",
+      "sendEdit": "Send",
+      "scrollToBottom": "Scroll to bottom",
+      "viewImage": "View full image",
+      "siblingPrev": "Previous branch",
+      "siblingNext": "Next branch"
+    },
+    "usageBadge": {
+      "in": "in",
+      "out": "out",
+      "tok": "tok",
+      "ariaWithCost": "{cost} for {tokens} tokens via {model}",
+      "ariaTokensOnly": "{tokens} tokens via {model}"
+    },
+    "quotaExhausted": {
+      "title": "Insufficient balance",
+      "message": "Top up or upgrade your subscription to continue",
+      "topup": "Top up",
+      "subscription": "View subscriptions"
+    },
+    "rateLimit": {
+      "title": "Too many requests",
+      "message": "Please wait {seconds} seconds and retry"
+    },
+    "errors": {
+      "modelMissing": "Pick a model first",
+      "streamFailed": "Stream error",
+      "saveFailed": "Failed to save message",
+      "createConvFailed": "Failed to create conversation",
+      "unsupportedSearch": "This model does not support web search — turn it off or pick a supported model.",
+      "unsupportedReasoning": "This model does not support reasoning depth — turn it off.",
+      "quotaExhaustedHint": "Quota exhausted — top up before retrying.",
+      "rateLimitHint": "Too many requests, please slow down.",
+      "noChannel": "No model channel available — contact admin or pick another model."
+    },
+    "list": {
+      "title": "History",
+      "empty": "No conversations yet",
+      "newChat": "New chat",
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "earlier": "Earlier",
+      "rename": "Rename",
+      "renamePlaceholder": "New title",
+      "pin": "Pin",
+      "unpin": "Unpin",
+      "archive": "Archive",
+      "unarchive": "Unarchive",
+      "delete": "Delete",
+      "deleteConfirmTitle": "Delete conversation?",
+      "deleteConfirm": "Delete this conversation? This cannot be undone.",
+      "loadFailed": "Failed to load conversations",
+      "archived": "Archived",
+      "deleted": "Deleted",
+      "actionsMenu": "Conversation actions"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "tabs": {
+      "profile": "Profile",
+      "security": "Security",
+      "preferences": "Preferences",
+      "notifications": "Notifications",
+      "bindings": "Connections",
+      "invite": "Invite",
+      "danger": "Danger zone"
+    },
+    "profile": {
+      "displayName": "Display name",
+      "avatar": "Avatar",
+      "email": "Email",
+      "username": "Username",
+      "save": "Save",
+      "saved": "Saved",
+      "saveFailed": "Save failed",
+      "verifyEmail": "Verify email",
+      "emailVerified": "Email verified",
+      "basicInfo": "Basic info",
+      "usernameLocked": "Usernames cannot be changed once set; contact an admin if you need it changed.",
+      "displayNameLabel": "Display name"
+    },
+    "security": {
+      "password": {
+        "title": "Change password",
+        "current": "Current password",
+        "new": "New password",
+        "confirm": "Confirm new password",
+        "submit": "Change password",
+        "mismatch": "Passwords do not match",
+        "changed": "Password updated — use the new one next sign-in",
+        "failed": "Update failed",
+        "hint": "Minimum 8 characters. Takes effect immediately; all signed-in devices need to sign in again.",
+        "minLength": "New password must be at least 8 characters"
+      },
+      "twoFA": {
+        "title": "Two-factor authentication",
+        "enabled": "Enabled",
+        "disabled": "Disabled",
+        "description": "Requires a 6-digit code from an Authenticator app in addition to your password.",
+        "descriptionLong": "Once enabled, sign-in additionally requires a 6-digit code from your Authenticator app — significantly stronger account security.",
+        "enable": "Enable 2FA",
+        "disable": "Disable 2FA",
+        "scanQr": "Scan with Authenticator or add the secret manually",
+        "scanQrTitle": "Scan QR code",
+        "scanQrHint": "Scan with a TOTP app such as Authenticator / 1Password / Google Authenticator.",
+        "manualSecret": "Can't scan? Enter the secret manually:",
+        "secret": "Secret",
+        "code": "6-digit code",
+        "codeLabel": "Enter the 6-digit code to confirm",
+        "codePrompt": "Enter a 6-digit code",
+        "verify": "Confirm & enable",
+        "backupCodes": "Backup codes",
+        "backupHint": "Keep these safe — each code can be used once.",
+        "backupHintLong": "Use these if you lose access to your Authenticator. Each code works once. Save them now in a safe place.",
+        "backupCopied": "All backup codes copied",
+        "copyAll": "Copy all",
+        "regenerateBackup": "Regenerate backup codes",
+        "regenerateConfirmTitle": "Regenerate backup codes?",
+        "regenerateConfirm": "Generating new backup codes invalidates the old ones immediately. Continue?",
+        "regenerateFailed": "Generation failed",
+        "regenerated": "New backup codes generated — write them down now",
+        "downloadBackup": "Download backup codes",
+        "disableConfirmTitle": "Disable two-factor auth?",
+        "disableConfirm": "Disable 2FA? Keeping it on is recommended for stronger account security.",
+        "disablePrompt": "Enter your current 6-digit code or a backup code to disable",
+        "disabledToast": "2FA disabled",
+        "disableFailed": "Disable failed",
+        "enabledToast": "2FA enabled",
+        "enableFailed": "Enable failed",
+        "setupFailed": "Setup failed",
+        "statusEnabled": "Two-factor authentication is on",
+        "statusDisabled": "Two-factor authentication is off",
+        "gotIt": "Got it",
+        "verifyFailed": "Verification failed",
+        "loadFailed": "Failed to load 2FA status"
+      },
+      "passkey": {
+        "title": "Passkey",
+        "bound": "Passkey enrolled",
+        "unbound": "No Passkey enrolled",
+        "description": "Sign in with Face ID, fingerprint or a hardware key — faster and stronger than password + 2FA. Requires HTTPS (or localhost).",
+        "browserUnsupported": "This browser does not support WebAuthn. Use the latest Safari/Chrome/Firefox.",
+        "unsupportedToast": "This browser does not support Passkey / WebAuthn",
+        "add": "Add Passkey",
+        "delete": "Delete",
+        "deleteConfirmTitle": "Delete Passkey?",
+        "deleteConfirm": "Delete Passkey? You'll only be able to sign in with password + 2FA.",
+        "registered": "Passkey registered",
+        "deleted": "Deleted",
+        "loadFailed": "Failed to load Passkey status",
+        "beginFailed": "Failed to start registration",
+        "registerFailed": "Registration failed",
+        "deleteFailed": "Delete failed",
+        "cancelled": "Cancelled"
+      }
+    },
+    "preferences": {
+      "title": "Preferences",
+      "language": "Language",
+      "languageHint": "Switch the interface language.",
+      "theme": "Theme",
+      "themeLight": "Light",
+      "themeDark": "Dark",
+      "themeSystem": "System",
+      "memoryEnabled": "Enable long-term memory",
+      "memoryHint": "When off, new conversations will not auto-extract memories. Existing memories are kept."
+    },
+    "notifications": {
+      "title": "Notifications",
+      "email": "Email notifications",
+      "billingAlerts": "Billing & balance alerts",
+      "productUpdates": "Product updates",
+      "save": "Save",
+      "saved": "Saved"
+    },
+    "bindings": {
+      "title": "Connections",
+      "description": "Linked third-party accounts can be used for one-tap sign-in.",
+      "bind": "Connect",
+      "unbind": "Disconnect",
+      "bound": "Connected",
+      "github": "GitHub",
+      "google": "Google",
+      "discord": "Discord",
+      "wechat": "WeChat",
+      "telegram": "Telegram"
+    },
+    "invite": {
+      "title": "Invite new users",
+      "description": "Users who sign up with your link become referrals — a share of their spend is credited to your invite-rewards balance.",
+      "code": "Invite code",
+      "shareLink": "Share link",
+      "qrHint": "Screenshot this QR and share with friends. Scanning takes them to the sign-up page with your code pre-filled.",
+      "loadingCode": "Loading invite code…",
+      "stats": {
+        "title": "Reward stats",
+        "description": "Total = lifetime referral revenue; Available = not yet transferred to main wallet.",
+        "count": "Referrals",
+        "history": "Total earned",
+        "available": "Available"
+      },
+      "transfer": "Transfer to wallet",
+      "transferred": "Transferred {amount}",
+      "transferFailed": "Transfer failed",
+      "codeCopied": "Code copied",
+      "linkCopied": "Link copied"
+    },
+    "danger": {
+      "title": "Danger zone",
+      "deleteAccount": {
+        "title": "Delete account",
+        "description": "Permanently delete your account, conversations and memories. This cannot be undone.",
+        "button": "Delete account",
+        "confirmTitle": "Confirm account deletion?",
+        "confirmText": "Type your username to confirm",
+        "submit": "Permanently delete",
+        "submitting": "Processing…",
+        "failed": "Deletion failed"
+      }
+    }
+  },
+  "purchase": {
+    "title": "Top up",
+    "subtitle": "Top-up funds become available immediately for chat and image generation. Each call is billed at upstream OpenAI rates.",
+    "amount": "Amount (USD)",
+    "minAmount": "Minimum ${min}",
+    "method": "Payment method",
+    "submit": "Pay",
+    "submitting": "Redirecting…",
+    "amountInvalid": "Enter a valid amount",
+    "submitFailed": "Failed to start payment",
+    "loadFailed": "Failed to load top-up info",
+    "balanceTitle": "Current balance",
+    "redeem": {
+      "title": "Redemption code",
+      "placeholder": "Paste a redemption code from a campaign or operator gift",
+      "submit": "Redeem",
+      "hint": "Redemption codes are minted by admins on the admin console Codes page.",
+      "success": "Redeemed — credits added",
+      "failed": "Redeem failed"
+    },
+    "presets": {
+      "recommended": "Most picked",
+      "trial": {
+        "label": "Quick try",
+        "hint": "A handful of chats or generations to kick the tyres"
+      },
+      "personal": {
+        "label": "Daily",
+        "hint": "Roughly a week of daily use"
+      },
+      "team": {
+        "label": "Heavy",
+        "hint": "Power users / multi-model comparisons"
+      },
+      "enterprise": {
+        "label": "Workflow",
+        "hint": "Team share / client deliverables"
+      }
+    },
+    "online": {
+      "title": "Online top-up",
+      "loading": "Loading providers…",
+      "disabled": "No online top-up providers enabled. Use a redemption code above, or contact the operator.",
+      "amountLabel": "Amount (USD)",
+      "submit": "Pay ${amount}",
+      "hint": "Payment is credited automatically via webhook — refresh or wait a few seconds to see the new balance.",
+      "stripeNotIntegrated": "Stripe client checkout is not integrated yet — please contact the admin",
+      "startedSuccess": "Started — follow the provider's instructions to complete payment",
+      "startFailed": "Failed to start payment",
+      "providerEpay": "EPay (Alipay/WeChat)"
+    },
+    "history": {
+      "title": "Recent orders",
+      "empty": "No orders yet",
+      "amount": "Amount",
+      "method": "Method",
+      "status": "Status",
+      "createdAt": "When",
+      "orderNo": "Order #",
+      "channel": "Channel",
+      "money": "Money",
+      "quotaTopup": "Credits",
+      "loading": "Loading…",
+      "statusPending": "Pending",
+      "statusPaid": "Paid",
+      "statusFailed": "Failed",
+      "statusRefunded": "Refunded",
+      "statusCompleted": "Completed",
+      "statusProcessing": "Processing"
+    }
+  },
+  "subscription": {
+    "title": "Subscription",
+    "subtitle": "Recurring credit packs — fixed monthly cost vs. paying as you go.",
+    "current": "Current subscriptions",
+    "noActive": "Not subscribed",
+    "subscribeNow": "Subscribe",
+    "manage": "Manage",
+    "subscribing": "Processing…",
+    "subscribeFailed": "Subscription failed",
+    "renewAt": "Renews",
+    "cancelAt": "Cancels on {date}",
+    "perMonth": "/ month",
+    "perYear": "/ year",
+    "popular": "Popular",
+    "loadFailed": "Failed to load subscription info",
+    "loading": "Loading…",
+    "intervalMonth": "month",
+    "preference": {
+      "title": "Billing preference",
+      "current": "Current",
+      "switched": "Billing preference updated",
+      "switchFailed": "Switch failed",
+      "wallet": {
+        "label": "Wallet only",
+        "hint": "Calls are deducted from top-up wallet balance"
+      },
+      "subscriptionFirst": {
+        "label": "Subscription first",
+        "hint": "Use active subscription credits first; overflow falls back to wallet"
+      },
+      "subscriptionOnly": {
+        "label": "Subscription only",
+        "hint": "Errors when subscription credits run out — never debits wallet"
+      }
+    },
+    "list": {
+      "planId": "Plan ID",
+      "status": "Status",
+      "periodStart": "Period start",
+      "periodEnd": "Period end"
+    },
+    "plans": {
+      "title": "Available plans",
+      "empty": "No subscription plans configured. To launch monthly/yearly tiers, create them under the admin console → Subscriptions → Plans.",
+      "perPeriodQuota": "Includes ${amount} credits per period",
+      "subscribe": "Subscribe",
+      "startedNoUrl": "Subscription started — follow the provider's instructions",
+      "noProvider": "No subscription payment provider is enabled"
+    }
+  },
+  "usage": {
+    "title": "Usage",
+    "subtitle": "Costs and token consumption across chat / image / API key calls.",
+    "balance": "Balance",
+    "totalUsed": "Total used",
+    "todayUsed": "Today",
+    "promptTokens": "Prompt tokens",
+    "completionTokens": "Completion tokens",
+    "filter": {
+      "model": "Model",
+      "all": "All",
+      "from": "From",
+      "to": "To"
+    },
+    "log": {
+      "title": "Call log",
+      "createdAt": "When",
+      "model": "Model",
+      "promptTokens": "Prompt",
+      "completionTokens": "Completion",
+      "quota": "Spend",
+      "empty": "No records"
+    },
+    "range": {
+      "last7": "Last 7 days",
+      "last30": "Last 30 days",
+      "last90": "Last 90 days"
+    },
+    "tabs": {
+      "all": "All",
+      "byToken": "By API key"
+    },
+    "export": {
+      "button": "Export CSV",
+      "exporting": "Exporting…",
+      "failed": "Export failed",
+      "empty": "Nothing to export in this range",
+      "limitHint": "Up to 1,000 rows per export — contact admin for larger pulls",
+      "headers": {
+        "time": "Time",
+        "model": "Model",
+        "tokenName": "Key",
+        "promptTokens": "Input tokens",
+        "completionTokens": "Output tokens",
+        "elapsedSec": "Elapsed (s)",
+        "costUsd": "Cost (USD)"
+      }
+    },
+    "tokenSelect": {
+      "label": "Pick a key",
+      "placeholder": "Select…",
+      "empty": "No API keys yet — create one on the API page"
+    },
+    "kpi": {
+      "totalSpent": "Total spent",
+      "totalSpentHint": "Last {days} days (USD)",
+      "calls": "Calls",
+      "callsHint": "Last 20 calls listed below",
+      "inputTokens": "Input tokens",
+      "outputTokens": "Output tokens",
+      "last20Hint": "Sum of the last 20 calls"
+    },
+    "chart": {
+      "title": "Daily spend (stacked by model)"
+    },
+    "recent": {
+      "title": "Recent calls",
+      "loading": "Loading…",
+      "empty": "No calls in this period",
+      "colTime": "Time",
+      "colModel": "Model",
+      "colToken": "Token",
+      "tokenWebchat": "Web chat",
+      "colInput": "Input",
+      "colOutput": "Output",
+      "colElapsed": "Elapsed",
+      "colSpent": "Spend"
+    }
+  },
+  "keys": {
+    "title": "API Key",
+    "subtitle": "Paste a key into ChatGPT clients, Cherry Studio, Claude Code or any OpenAI-compatible tool to call all available models.",
+    "create": "Create key",
+    "creating": "Creating…",
+    "name": "Name",
+    "namePlaceholder": "e.g. CLI",
+    "namePlaceholderLong": "Give this key a memorable name",
+    "createdAt": "Created",
+    "expiresAt": "Expires",
+    "lastUsedAt": "Last used",
+    "neverUsed": "Never used",
+    "noExpiry": "Never",
+    "revoke": "Revoke",
+    "revokeConfirm": "Revoking takes effect immediately. Continue?",
+    "revoked": "Revoked",
+    "revokeFailed": "Revoke failed",
+    "copy": "Copy",
+    "copied": "Copied",
+    "showOnceWarning": "Copy now — you won't be able to view the full key again.",
+    "empty": "No API keys yet. Create one in the top-right and paste it into your client.",
+    "loadFailed": "Failed to load API keys",
+    "createFailed": "Create failed",
+    "groupHint": "Plan group: {group}",
+    "loading": "Loading…",
+    "deleteConfirmTitle": "Revoke API Key?",
+    "deleteConfirm": "Delete \"{name}\"? All calls using this key will fail.",
+    "deleted": "Deleted",
+    "deleteFailed": "Delete failed",
+    "col": {
+      "name": "Name",
+      "key": "Key",
+      "used": "Used",
+      "remaining": "Remaining",
+      "status": "Status",
+      "expires": "Expires",
+      "actions": "Actions"
+    },
+    "statusEnabled": "Enabled",
+    "statusDisabled": "Disabled",
+    "neverExpires": "Never",
+    "reveal": {
+      "title": "Reveal & copy",
+      "copied": "Copied to clipboard",
+      "shown": "Shown — copy manually",
+      "failed": "Failed to fetch key",
+      "rateLimited": "Failed to fetch key (rate-limited, try again shortly)"
+    },
+    "rowActions": {
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "createdToast": "Created — click the eye icon to reveal the key",
+    "saveFailed": "Save failed",
+    "saved": "Saved",
+    "quota": {
+      "label": "Budget",
+      "unlimited": "Unlimited",
+      "limited": "Limited"
+    },
+    "expiry": {
+      "label": "Validity",
+      "never": "Never",
+      "date": "Until date"
+    },
+    "status": {
+      "label": "Status",
+      "enabled": "Enabled"
+    },
+    "actions": {
+      "cancel": "Cancel",
+      "create": "Create",
+      "save": "Save"
+    }
+  },
+  "developer": {
+    "title": "API & developer access",
+    "subtitle": "Manage your API keys, see how to wire up popular tools, and check model pricing.",
+    "tabs": {
+      "tokens": "API Keys",
+      "howto": "Setup guide",
+      "models": "Models & pricing"
+    },
+    "baseUrl": {
+      "title": "API endpoint",
+      "subtitle": "OpenAI- and Anthropic-compatible. Drop this into the base_url of any third-party tool.",
+      "copy": "Copy",
+      "copied": "Copied",
+      "beta": "Beta",
+      "betaHint": "We'll move to a dedicated api subdomain later — current host stays stable."
+    },
+    "tokenPicker": {
+      "title": "Pick a key",
+      "subtitle": "All examples below auto-fill with the key you select.",
+      "noTokens": "No API keys yet. Create one in the API Keys tab first.",
+      "goCreate": "Create one",
+      "placeholder": "(pick a key first)"
+    },
+    "tools": {
+      "claudeCode": {
+        "title": "Claude Code",
+        "subtitle": "Anthropic's official CLI for writing and editing code in your terminal.",
+        "linkLabel": "Claude Code setup docs",
+        "linkUrl": "https://docs.claude.com/en/docs/claude-code/setup",
+        "recommendedModel": "Recommended: claude-4.5-sonnet"
+      },
+      "codex": {
+        "title": "OpenAI Codex CLI",
+        "subtitle": "OpenAI's official coding CLI — uses the Responses API, best with GPT-5.x.",
+        "linkLabel": "Codex install docs",
+        "linkUrl": "https://github.com/openai/codex",
+        "recommendedModel": "Recommended: gpt-5.4 / gpt-5.3-codex"
+      },
+      "cursor": {
+        "title": "Cursor",
+        "subtitle": "AI-native code editor. Settings → Models → choose OpenAI, set custom base URL.",
+        "linkLabel": "Cursor homepage",
+        "linkUrl": "https://cursor.com",
+        "recommendedModel": "Recommended: gpt-5.4 or claude-4.5-sonnet"
+      },
+      "cherryStudio": {
+        "title": "Cherry Studio",
+        "subtitle": "Free cross-platform AI desktop client. Add a new OpenAI-compatible provider.",
+        "linkLabel": "Cherry Studio site",
+        "linkUrl": "https://cherry-ai.com",
+        "recommendedModel": "Recommended: gpt-5.4 / deepseek-chat"
+      },
+      "generic": {
+        "title": "Any OpenAI-compatible client",
+        "subtitle": "ChatBox · LobeChat · NextChat · Open WebUI · etc. Add a new OpenAI provider.",
+        "linkLabel": "ChatBox project",
+        "linkUrl": "https://github.com/Bin-Huang/chatbox",
+        "recommendedModel": "Any OpenAI-compatible model works"
+      }
+    },
+    "configBlock": {
+      "copyAll": "Copy all",
+      "envHint": "Environment variables",
+      "uiHint": "Client settings",
+      "installHint": "Install",
+      "testHint": "Test connection with curl",
+      "tokenLabel": "API Key",
+      "baseUrlLabel": "Base URL",
+      "modelLabel": "Model"
+    },
+    "models": {
+      "title": "Available models & pricing",
+      "subtitle": "Grouped by upstream channel. Prices in USD per million tokens — billing follows your admin config.",
+      "loading": "Loading…",
+      "loadFailed": "Failed to load",
+      "empty": "No channels configured. Ask the admin to set them up.",
+      "col": {
+        "model": "Model",
+        "input": "Input $/M",
+        "output": "Output $/M",
+        "perCall": "Per call",
+        "group": "Group"
+      },
+      "perCallNone": "—",
+      "channelLabel": "Channel"
+    }
+  },
+  "memory": {
+    "title": "Long-term memory",
+    "subtitle": "The assistant auto-extracts stable facts and preferences while you chat, then recalls them next session. View, edit or delete any entry here.",
+    "empty": "No memories yet. Keep chatting — the assistant will extract stable facts about you automatically.",
+    "search": "Search memories",
+    "category": "Category",
+    "categories": {
+      "all": "All",
+      "fact": "Fact",
+      "preference": "Preference",
+      "profile": "Profile",
+      "project": "Project"
+    },
+    "add": "Add entry",
+    "addManually": "Add manually",
+    "edit": "Edit entry",
+    "content": "Content",
+    "contentPlaceholder": "e.g. I'm a frontend dev who prefers TypeScript; building a SaaS product.",
+    "contentLabel": "Content (stable facts about you, ≤ 500 chars)",
+    "importance": "Importance",
+    "importanceLabel": "Importance (1-10)",
+    "importanceShort": "Importance",
+    "save": "Save",
+    "delete": "Delete",
+    "deleteConfirmTitle": "Delete memory?",
+    "deleteConfirm": "Delete this memory?",
+    "saved": "Saved",
+    "deleted": "Deleted",
+    "saveFailed": "Save failed",
+    "deleteFailed": "Delete failed",
+    "loadFailed": "Failed to load memories",
+    "lastUsed": "Last used",
+    "neverUsed": "Never used",
+    "createdAt": "Created",
+    "loading": "Loading…",
+    "added": "Added",
+    "addFailed": "Add failed",
+    "cancel": "Cancel",
+    "submit": "Add",
+    "categoryLabel": "Category",
+    "row": {
+      "importance": "Importance {n}/10",
+      "lastUsedOn": "last used {date}",
+      "notUsed": "not used yet",
+      "createdOn": "created {date}",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "count": "{n} entries",
+    "toggle": {
+      "on": "On",
+      "off": "Off",
+      "enabled": "Long-term memory enabled",
+      "disabled": "Disabled — new conversations will not inject or extract memories",
+      "failed": "Toggle failed"
+    },
+    "disabledHint": "Memory is disabled. Existing entries are preserved and editable; new conversations won't auto-extract or inject memories.",
+    "disabled": {
+      "title": "Long-term memory disabled",
+      "description": "Enable it under Settings → Preferences for new conversations to auto-remember facts."
+    }
+  },
+  "sidebar": {
+    "modelLibrary": {
+      "searchPlaceholder": "Search models…",
+      "loading": "Loading…",
+      "noMatch": "No matching models"
+    },
+    "modelCategory": {
+      "all": "All",
+      "chat": "Chat",
+      "code": "Code",
+      "image": "Image",
+      "video": "Video",
+      "audio": "Audio"
+    }
+  },
+  "history": {
+    "title": "History",
+    "count": "{n} chats",
+    "empty": "No conversations yet — send a message to get started",
+    "emptySearch": "No matches",
+    "searchPlaceholder": "Search by title…",
+    "seeAll": "See all",
+    "filter": {
+      "all": "All",
+      "pinned": "Pinned"
+    },
+    "rel": {
+      "now": "just now",
+      "minutesAgo": "{n}m ago",
+      "hoursAgo": "{n}h ago",
+      "daysAgo": "{n}d ago"
+    },
+    "search": {
+      "modeTitle": "Title",
+      "modeContent": "Content",
+      "modeContentHint": "Search inside message bodies",
+      "contentPlaceholder": "Search message content…",
+      "searching": "Searching…",
+      "matchInTitle": "Title match",
+      "matchInContent": "Content match",
+      "matchInBoth": "Title + content match",
+      "openMatch": "Jump to match"
+    },
+    "export": {
+      "menu": "Export as Markdown",
+      "exporting": "Exporting…",
+      "success": "Exported {filename}",
+      "failed": "Export failed: {message}",
+      "exportLabel": "Export this chat",
+      "metaLine": "Model: {model} · Created: {createdAt} · {count} messages",
+      "userTurn": "You",
+      "assistantTurn": "Assistant",
+      "tokensLine": "tokens: {prompt} / {completion}",
+      "emptyAssistant": "_(no text content)_"
+    },
+    "share": {
+      "menu": "Create share link",
+      "title": "Share conversation",
+      "description": "Create a read-only link for \"{title}\". Anyone with the link can view.",
+      "minting": "Creating…",
+      "copy": "Copy",
+      "copied": "Copied",
+      "copyFailed": "Copy failed — please select and copy manually",
+      "readonlyHint": "Read-only view. No other chats or account info are exposed.",
+      "revoke": "Revoke link",
+      "revoked": "Revoked",
+      "revokeConfirmTitle": "Revoke share link?",
+      "revokeConfirm": "The link will immediately stop working — visitors will see 404.",
+      "done": "Done"
+    }
+  },
+  "miniApps": {
+    "title": "Mini-apps",
+    "subtitle": "Specialised creation workshops — upload, plan, generate end-to-end",
+    "loading": "Loading…",
+    "empty": "No mini-apps available yet",
+    "badge": "MINI APP",
+    "createFailed": "Failed to create conversation"
+  },
+  "promptsLibrary": {
+    "title": "Prompts Library",
+    "subtitle": "Pick a preset role to start instantly · curated high-quality prompts",
+    "tabs": {
+      "all": "All",
+      "mine": "Mine"
+    },
+    "sort": {
+      "popular": "Popular",
+      "recent": "Recent",
+      "alphabetical": "A–Z"
+    },
+    "tagCloud": "Popular tags",
+    "expandTags": "Show all",
+    "collapseTags": "Collapse",
+    "noResults": "No matching roles",
+    "mineEmpty": "You haven't created any custom roles yet"
+  },
+  "agentModal": {
+    "switchAgent": "Switch role",
+    "unbindAgent": "Unbind role",
+    "editAgent": "Edit role",
+    "unbindConfirm": "Unbind the current conversation from this role? Existing messages are not affected.",
+    "switched": "Switched to \"{name}\"",
+    "unbound": "Role unbound",
+    "systemPromptLabel": "System prompt",
+    "sourceSystem": "System",
+    "sourceCurated": "Curated",
+    "sourceUser": "Mine",
+    "viewInChinese": "中文",
+    "viewInEnglish": "EN"
+  },
+  "editor": {
+    "title": "Image editor",
+    "back": "Back",
+    "download": "Download",
+    "exportFailed": "Export failed",
+    "toolsLabel": "Tools",
+    "addText": "Add text",
+    "addLogo": "Add logo",
+    "addWatermark": "Add watermark",
+    "watermarkDefault": "© Brand",
+    "newText": "Double-click to edit",
+    "layersLabel": "Layers",
+    "noLayers": "No layers yet",
+    "imageLayer": "Image layer",
+    "propertiesLabel": "Properties",
+    "selectLayerHint": "Select a layer to edit its properties",
+    "text": "Text",
+    "fontSize": "Size",
+    "color": "Color",
+    "rotation": "Rotation",
+    "opacity": "Opacity",
+    "size": "Scale",
+    "bold": "Bold",
+    "regular": "Regular",
+    "reset": "Reset",
+    "delete": "Delete",
+    "notImage": "Please upload an image file",
+    "openEditor": "Open editor"
+  },
+  "workflow": {
+    "storyboard": {
+      "videoGen": {
+        "title": "Video segment generation",
+        "subtitle": "Per-segment: Gemini Nano Banana 2 (storyboard as ref) generates first/last frames → Veo 3.1 renders the clip. ~30-90s per segment; completed ones autoplay and unlock the next.",
+        "progress": "Progress",
+        "allDone": "All done",
+        "segmentTitle": "Clip {seq}",
+        "viewPrompt": "View prompt",
+        "firstFrame": "First frame",
+        "lastFrame": "Last frame",
+        "readyHint": "Click to trigger this clip (~ 30-90s)",
+        "generateNext": "→ Generate clip {seq}",
+        "generating": "Generating…",
+        "waitingPrev": "Waiting for previous clip",
+        "retrySegment": "↻ Retry clip",
+        "finishedHint": "🎉 All clips done!",
+        "finishedHintSub": "All videos are shown above. Right-click to download individually, or stitch them in any video editor.",
+        "statusCompleted": "Completed",
+        "statusFailed": "Failed",
+        "statusReady": "Ready",
+        "statusWaiting": "Waiting",
+        "statusGenerating": "Generating"
+      },
+      "videoPlan": {
+        "title": "Video segment plan",
+        "subtitle": "AI read your storyboard image and split it into N continuous 4-8s clips. Review and edit each clip's content, first/last-frame descriptions, and duration. Segments auto-chain (previous last frame = next first frame).",
+        "refImageAlt": "Storyboard thumbnail",
+        "segmentCount": "Segments",
+        "segmentUnit": "clips",
+        "totalDuration": "Total",
+        "estCost": "Est. cost",
+        "usd": "USD",
+        "summaryHint": "Planned by {model}. Each segment uses Gemini Nano Banana 2 (with storyboard as ref) for first/last frames + Veo 3.1 for the video.",
+        "segmentTitle": "Clip {seq}",
+        "durationTooltip": "Cycle 4 / 6 / 8s",
+        "promptLabel": "Video prompt (for Veo)",
+        "promptHint": "200-300 chars, action / camera move / pacing. One continuous shot per clip, no cuts.",
+        "firstFrameLabel": "First frame",
+        "firstFrameHint": "80-150 chars. Only describe pose + expression + camera angle. Character / costume / scene come from the storyboard ref.",
+        "firstFrameLinkedHint": "Linked from previous last frame. Edit previous last to sync.",
+        "linkedFromPrev": "prev last",
+        "lastFrameLabel": "Last frame",
+        "lastFrameHint": "80-150 chars, same rules as first frame. This clip's last frame is the next clip's first frame.",
+        "expand": "expand",
+        "collapse": "collapse",
+        "regenerate": "↻ Replan",
+        "confirm": "Start video gen (~${cost})",
+        "starting": "Planning…",
+        "continueToVideoBtn": "→ Continue to video"
+      },
+      "review": {
+        "title": "Review and edit the storyboard prompt",
+        "subtitle": "AI has composed a Chinese + English version. Edit either side; edit the Chinese and translate to keep English in sync.",
+        "tabZh": "Chinese",
+        "tabEn": "English",
+        "zhPlaceholder": "Full Chinese prompt…",
+        "enPlaceholder": "Full English prompt…",
+        "chars": "{n} chars",
+        "zhDirtyHint": "Chinese edited, English not synced",
+        "translateHint": "Chinese prompt changed — translate to update the English side",
+        "translateBtn": "Translate to English",
+        "translating": "Translating…",
+        "reset": "Restore AI version",
+        "resetTooltip": "Discard all edits, restore the two versions AI first generated",
+        "imageModelLabel": "Image model",
+        "etaGptImage2": "Usually 2-3 minutes, please stay on this page",
+        "etaGeneric": "Usually 5-30 seconds",
+        "generate": "Generate image ({lang})",
+        "generating": "Generating…",
+        "zhShort": "zh",
+        "enShort": "en"
+      }
+    },
+    "imageGen": {
+      "back": "Back",
+      "steps": {
+        "input": "Brief",
+        "directions": "Directions",
+        "prompts": "Prompts",
+        "results": "Generate",
+        "optimizing": "Refine",
+        "done": "Final",
+        "jumpBack": "Back to {name}"
+      },
+      "step1": {
+        "title": "Tell me what you want to generate",
+        "subtitle": "Upload 1-4 reference images + describe style / scene / subject",
+        "useCaseLabel": "Use case",
+        "useCase": {
+          "free": {
+            "title": "Free creation",
+            "hint": "Let AI suggest 4-5 style directions for you to pick"
+          },
+          "ecommerce": {
+            "title": "E-commerce product",
+            "hint": "6 standard shots: white-bg / detail / lifestyle / model / mood / size",
+            "previewLabel": "AI will generate 6 direction cards in these categories",
+            "previewHint": "After submit you'll see 6 fixed category cards in the Directions step. Pick 1 to continue.",
+            "categories": {
+              "whiteBg": "White-bg",
+              "feature": "Detail",
+              "scene": "Lifestyle",
+              "model": "Model",
+              "mood": "Mood",
+              "ratio": "Size"
+            }
+          },
+          "storyboard": {
+            "title": "Short-film storyboard",
+            "hint": "Cinematic pre-production board: 8 shots, character, scene, blocking, lighting, audio, color"
+          }
+        },
+        "refImagesLabel": "Reference images ({current}/{max})",
+        "addMoreRef": "Add more",
+        "uploadLabel": "Reference image",
+        "uploadHint": "Click to upload",
+        "uploadFormats": "PNG / JPG / WebP, max 8MB each, up to 4 images",
+        "refLimitReached": "Max {max} reference images",
+        "pinSubject": {
+          "label": "Subject-fixed mode — keep product 100% consistent",
+          "hint": "AI must preserve the product's shape/colour/material from the references; only background/lighting/angle may change. Fixes the '1-out-of-4 usable' problem."
+        },
+        "bilingual": {
+          "label": "Bilingual prompts (English version often performs better upstream)"
+        },
+        "uploaded": "Uploaded",
+        "remove": "Remove",
+        "size": "{kb} KB",
+        "tooLarge": "Image exceeds 8MB",
+        "notImage": "Please select an image file",
+        "readFailed": "Read failed",
+        "needsLabel": "What you need",
+        "needsPlaceholder": "e.g. e-commerce hero shot, white background, phone accessory, highlight the USB cable, 4 angles",
+        "plannerLabel": "Planner model",
+        "plannerHint": "Used to plan directions + draft prompts",
+        "imageModelLabel": "Image model",
+        "aspectLabel": "Aspect",
+        "aspectMore": "more",
+        "aspectCollapse": "collapse",
+        "tierLabel": "Resolution",
+        "tier4kWarning": "4K is OpenAI experimental — some prompts may be rejected. Use with care.",
+        "qualityLabel": "Quality (OpenAI)",
+        "qualityHint": "GPT Image 2 only — High = best detail, Low/Medium save cost",
+        "quality": {
+          "low": { "label": "Low", "hint": "Cheapest, good for drafts / batch trials" },
+          "medium": { "label": "Medium", "hint": "Balanced, fine for most cases" },
+          "high": { "label": "High (recommended)", "hint": "Best detail, cleanest CJK text" }
+        },
+        "sizePreview": "→ Final",
+        "submit": "Plan directions",
+        "submitStoryboard": "Compose prompt",
+        "submitting": "Thinking…"
+      },
+      "directions": {
+        "title": "Pick a direction",
+        "subtitle": "AI suggested {n} candidate styles — pick one to draft prompts",
+        "regenerate": "Regenerate directions",
+        "regenerating": "Regenerating…"
+      },
+      "step3": {
+        "title": "Review prompt variants",
+        "subtitle": "AI drafted prompts — tweak or generate. In bilingual mode, the active language is sent upstream",
+        "promptLabel": "Prompt {n}",
+        "back": "Back",
+        "generate": "Generate {n} candidates",
+        "langZh": "中文",
+        "langEn": "English",
+        "activeHint": "→ Sent upstream: {lang} version"
+      },
+      "results": {
+        "title": "Pick your favourites",
+        "subtitle": "{ok}/{total} succeeded",
+        "generating": "Generating",
+        "emptyImage": "No image returned",
+        "retry": "Retry",
+        "download": "Download",
+        "edit": "Edit",
+        "optimize": "Refine this",
+        "pickFinal": "This is the one",
+        "restart": "Start over"
+      },
+      "optimize": {
+        "title": "Refine this",
+        "subtitle": "Tell AI what to change — re-generates candidates based on this image + original ref. You can switch the LLM and attach more reference images (logo, etc).",
+        "sourceLabel": "Last selection",
+        "improvementLabel": "What to change",
+        "improvementPlaceholder": "e.g. brighter background, add a cat, smaller text…",
+        "plannerHint": "Which LLM rewrites the prompts (defaults to conversation setting)",
+        "extraRefsLabel": "Extra references ({current}/{max})",
+        "extraRefsHint": "Upload logo / decorative element / additional reference. AI sees these when writing new prompts, and Gemini also fuses them into the output.",
+        "extraRefsHelp": "PNG / JPG / WebP, max 8MB each, up to 3 images",
+        "cancel": "Cancel",
+        "submit": "Re-generate"
+      },
+      "done": {
+        "title": "Final pick locked in",
+        "subtitleFirst": "First-shot success · download or refine more",
+        "subtitleIter": "Iteration {n} · download or refine more",
+        "download": "Download"
+      },
+      "history": {
+        "title": "History",
+        "iterationLabel": "Round {n}",
+        "successCount": "{ok}/{total} ok",
+        "basedOnPrev": "· based on prev pick",
+        "forkedFrom": "from round {n}",
+        "editPrompts": "Edit prompts",
+        "editPromptsHint": "Edit this round's 4 prompts and re-generate",
+        "failedTile": "failed"
+      },
+      "models": {
+        "gemini-2.5-flash-image": "Nano Banana",
+        "gemini-3-pro-image-preview": "Nano Banana Pro",
+        "gemini-3.1-flash-image-preview": "Nano Banana 2"
+      },
+      "errors": {
+        "callFailed": "Call failed",
+        "networkError": "Network error"
+      },
+      "generating": {
+        "title": "Generating {n} candidates",
+        "rewritingTitle": "AI is rewriting prompts",
+        "hint": "Usually 5-15s — auto-retries when upstream quota is tight",
+        "hintGptImage2": "GPT Image 2 usually takes 2-3 minutes per image. Please stay on this page.",
+        "rewritingHint": "Planner LLM is reading your refinement + attached refs, rewriting prompts before image gen",
+        "retryingHint": "Upstream quota exhausted (429) — backing off and retrying…",
+        "cellLabel": "generating",
+        "cellWaiting": "awaiting prompt"
+      }
+    }
+  },
+  "agents": {
+    "tab": {
+      "intent": "Agents",
+      "discover": "Discover"
+    },
+    "discover": {
+      "title": "Discover",
+      "featured": "Featured",
+      "scenariosTitle": "Popular scenarios",
+      "modelsTitle": "Hot models",
+      "tryIt": "Try it",
+      "viewPrompt": "View prompt",
+      "promptCopied": "Prompt copied",
+      "copyPrompt": "Copy prompt",
+      "goChat": "Go to chat",
+      "loading": "Loading…",
+      "empty": "No featured agents yet",
+      "miniApp": {
+        "label": "MINI APP",
+        "imageGen": {
+          "title": "One-click image",
+          "subtitle": "Upload a reference or describe the need, chat briefly with AI, then generate 4 candidates in parallel"
+        }
+      },
+      "scenarios": {
+        "writing_xhs": {
+          "title": "Write a Xiaohongshu post",
+          "desc": "Discovery / informative styles, 3 variants",
+          "prompt": "Write a Xiaohongshu (RED) post about \"spring camping gear.\" Discovery-style, 5 emojis sprinkled in, plus 5 relevant hashtags."
+        },
+        "product_main_image": {
+          "title": "E-commerce main image",
+          "desc": "Nano Banana — 4 candidates + best-pick",
+          "prompt": "Based on the uploaded product photo, generate 4 e-commerce main image candidates: white background, highlight selling points, leave space for copy. Each candidate uses a different focal composition."
+        },
+        "code_review": {
+          "title": "Review my code",
+          "desc": "Find bugs / perf hints / refactors",
+          "prompt": "Please review the following code, focusing on: 1) potential bugs and edge cases, 2) performance bottlenecks, 3) readability and maintainability improvements. Code:\n\n(paste code here)"
+        },
+        "translate_doc": {
+          "title": "Translate a long doc",
+          "desc": "Keep formatting / domain terms / multi-lang",
+          "prompt": "Translate the following Chinese document into English. Keep original Markdown formatting, annotate domain terms with the original Chinese in parentheses, maintain a formal industry tone.\n\n(paste document here)"
+        },
+        "ecom_listing": {
+          "title": "Product listing copy",
+          "desc": "Titles + bullets + descriptions",
+          "prompt": "I have a product and need a full listing draft: 5 candidate titles, 5 core selling points, 3 paragraphs of detailed description (scenario-based). Product info:\n\n(describe product here)"
+        },
+        "meeting_notes": {
+          "title": "Meeting notes",
+          "desc": "Transcript → structured notes",
+          "prompt": "Turn the following meeting transcript into structured notes: 1) Topic, 2) Key decisions, 3) Action items (owner + due date), 4) Open questions.\n\n(paste transcript here)"
+        },
+        "video_script": {
+          "title": "Short video script",
+          "desc": "Hook + pacing + BGM cues",
+          "prompt": "Write a 60-second short video script on (topic). Structure: 3-second hook, middle section with bullet points, ending with a call-to-action. Include shot directions and BGM style hints."
+        },
+        "legal_review": {
+          "title": "Contract clause review",
+          "desc": "Find risks / suggest revisions",
+          "prompt": "Review the following contract clauses and identify: 1) clauses unfavorable to my side, 2) ambiguous or vague phrasings, 3) missing key clauses (breach of contract, termination, etc.). Provide concrete revision suggestions.\n\n(paste clauses here)"
+        }
+      }
+    },
+    "title": "Roles / Agents",
+    "subtitle": "Pick a preset persona to start instantly, or create your own",
+    "create": "New agent",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleted": "Deleted",
+    "deleteFailed": "Delete failed",
+    "deleteConfirmTitle": "Delete agent?",
+    "deleteConfirm": "Delete \"{name}\"? Existing conversations will keep working but you can't start new ones from this agent.",
+    "startChat": "Start chat",
+    "startChatFailed": "Could not start chat",
+    "loadFailed": "Failed to load",
+    "empty": "No matching agents",
+    "noDescription": "(no description)",
+    "systemBadge": "Preset",
+    "searchPlaceholder": "Search by name or description",
+    "startWithModel": "Start with model:",
+    "categories": {
+      "all": "All",
+      "writing": "Writing",
+      "coding": "Coding",
+      "learning": "Learning",
+      "life": "Life",
+      "productivity": "Productivity",
+      "creative": "Creative",
+      "legal": "Legal",
+      "health": "Health",
+      "finance": "Finance",
+      "mysticism": "Mystic",
+      "other": "Other"
+    },
+    "form": {
+      "newTitle": "New agent",
+      "editTitle": "Edit agent",
+      "name": "Name",
+      "namePlaceholder": "e.g. Weekly Report Helper",
+      "avatar": "Avatar (emoji)",
+      "avatarPlaceholder": "🤖",
+      "category": "Category",
+      "description": "Short description",
+      "descriptionPlaceholder": "One-line summary of what this agent is for",
+      "systemPrompt": "System prompt",
+      "systemPromptPlaceholder": "Tell the agent how to respond…",
+      "defaultModel": "Default model (optional)",
+      "defaultModelHint": "Leave empty to use the global default",
+      "defaultParams": "Preset toggles",
+      "defaultParamsHint": "Auto-enable these options on new conversations. The user can still toggle them off mid-chat. Only shown when the chosen default model supports each capability.",
+      "paramWebSearch": "Web search",
+      "paramImageMode": "Generate image",
+      "paramReasoning": "Reasoning",
+      "reasoningOff": "Off",
+      "reasoningMinimal": "Minimal",
+      "reasoningLow": "Low",
+      "reasoningMedium": "Medium",
+      "reasoningHigh": "High",
+      "save": "Save",
+      "saving": "Saving…",
+      "saved": "Saved",
+      "saveFailed": "Save failed",
+      "loadFailed": "Failed to load agent",
+      "back": "Back"
+    },
+    "badge": {
+      "label": "Agent"
+    }
+  },
+  "landing": {
+    "header": {
+      "brand": "Open Chat",
+      "signIn": "Sign in",
+      "signUp": "Sign up"
+    },
+    "hero": {
+      "badge": "13 frontier models · one subscription",
+      "headline1": "Built for builders.",
+      "headline2": "One workbench for every model.",
+      "subtitle": "GPT-5, DeepSeek, Kimi, Grok — chat, draw, parse documents, remember context. Unified billing, unified history, one API.",
+      "ctaPrimary": "Get started free",
+      "ctaSecondary": "See supported models",
+      "socialProof": "No card required · Trial credits on signup · Encrypted at rest"
+    },
+    "features": {
+      "title": "One tab. Every model.",
+      "subtitle": "Combine the best of every provider — instead of juggling six tabs.",
+      "items": {
+        "multiModel": {
+          "title": "13 frontier models",
+          "desc": "OpenAI, DeepSeek, Moonshot, xAI — switch with one click. Pay-per-call, no monthly fee."
+        },
+        "agents": {
+          "title": "12 ready-made agents",
+          "desc": "Writer, coder, translator, nutrition coach… each with its own preset and tools. Just start chatting."
+        },
+        "webSearch": {
+          "title": "Live web search",
+          "desc": "GPT-5 invokes the built-in Web Search tool — citations are clickable, sources verifiable."
+        },
+        "docs": {
+          "title": "Document Q&A",
+          "desc": "Drop in a PDF / DOCX / Markdown. Text is parsed, prepended to context, answered in seconds."
+        },
+        "images": {
+          "title": "Generate while you chat",
+          "desc": "gpt-image-2 is a built-in tool — say \"draw me a sunset\" and it appears, 1024² to 2.5K."
+        },
+        "branching": {
+          "title": "Branching messages",
+          "desc": "Edit or regenerate without losing history. Every branch is preserved; flip between them anytime."
+        }
+      }
+    },
+    "models": {
+      "title": "Supported model families",
+      "subtitle": "Text, reasoning, vision, image. Lineup tracks upstream availability."
+    },
+    "agents": {
+      "title": "12 agents, ready to go",
+      "subtitle": "Pick a role and start. Or create your own private agent with custom presets.",
+      "items": {
+        "sys-writing": { "name": "Writing", "desc": "Long-form, copy, style rewrite — clear sentences, clean structure." },
+        "sys-coder": { "name": "Coder", "desc": "Generate, refactor, debug. Polyglot across the modern stack." },
+        "sys-translate": { "name": "Translator", "desc": "EN ↔ ZH with tone + terminology preserved. Literary to technical." },
+        "sys-product": { "name": "Product Manager", "desc": "PRDs, user interviews, comp analysis — structured outputs." },
+        "sys-marketing": { "name": "Marketing", "desc": "Headlines, landing copy, social posts — built to convert." },
+        "sys-tech-blog": { "name": "Tech Blog", "desc": "Turn complex engineering into clear posts for peers." },
+        "sys-nutrition": { "name": "Nutritionist", "desc": "Meal planning, calorie estimates, training-day menus." },
+        "sys-travel": { "name": "Travel Planner", "desc": "Itineraries, off-the-beaten-path picks, visa playbooks." }
+      }
+    },
+    "how": {
+      "title": "Three steps to first chat",
+      "subtitle": "From sign-up to your first answer in under a minute.",
+      "steps": {
+        "1": { "title": "Sign up", "desc": "Email or third-party login — trial credits land instantly." },
+        "2": { "title": "Pick a model or agent", "desc": "Top dropdown for models; sidebar for agents. One click each." },
+        "3": { "title": "Start chatting", "desc": "Ask, upload, generate, branch — all from the same composer." }
+      }
+    },
+    "pricing": {
+      "title": "Pay as you go",
+      "subtitle": "No annual lock-in, no caps. 1:1 with upstream rates — you pay tokens, we pass them through.",
+      "headline": "Starts at $0",
+      "headlineNote": "Trial credits on signup",
+      "perks": [
+        "Real-time per-call billing — auto-stops on empty",
+        "Upstream prices passed through 1:1, no markup",
+        "Top up with redemption codes or invite credits",
+        "Export your entire chat history anytime"
+      ],
+      "tableTitle": "Reference unit prices (per million tokens · USD)",
+      "cols": {
+        "model": "Model",
+        "input": "Input",
+        "output": "Output"
+      },
+      "tableFootnote": "* Internal billing unit is the platform quota; 500,000 ≈ $1. Posted prices in the dashboard are authoritative."
+    },
+    "faq": {
+      "title": "FAQ",
+      "subtitle": "Anything we missed? Reach support or check the GitHub docs.",
+      "items": {
+        "data": {
+          "q": "Is my data safe?",
+          "a": "Conversations and files live in our own database + container volumes, encrypted in transit. Only you can read them; admins see aggregate usage, never content."
+        },
+        "choose": {
+          "q": "How do I pick a model?",
+          "a": "Long-form Chinese / heavy reasoning → GPT-5.4 / 5.5. Quick replies → GPT-5.4-mini or Grok-4 fast. Long-doc summaries → Kimi (huge context). Code & math → DeepSeek (best value). Switch anytime per chat."
+        },
+        "topup": {
+          "q": "How do I add balance?",
+          "a": "Enter a redemption code on /purchase. During the early-access phase admins issue codes manually; payment integration is on the roadmap."
+        },
+        "api": {
+          "q": "Is there an API?",
+          "a": "Yes. Generate sk-tokens on /keys and call OpenAI-compatible endpoints — /v1/chat/completions, /v1/responses, /v1/images/generations, …"
+        },
+        "web": {
+          "q": "What does web search cover?",
+          "a": "OpenAI Responses API's built-in web_search tool — public web, with clickable source links in the response."
+        },
+        "image": {
+          "q": "Who owns generated images?",
+          "a": "Per OpenAI's terms, you (the user) own image-generation outputs. Check the upstream license before commercial reuse."
+        }
+      }
+    },
+    "footer": {
+      "brand": "Open Chat",
+      "tagline": "The unified AI workbench, built for builders.",
+      "product": "Product",
+      "linkFeatures": "Features",
+      "linkPricing": "Pricing",
+      "linkFAQ": "FAQ",
+      "legal": "Legal",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "contact": "Contact",
+      "copyright": "© 2026 Open Chat · All rights reserved"
+    }
+  },
+  "errors": {
+    "unauthorized": "Not signed in or session expired, please sign in again",
+    "forbidden": "Forbidden",
+    "notFound": "Not found",
+    "serverError": "Server error, please try again later",
+    "rateLimit": "Too many requests, please slow down"
+  },
+  "admin": {
+    "models": {
+      "title": "Model display",
+      "subtitle": "Choose which models appear to end users; customise display names and descriptions. Billing/ratios live in the newapi admin.",
+      "billingHint": "To adjust billing or ratios, visit the newapi admin:",
+      "counts": {
+        "newapi": "newapi available {n}",
+        "overrides": "customised {n}",
+        "stale": "stale {n}"
+      },
+      "searchPlaceholder": "Search model id / name / description",
+      "col": {
+        "modelId": "Model ID",
+        "displayName": "Display name",
+        "description": "Description",
+        "icon": "Icon",
+        "enabled": "Enabled",
+        "sort": "Sort",
+        "actions": "Actions"
+      },
+      "fallbackHint": "Not customised — using fallback",
+      "noDescription": "(no description — using fallback)",
+      "empty": "No matching models",
+      "bulk": {
+        "enableAll": "Enable all ({n})",
+        "disableAll": "Disable all ({n})"
+      },
+      "resetOverride": "Reset to default",
+      "resetSuccess": "Reset",
+      "saveSuccess": "Saved",
+      "saveFailed": "Save failed",
+      "iconPick": "Pick icon",
+      "iconEdit": "Change icon",
+      "iconClear": "Use default icon",
+      "iconPickerTitle": "Pick display icon",
+      "iconCategory": {
+        "all": "All",
+        "chat": "Chat models",
+        "image": "Image",
+        "video": "Video",
+        "code": "Code",
+        "cloud": "Cloud / platform",
+        "misc": "Misc"
+      },
+      "edit": {
+        "title": "Edit model display",
+        "displayName": "Display name (blank = fallback)",
+        "description": "Description (blank = fallback)",
+        "sortOrder": "Sort order (smaller = earlier; blank = 999, sinks to bottom)",
+        "enabled": "Visible to end users",
+        "save": "Save",
+        "cancel": "Cancel"
+      }
+    }
+  }
+}

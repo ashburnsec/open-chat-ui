@@ -1,0 +1,1749 @@
+{
+  "app": {
+    "title": "Open Chat",
+    "description": "为创作者打造的统一 AI 工作台"
+  },
+  "common": {
+    "loading": "加载中…",
+    "save": "保存",
+    "saving": "保存中…",
+    "cancel": "取消",
+    "delete": "删除",
+    "deleting": "删除中…",
+    "confirm": "确认",
+    "close": "关闭",
+    "edit": "编辑",
+    "create": "创建",
+    "creating": "创建中…",
+    "submit": "提交",
+    "submitting": "提交中…",
+    "copy": "复制",
+    "copied": "已复制",
+    "retry": "重试",
+    "back": "返回",
+    "ok": "好的",
+    "error": "错误",
+    "success": "成功",
+    "yes": "是",
+    "no": "否",
+    "more": "更多",
+    "language": "语言",
+    "loadFailed": "加载失败",
+    "networkError": "网络错误",
+    "unknownError": "未知错误",
+    "signingOut": "登出中…",
+    "signOut": "登出",
+    "toggleTheme": "切换主题",
+    "themeLight": "浅色",
+    "themeDark": "深色",
+    "themeSystem": "跟随系统"
+  },
+  "checkin": {
+    "label": "今日签到",
+    "alreadyToday": "今日已领",
+    "hint": "签到可领 ${min} ~ ${max}",
+    "success": "签到成功，已到账 ${amount}",
+    "failed": "签到失败"
+  },
+  "announcement": {
+    "openLabel": "查看公告",
+    "title": "公告",
+    "empty": "暂无公告",
+    "dismiss": "我知道了",
+    "viewMore": "查看历史公告"
+  },
+  "helpMenu": {
+    "openLabel": "帮助",
+    "faq": "常见问题",
+    "contact": "联系我们",
+    "version": "版本 {version}"
+  },
+  "nav": {
+    "chat": "对话",
+    "memory": "记忆",
+    "usage": "用量",
+    "keys": "API Keys",
+    "purchase": "充值",
+    "subscription": "订阅",
+    "settings": "设置",
+    "logout": "退出登录",
+    "newChat": "新建对话",
+    "balance": "余额",
+    "newConversation": "新对话",
+    "usageInfo": "用量信息",
+    "api": "API",
+    "topUp": "充值",
+    "subscriptionShort": "订阅",
+    "memoryShort": "记忆",
+    "agentsShort": "角色",
+    "adminModels": "模型展示",
+    "topChat": "聊天",
+    "topMiniApps": "智能体",
+    "topAgents": "角色",
+    "topHistory": "历史",
+    "topApi": "API",
+    "topUsage": "用量",
+    "history": "历史会话",
+    "accountMenu": "账号菜单",
+    "openSidebar": "打开侧边栏",
+    "toggleLanguage": "切换语言（占位）",
+    "balanceTooltip": "内部 quota: {quota}（每 {perUnit} = $1）",
+    "workspace": {
+      "title": "工作区",
+      "open": "打开工作区",
+      "collapse": "收起工作区",
+      "tabs": {
+        "files": "文件",
+        "plugins": "插件"
+      },
+      "empty": {
+        "files": "进入对话页后会展示本次会话上传过的图片",
+        "filesInConv": "本次会话还没有上传过图片",
+        "plugins": "进入对话页后会显示当前模型支持的内置工具"
+      },
+      "toolsForModel": "{model} 支持的工具",
+      "toolSupported": "支持",
+      "toolUnsupported": "暂不支持",
+      "callCount": "已调用 {count} 次",
+      "tools": {
+        "webSearch": {
+          "name": "联网搜索",
+          "hint": "通过 web_search 工具实时检索信息"
+        },
+        "imageGen": {
+          "name": "图像生成",
+          "hint": "在「绘图」页生成 / 改图"
+        },
+        "reasoning": {
+          "name": "深度思考",
+          "hint": "支持 reasoning_effort 调节深度"
+        }
+      }
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "登录",
+      "subtitle": "登录到你的Open Chat账号",
+      "username": "用户名 / 邮箱",
+      "password": "密码",
+      "submit": "登录",
+      "submitting": "登录中…",
+      "loginFailed": "登录失败",
+      "twoFA": {
+        "title": "输入 Authenticator 6 位动态码",
+        "placeholder": "123456",
+        "hint": "备用码可代替 6 位码使用一次（连字符可省略）。",
+        "submit": "验证",
+        "submitting": "验证中…",
+        "verifyFailed": "验证失败",
+        "back": "返回"
+      },
+      "passkey": {
+        "or": "或",
+        "submit": "使用 Passkey 登录",
+        "submitting": "验证中…",
+        "unsupported": "当前浏览器不支持 Passkey / WebAuthn",
+        "beginFailed": "启动 Passkey 登录失败",
+        "verifyFailed": "Passkey 验证失败",
+        "cancelled": "已取消",
+        "failed": "Passkey 登录失败"
+      },
+      "signUpPrompt": "还没有账号？",
+      "signUpLink": "注册",
+      "forgotPassword": "忘记密码？",
+      "cardSubtitle": "登录后开始对话",
+      "noAccountPrompt": "没有账号？"
+    },
+    "signUp": {
+      "title": "注册",
+      "subtitle": "创建你的Open Chat账号",
+      "username": "用户名",
+      "email": "邮箱",
+      "emailOptional": "邮箱（可选）",
+      "verificationCode": "验证码",
+      "sendCode": "发送验证码",
+      "sendingCode": "发送中…",
+      "codeSent": "验证码已发送到邮箱",
+      "fillEmailFirst": "请先填写邮箱",
+      "codeSendFailed": "验证码发送失败",
+      "password": "密码",
+      "confirmPassword": "确认密码",
+      "passwordMismatch": "两次输入的密码不一致",
+      "submit": "注册并登录",
+      "submitting": "注册中…",
+      "registerFailed": "注册失败",
+      "loginFailed": "登录失败，请到登录页继续",
+      "signInPrompt": "已有账号？",
+      "signInLink": "登录",
+      "cardSubtitle": "创建新账号",
+      "affApplied": "已应用邀请码 <code>{aff}</code>，注册成功后双方都会获得奖励。"
+    },
+    "reset": {
+      "title": "重置密码",
+      "request": {
+        "subtitle": "输入注册邮箱，我们会发送重置链接",
+        "email": "邮箱",
+        "submit": "发送重置邮件",
+        "submitting": "发送中…",
+        "sent": "如果邮箱存在，我们已发送重置链接",
+        "failed": "发送失败",
+        "cardSubtitle": "填邮箱接收重置链接，点击邮件里的链接回到本页完成重置",
+        "sentInfo": "重置邮件已发送，请到邮箱点击链接继续。",
+        "rememberPrompt": "想起来了？",
+        "directSignIn": "直接登录"
+      },
+      "confirm": {
+        "subtitle": "设置新密码",
+        "newPassword": "新密码",
+        "confirmPassword": "确认新密码",
+        "submit": "重置并登录",
+        "submitting": "重置中…",
+        "passwordMismatch": "两次输入的密码不一致",
+        "failed": "重置失败",
+        "expired": "链接已过期，请重新申请",
+        "cardSubtitle": "点击「确认重置」生成新密码",
+        "aboutTo": "即将为 <strong>{email}</strong> 重置密码。点击下方按钮后会立即生成一个新密码，仅显示一次。",
+        "confirmReset": "确认重置",
+        "generating": "生成中…",
+        "successTitle": "密码重置成功",
+        "newPasswordLabel": "新密码（请立即记下，本页面刷新后不再显示）",
+        "changeLater": "登录后建议到「设置」修改为更好记的密码。",
+        "gotoSignIn": "前往登录"
+      }
+    },
+    "oauth": {
+      "divider": "或",
+      "signInWith": "使用 {name} 登录",
+      "stateFailed": "OAuth 状态获取失败"
+    }
+  },
+  "chat": {
+    "welcome": {
+      "title": "你好，今天聊点什么？",
+      "subtitle": "输入消息开始对话，或选个模型探索一下",
+      "promoStrip": "智能创作工作台",
+      "greeting": "欢迎使用 <brand>{systemName}</brand>，有什么可以帮忙的？",
+      "quickStarts": {
+        "newChat": "开新对话",
+        "image": "一键生图",
+        "agents": "角色",
+        "code": "讨论代码",
+        "email": "写邮件"
+      },
+      "suggestions": {
+        "writingTitle": "写作助手",
+        "writingPrompt": "帮我写一段 200 字的产品介绍，关于一款支持多种 AI 模型的统一聊天客户端。",
+        "codingTitle": "编程帮助",
+        "codingPrompt": "用 TypeScript 写一个防抖函数，支持立即触发和取消调用。",
+        "translateTitle": "中英翻译",
+        "translatePrompt": "把这段话翻译成地道的英文：人工智能正在重塑我们获取信息和创造内容的方式。",
+        "brainstormTitle": "头脑风暴",
+        "brainstormPrompt": "我想给一款面向开发者的 AI 聊天产品起个名字，给我 5 个有创意的备选。"
+      }
+    },
+    "composer": {
+      "placeholder": "输入消息（Shift+Enter 换行）",
+      "placeholderWithImages": "询问任何问题（可粘贴/拖拽图片）",
+      "placeholderDefault": "询问任何问题",
+      "placeholderAsk": "询问任何问题",
+      "pickModelFirst": "请先在右上角选择模型",
+      "send": "发送",
+      "rateLimitedTitle": "触发限流，{sec} 秒后可重试",
+      "rateLimitedAria": "限流冷却中，剩余 {sec} 秒",
+      "stop": "停止",
+      "stopGenerating": "停止生成",
+      "attach": "附件",
+      "model": "模型",
+      "search": "联网搜索",
+      "imageMode": "生成图片",
+      "thinking": "思考深度",
+      "thinkingMinimal": "极简",
+      "thinkingLow": "快速",
+      "thinkingMedium": "标准",
+      "thinkingHigh": "深度",
+      "thinkingShortLow": "低",
+      "thinkingShortMedium": "中",
+      "thinkingShortHigh": "高",
+      "thinkingShortMinimal": "极简",
+      "thinkingShortXhigh": "极致",
+      "thinkingShort": "思考",
+      "thinkingPickerTitle": "深度思考：{level}（点击切换）",
+      "thinkingPickerOff": "深度思考（关）",
+      "toggleOn": "开",
+      "toggleOff": "关",
+      "toggleTitle": "{label}（{state}）",
+      "uploadImage": "上传图片",
+      "uploadFile": "上传文件",
+      "imagesOnly": "仅支持图片",
+      "imagesOnlyError": "仅支持图片格式",
+      "tooManyImages": "一次最多 {max} 张图",
+      "tooManyDocs": "一次最多 {max} 个文档",
+      "fileTooLarge": "文件过大，最多 {maxMB} MB",
+      "fileTooLargeNamed": "「{name}」超过 {maxMB}MB 上限",
+      "unsupportedFileType": "「{name}」格式不支持",
+      "docsNeedConversation": "文档附件需先创建对话——发条文字消息后再附加",
+      "docUploading": "解析中…",
+      "docUploadFailed": "文档上传失败",
+      "truncatedTag": "已截断",
+      "removeAttachment": "移除 {name}",
+      "uploading": "上传中…",
+      "uploadFailed": "上传失败",
+      "videoDuration": "{sec} 秒",
+      "videoDurationTitle": "视频时长 {sec} 秒（点击切换）",
+      "videoDurationAria": "视频时长 {sec} 秒",
+      "videoResolutionTitle": "清晰度 {res}（点击切换）",
+      "videoResolutionAria": "清晰度 {res}",
+      "videoAspectTitle": "比例 {aspect}（点击切换）",
+      "videoAspectAria": "比例 {aspect}",
+      "videoLastFrameLabel": "结束帧",
+      "videoLastFrameLabelSet": "结束帧 ✓",
+      "videoLastFrameEmpty": "上传结束帧（Veo 3.1 首尾帧）",
+      "videoLastFrameSet": "已设结束帧 — 点击移除",
+      "videoLastFrameAria": "结束帧上传",
+      "videoFirstFrameLabel": "起始帧",
+      "videoFirstFrameLabelSet": "起始帧 ✓",
+      "videoFirstFrameEmpty": "上传起始帧（图生视频）",
+      "videoFirstFrameSet": "已设起始帧 — 点击移除",
+      "videoFirstFrameAria": "起始帧上传",
+      "audioPlaceholder": "输入要朗读的文字…",
+      "audioVoiceTitle": "音色 {voice}（点击切换）",
+      "audioVoiceAria": "音色 {voice}"
+    },
+    "video": {
+      "promptPlaceholder": "描述你想生成的视频…",
+      "generating": "视频生成中",
+      "etaHint": "通常需要 1–2 分钟，请保持页面打开",
+      "savedHint": "建议下载到本地长期保存",
+      "download": "下载视频",
+      "downloadFailed": "下载失败",
+      "failed": "视频生成失败",
+      "retryHint": "可以重新输入提示词再试一次"
+    },
+    "audio": {
+      "speak": "朗读",
+      "stop": "停止朗读",
+      "loading": "正在合成…",
+      "failed": "朗读失败：{reason}",
+      "playFailed": "音频播放失败"
+    },
+    "collaboration": {
+      "btn": "多模型",
+      "activeLabel": "+{n} 协作",
+      "modalTitle": "多模型协作",
+      "modalDescription": "挑选 1–{max} 个额外模型，与主模型一起作答；总结模型会把答案合并成一份综合答复。",
+      "emptyAvailable": "当前没有可用于协作的模型",
+      "latencyHint": "并发跑多个模型 + 合并耗时较长，预计 5–30 秒。token 消耗为 N+1 倍。",
+      "clear": "清除",
+      "cancel": "取消",
+      "confirm": "确认 ({n})",
+      "panelLabel": "查看 {n} 个模型的原始回答",
+      "failedSuffix": "{n} 个失败"
+    },
+    "modelPill": {
+      "switchSource": "{name} · 切换渠道"
+    },
+    "style": {
+      "image": {
+        "realistic": "写实摄影",
+        "anime": "动漫",
+        "oil": "油画",
+        "watercolor": "水彩",
+        "pixel": "像素",
+        "3d": "3D 渲染",
+        "cyberpunk": "赛博朋克",
+        "minimal": "极简",
+        "chinese": "中国画",
+        "poster": "海报",
+        "doodle": "涂鸦",
+        "steampunk": "蒸汽朋克"
+      },
+      "video": {
+        "cinematic": "电影感",
+        "anime": "动漫",
+        "vlog": "Vlog 自然",
+        "ad": "广告片",
+        "documentary": "纪录片",
+        "fashion": "时尚硬照"
+      }
+    },
+    "modelPicker": {
+      "title": "选择模型",
+      "search": "搜索模型",
+      "noResult": "无匹配模型",
+      "default": "默认",
+      "loadFailed": "模型列表加载失败",
+      "pick": "选择模型",
+      "empty": "暂无模型",
+      "adminHint": "管理员尚未配置可用模型，请先在管理后台创建渠道。",
+      "vendorOther": "其他"
+    },
+    "message": {
+      "user": "你",
+      "assistant": "助手",
+      "thinking": "思考中…",
+      "regenerate": "重新生成",
+      "edit": "编辑",
+      "editResend": "编辑重发",
+      "copy": "复制",
+      "copied": "已复制",
+      "copyFailed": "剪贴板写入失败，请检查浏览器权限",
+      "copyCode": "复制代码",
+      "delete": "删除",
+      "speak": "朗读",
+      "stop": "停止",
+      "thinkingBlock": "思考过程",
+      "expandThinking": "展开思考",
+      "collapseThinking": "收起思考",
+      "reasoning": "推理过程",
+      "thinkingElapsed": "已思考 {sec} 秒",
+      "thinkingNoStream": "（该模型不输出实时思考内容，仅显示最终回答）",
+      "cancelEdit": "取消",
+      "sendEdit": "发送",
+      "scrollToBottom": "滚到底部",
+      "viewImage": "查看大图",
+      "siblingPrev": "上一个分支",
+      "siblingNext": "下一个分支"
+    },
+    "usageBadge": {
+      "in": "输入",
+      "out": "输出",
+      "tok": "tok",
+      "ariaWithCost": "本轮消耗 {cost}，共 {tokens} 个 token，模型 {model}",
+      "ariaTokensOnly": "本轮共 {tokens} 个 token，模型 {model}"
+    },
+    "quotaExhausted": {
+      "title": "余额不足",
+      "message": "继续使用前请充值或升级订阅",
+      "topup": "去充值",
+      "subscription": "查看订阅"
+    },
+    "rateLimit": {
+      "title": "请求过于频繁",
+      "message": "请等待 {seconds} 秒后再试"
+    },
+    "errors": {
+      "modelMissing": "请先选择模型",
+      "streamFailed": "对话流出错",
+      "saveFailed": "消息保存失败",
+      "createConvFailed": "创建会话失败",
+      "unsupportedSearch": "该模型暂不支持「联网搜索」，请关闭此开关或换一个支持的模型。",
+      "unsupportedReasoning": "该模型暂不支持「思考深度」，请关闭此选项。",
+      "quotaExhaustedHint": "配额不足，请前往「充值」充值后再试。",
+      "rateLimitHint": "请求过于频繁，请稍后再试。",
+      "noChannel": "当前没有可用的模型渠道，请联系管理员或换一个模型。"
+    },
+    "list": {
+      "title": "历史对话",
+      "empty": "还没有对话",
+      "newChat": "新建对话",
+      "today": "今天",
+      "yesterday": "昨天",
+      "earlier": "更早",
+      "rename": "重命名",
+      "renamePlaceholder": "新标题",
+      "pin": "置顶",
+      "unpin": "取消置顶",
+      "archive": "归档",
+      "unarchive": "取消归档",
+      "delete": "删除",
+      "deleteConfirmTitle": "删除会话？",
+      "deleteConfirm": "确定删除这个会话？删除后不可恢复。",
+      "loadFailed": "会话列表加载失败",
+      "archived": "已归档",
+      "deleted": "已删除",
+      "actionsMenu": "会话操作"
+    }
+  },
+  "settings": {
+    "title": "设置",
+    "tabs": {
+      "profile": "个人资料",
+      "security": "安全",
+      "preferences": "偏好",
+      "notifications": "通知",
+      "bindings": "账号绑定",
+      "invite": "邀请",
+      "danger": "危险区"
+    },
+    "profile": {
+      "displayName": "昵称",
+      "avatar": "头像",
+      "email": "邮箱",
+      "username": "用户名",
+      "save": "保存",
+      "saved": "已保存",
+      "saveFailed": "保存失败",
+      "verifyEmail": "验证邮箱",
+      "emailVerified": "邮箱已验证",
+      "basicInfo": "基本信息",
+      "usernameLocked": "用户名一旦设定不可更改；如需修改请联系管理员。",
+      "displayNameLabel": "显示名"
+    },
+    "security": {
+      "password": {
+        "title": "修改密码",
+        "current": "当前密码",
+        "new": "新密码",
+        "confirm": "确认新密码",
+        "submit": "修改密码",
+        "mismatch": "两次输入不一致",
+        "changed": "密码已修改，下次登录使用新密码",
+        "failed": "修改失败",
+        "hint": "至少 8 位。修改后会立即生效，所有登录设备需要重新登录。",
+        "minLength": "新密码至少 8 位"
+      },
+      "twoFA": {
+        "title": "两步验证",
+        "enabled": "已启用",
+        "disabled": "未启用",
+        "description": "登录时除密码外，还需输入 Authenticator 应用的 6 位动态码。",
+        "descriptionLong": "启用后登录需输入手机 Authenticator 应用生成的 6 位动态码，安全等级显著提升。",
+        "enable": "启用 2FA",
+        "disable": "关闭 2FA",
+        "scanQr": "用 Authenticator 扫码或手动添加密钥",
+        "scanQrTitle": "扫描二维码",
+        "scanQrHint": "用 Authenticator / 1Password / Google Authenticator 等 TOTP 应用扫码。",
+        "manualSecret": "无法扫码？手动输入密钥：",
+        "secret": "密钥",
+        "code": "6 位动态码",
+        "codeLabel": "输入 6 位验证码确认",
+        "codePrompt": "请输入 6 位验证码",
+        "verify": "确认启用",
+        "backupCodes": "备用码",
+        "backupHint": "请妥善保管，每个备用码只能使用一次。",
+        "backupHintLong": "丢失 Authenticator 时使用。每个码只能用一次。立即记下并妥善保存。",
+        "backupCopied": "已复制全部备用码",
+        "copyAll": "复制全部",
+        "regenerateBackup": "重新生成备用码",
+        "regenerateConfirmTitle": "重新生成备用码？",
+        "regenerateConfirm": "生成新的 backup 码会让旧码立即失效，确认继续？",
+        "regenerateFailed": "生成失败",
+        "regenerated": "新的 backup 码已生成，请立即记下",
+        "downloadBackup": "下载备用码",
+        "disableConfirmTitle": "关闭两步验证？",
+        "disableConfirm": "确认关闭 2FA？开启后建议保留以提高账号安全。",
+        "disablePrompt": "停用前需输入当前 6 位动态码或备用码",
+        "disabledToast": "已关闭 2FA",
+        "disableFailed": "关闭失败",
+        "enabledToast": "2FA 已启用",
+        "enableFailed": "启用失败",
+        "setupFailed": "启动失败",
+        "statusEnabled": "双因素认证已启用",
+        "statusDisabled": "双因素认证未启用",
+        "gotIt": "知道了",
+        "verifyFailed": "验证失败",
+        "loadFailed": "加载 2FA 状态失败"
+      },
+      "passkey": {
+        "title": "Passkey",
+        "bound": "Passkey 已绑定",
+        "unbound": "Passkey 未绑定",
+        "description": "Passkey 用 Face ID / 指纹 / 硬件 key 一键登录，比密码 + 2FA 更安全也更快。需要 HTTPS 环境（或 localhost）。",
+        "browserUnsupported": "当前浏览器不支持 WebAuthn，请用最新 Safari/Chrome/Firefox。",
+        "unsupportedToast": "当前浏览器不支持 Passkey / WebAuthn",
+        "add": "添加 Passkey",
+        "delete": "删除",
+        "deleteConfirmTitle": "删除 Passkey？",
+        "deleteConfirm": "删除 Passkey？删除后只能用密码 + 2FA 登录。",
+        "registered": "Passkey 已注册",
+        "deleted": "已删除",
+        "loadFailed": "加载 passkey 状态失败",
+        "beginFailed": "启动注册失败",
+        "registerFailed": "注册失败",
+        "deleteFailed": "删除失败",
+        "cancelled": "已取消"
+      }
+    },
+    "preferences": {
+      "title": "偏好",
+      "language": "语言",
+      "languageHint": "切换界面语言。",
+      "theme": "主题",
+      "themeLight": "浅色",
+      "themeDark": "深色",
+      "themeSystem": "跟随系统",
+      "memoryEnabled": "启用长期记忆",
+      "memoryHint": "关闭后，新会话不会自动记忆事实，已有记忆保留。"
+    },
+    "notifications": {
+      "title": "通知",
+      "email": "邮件通知",
+      "billingAlerts": "账单与余额提醒",
+      "productUpdates": "产品更新",
+      "save": "保存",
+      "saved": "已保存"
+    },
+    "bindings": {
+      "title": "账号绑定",
+      "description": "已绑定的第三方账号可用于一键登录。",
+      "bind": "绑定",
+      "unbind": "解绑",
+      "bound": "已绑定",
+      "github": "GitHub",
+      "google": "Google",
+      "discord": "Discord",
+      "wechat": "微信",
+      "telegram": "Telegram"
+    },
+    "invite": {
+      "title": "邀请新用户",
+      "description": "通过你的链接注册的用户成为「下线」，他们使用产生的费用会按运营商设定的比例返到你的「邀请奖励」余额。",
+      "code": "邀请码",
+      "shareLink": "邀请链接",
+      "qrHint": "把这个二维码截图分享给朋友。扫码后会跳到注册页并自动填入你的邀请码。",
+      "loadingCode": "加载邀请码…",
+      "stats": {
+        "title": "奖励统计",
+        "description": "累计奖励 = 历史所有「下线」消费产生的返点；可提取 = 当前未转入主钱包的部分。",
+        "count": "邀请人数",
+        "history": "累计奖励",
+        "available": "可提取"
+      },
+      "transfer": "提取到钱包",
+      "transferred": "已转入 {amount}",
+      "transferFailed": "转移失败",
+      "codeCopied": "已复制邀请码",
+      "linkCopied": "已复制链接"
+    },
+    "danger": {
+      "title": "危险区",
+      "deleteAccount": {
+        "title": "注销账号",
+        "description": "永久删除你的账号、对话与记忆。此操作不可撤销。",
+        "button": "注销账号",
+        "confirmTitle": "确认注销账号？",
+        "confirmText": "请输入用户名以确认",
+        "submit": "永久注销",
+        "submitting": "处理中…",
+        "failed": "注销失败"
+      }
+    }
+  },
+  "purchase": {
+    "title": "充值",
+    "subtitle": "充值后余额立即可用于聊天与绘图。每条调用按上游 OpenAI 官方价计费。",
+    "amount": "充值金额（USD）",
+    "minAmount": "最低 ${min}",
+    "method": "支付方式",
+    "submit": "去支付",
+    "submitting": "正在跳转…",
+    "amountInvalid": "请输入有效金额",
+    "submitFailed": "发起支付失败",
+    "loadFailed": "加载充值信息失败",
+    "balanceTitle": "当前余额",
+    "redeem": {
+      "title": "兑换码",
+      "placeholder": "粘贴运营赠送 / 活动派发的兑换码",
+      "submit": "兑换",
+      "hint": "兑换码由管理员在管理后台「兑换码」页生成。",
+      "success": "兑换成功，已增加额度",
+      "failed": "兑换失败"
+    },
+    "presets": {
+      "recommended": "常用",
+      "trial": {
+        "label": "轻试",
+        "hint": "跑几次对话或生图试试手感"
+      },
+      "personal": {
+        "label": "日常",
+        "hint": "约一周的日常对话用量"
+      },
+      "team": {
+        "label": "进阶",
+        "hint": "重度使用 / 多模型对比"
+      },
+      "enterprise": {
+        "label": "工作流",
+        "hint": "团队共享 / 客户交付场景"
+      }
+    },
+    "online": {
+      "title": "在线充值",
+      "loading": "加载渠道…",
+      "disabled": "管理员尚未启用在线充值渠道。如需充值，请使用上方兑换码，或联系运营人员。",
+      "amountLabel": "金额（USD）",
+      "submit": "充值 ${amount}",
+      "hint": "支付完成后由 webhook 自动到账，刷新本页或等待几秒钟即可看到余额变化。",
+      "stripeNotIntegrated": "Stripe 客户端结账尚未集成，请联系管理员",
+      "startedSuccess": "发起成功，请按运营商说明完成支付",
+      "startFailed": "发起支付失败",
+      "providerEpay": "易支付（支付宝/微信）"
+    },
+    "history": {
+      "title": "最近订单",
+      "empty": "暂无订单",
+      "amount": "金额",
+      "method": "方式",
+      "status": "状态",
+      "createdAt": "时间",
+      "orderNo": "订单号",
+      "channel": "渠道",
+      "money": "金额",
+      "quotaTopup": "充值额度",
+      "loading": "加载中…",
+      "statusPending": "待支付",
+      "statusPaid": "已支付",
+      "statusFailed": "失败",
+      "statusRefunded": "已退款",
+      "statusCompleted": "已完成",
+      "statusProcessing": "处理中"
+    }
+  },
+  "subscription": {
+    "title": "订阅",
+    "subtitle": "按周期付费的额度包，相比按量充值可固定月度成本。",
+    "current": "当前订阅",
+    "noActive": "未订阅",
+    "subscribeNow": "立即订阅",
+    "manage": "管理订阅",
+    "subscribing": "处理中…",
+    "subscribeFailed": "订阅失败",
+    "renewAt": "下次续费",
+    "cancelAt": "将于 {date} 停止",
+    "perMonth": "/ 月",
+    "perYear": "/ 年",
+    "popular": "推荐",
+    "loadFailed": "加载订阅信息失败",
+    "loading": "加载中…",
+    "intervalMonth": "月",
+    "preference": {
+      "title": "计费偏好",
+      "current": "当前",
+      "switched": "已切换计费偏好",
+      "switchFailed": "切换失败",
+      "wallet": {
+        "label": "只用钱包余额",
+        "hint": "调用按用量从充值余额扣"
+      },
+      "subscriptionFirst": {
+        "label": "订阅优先",
+        "hint": "有效订阅有额度时优先扣订阅，超出后扣钱包"
+      },
+      "subscriptionOnly": {
+        "label": "只用订阅",
+        "hint": "订阅余额耗尽则报错，不会从钱包扣"
+      }
+    },
+    "list": {
+      "planId": "套餐 ID",
+      "status": "状态",
+      "periodStart": "本期开始",
+      "periodEnd": "本期到期"
+    },
+    "plans": {
+      "title": "可用套餐",
+      "empty": "管理员尚未配置订阅套餐。如果你计划上架月费/年费方案，可在管理后台「订阅 → 套餐管理」中创建。",
+      "perPeriodQuota": "每期含额度 ${amount}",
+      "subscribe": "订阅",
+      "startedNoUrl": "已发起订阅，请按运营商说明继续",
+      "noProvider": "管理员未启用任何订阅支付渠道"
+    }
+  },
+  "usage": {
+    "title": "用量信息",
+    "subtitle": "查看 chat / 绘图 / API key 调用产生的费用与 token 消耗。",
+    "balance": "余额",
+    "totalUsed": "累计消耗",
+    "todayUsed": "今日消耗",
+    "promptTokens": "Prompt tokens",
+    "completionTokens": "Completion tokens",
+    "filter": {
+      "model": "模型",
+      "all": "全部",
+      "from": "起始",
+      "to": "结束"
+    },
+    "log": {
+      "title": "调用日志",
+      "createdAt": "时间",
+      "model": "模型",
+      "promptTokens": "Prompt",
+      "completionTokens": "Completion",
+      "quota": "消耗",
+      "empty": "暂无记录"
+    },
+    "range": {
+      "last7": "近 7 天",
+      "last30": "近 30 天",
+      "last90": "近 90 天"
+    },
+    "tabs": {
+      "all": "全部",
+      "byToken": "按 Key 查看"
+    },
+    "export": {
+      "button": "导出 CSV",
+      "exporting": "导出中…",
+      "failed": "导出失败",
+      "empty": "选定时间内无数据可导出",
+      "limitHint": "最多导出 1000 行；如需更多请联系管理员",
+      "headers": {
+        "time": "时间",
+        "model": "模型",
+        "tokenName": "Key",
+        "promptTokens": "输入 token",
+        "completionTokens": "输出 token",
+        "elapsedSec": "耗时 (秒)",
+        "costUsd": "花费 (USD)"
+      }
+    },
+    "tokenSelect": {
+      "label": "选择 Key",
+      "placeholder": "请选择…",
+      "empty": "你还没有 API Key，去「API」页创建一个"
+    },
+    "kpi": {
+      "totalSpent": "累计花费",
+      "totalSpentHint": "近 {days} 天 (USD)",
+      "calls": "调用次数",
+      "callsHint": "最近 20 条详见下方",
+      "inputTokens": "输入 tokens",
+      "outputTokens": "输出 tokens",
+      "last20Hint": "近 20 次累加"
+    },
+    "chart": {
+      "title": "每日花费（按模型堆叠）"
+    },
+    "recent": {
+      "title": "最近调用",
+      "loading": "加载中…",
+      "empty": "选定时间内无调用记录",
+      "colTime": "时间",
+      "colModel": "模型",
+      "colToken": "Token",
+      "tokenWebchat": "网页对话",
+      "colInput": "输入",
+      "colOutput": "输出",
+      "colElapsed": "耗时",
+      "colSpent": "花费"
+    }
+  },
+  "keys": {
+    "title": "API Key",
+    "subtitle": "把 key 贴到 ChatGPT 客户端、Cherry Studio、Claude Code 等第三方工具，按 OpenAI 兼容协议调用所有可用模型。",
+    "create": "创建新 key",
+    "creating": "创建中…",
+    "name": "名称",
+    "namePlaceholder": "例如：CLI",
+    "namePlaceholderLong": "给这把 key 起个好认的名字",
+    "createdAt": "创建时间",
+    "expiresAt": "过期时间",
+    "lastUsedAt": "最近使用",
+    "neverUsed": "未使用",
+    "noExpiry": "永久",
+    "revoke": "撤销",
+    "revokeConfirm": "撤销后此 Key 将立即失效，确认？",
+    "revoked": "已撤销",
+    "revokeFailed": "撤销失败",
+    "copy": "复制",
+    "copied": "已复制",
+    "showOnceWarning": "请立即复制保存，之后将无法再次查看完整 Key。",
+    "empty": "还没有 API key。点右上角创建一个，复制后贴到第三方客户端调用。",
+    "loadFailed": "加载 API key 失败",
+    "createFailed": "创建失败",
+    "groupHint": "套餐分组：{group}",
+    "loading": "加载中…",
+    "deleteConfirmTitle": "撤销 API Key？",
+    "deleteConfirm": "确定删除「{name}」？删除后用此 key 的所有调用都会失败。",
+    "deleted": "已删除",
+    "deleteFailed": "删除失败",
+    "col": {
+      "name": "名称",
+      "key": "Key",
+      "used": "已用",
+      "remaining": "剩余",
+      "status": "状态",
+      "expires": "过期",
+      "actions": "操作"
+    },
+    "statusEnabled": "启用",
+    "statusDisabled": "禁用",
+    "neverExpires": "永不过期",
+    "reveal": {
+      "title": "查看明文并复制",
+      "copied": "已复制到剪贴板",
+      "shown": "已显示，可手动复制",
+      "failed": "获取 key 失败",
+      "rateLimited": "获取 key 失败（可能触发了限流，稍后再试）"
+    },
+    "rowActions": {
+      "edit": "编辑",
+      "delete": "删除"
+    },
+    "createdToast": "已创建，点眼睛查看明文 key",
+    "saveFailed": "保存失败",
+    "saved": "已保存",
+    "quota": {
+      "label": "额度",
+      "unlimited": "不限",
+      "limited": "限额"
+    },
+    "expiry": {
+      "label": "有效期",
+      "never": "永久",
+      "date": "截止日期"
+    },
+    "status": {
+      "label": "状态",
+      "enabled": "启用"
+    },
+    "actions": {
+      "cancel": "取消",
+      "create": "创建",
+      "save": "保存"
+    }
+  },
+  "developer": {
+    "title": "API 与开发者接入",
+    "subtitle": "管理你的 API Key、查看接入指引和模型价格。",
+    "tabs": {
+      "tokens": "API Key",
+      "howto": "接入指引",
+      "models": "模型 & 单价"
+    },
+    "baseUrl": {
+      "title": "API 入口地址",
+      "subtitle": "OpenAI / Anthropic 兼容的统一接入点。把它填入第三方工具的 base_url。",
+      "copy": "复制",
+      "copied": "已复制",
+      "beta": "Beta",
+      "betaHint": "未来将迁移到独立的 api 子域，目前仍可稳定使用。"
+    },
+    "tokenPicker": {
+      "title": "选择要使用的 Key",
+      "subtitle": "下方所有配置示例会自动替换为你选中的 Key。",
+      "noTokens": "你还没有 API Key。先到「API Key」标签页创建一个。",
+      "goCreate": "去创建",
+      "placeholder": "（先选一个 Key）"
+    },
+    "tools": {
+      "claudeCode": {
+        "title": "Claude Code",
+        "subtitle": "Anthropic 官方 CLI，用于在终端里写代码 / 改代码。",
+        "linkLabel": "查看 Claude Code 官方下载",
+        "linkUrl": "https://docs.claude.com/en/docs/claude-code/setup",
+        "recommendedModel": "推荐 claude-4.5-sonnet"
+      },
+      "codex": {
+        "title": "OpenAI Codex CLI",
+        "subtitle": "OpenAI 官方编程 CLI，走 Responses API，与 GPT-5 系列适配最好。",
+        "linkLabel": "Codex 安装文档",
+        "linkUrl": "https://github.com/openai/codex",
+        "recommendedModel": "推荐 gpt-5.4 / gpt-5.3-codex"
+      },
+      "cursor": {
+        "title": "Cursor",
+        "subtitle": "AI 编程 IDE。在 Settings → Models 选 OpenAI，填自定义 base URL。",
+        "linkLabel": "Cursor 官网",
+        "linkUrl": "https://cursor.com",
+        "recommendedModel": "推荐 gpt-5.4 或 claude-4.5-sonnet"
+      },
+      "cherryStudio": {
+        "title": "Cherry Studio",
+        "subtitle": "免费跨平台 AI 桌面客户端。新建「OpenAI」服务商即可接入。",
+        "linkLabel": "Cherry Studio 官网",
+        "linkUrl": "https://cherry-ai.com",
+        "recommendedModel": "推荐 gpt-5.4 / deepseek-chat"
+      },
+      "generic": {
+        "title": "通用 OpenAI 兼容客户端",
+        "subtitle": "ChatBox · LobeChat · NextChat · Open WebUI 等。新建「OpenAI」服务商配置即可。",
+        "linkLabel": "ChatBox 项目主页",
+        "linkUrl": "https://github.com/Bin-Huang/chatbox",
+        "recommendedModel": "可用任意 OpenAI 兼容模型"
+      }
+    },
+    "configBlock": {
+      "copyAll": "复制全部",
+      "envHint": "环境变量",
+      "uiHint": "客户端设置",
+      "installHint": "安装",
+      "testHint": "用 curl 测试连通性",
+      "tokenLabel": "API Key",
+      "baseUrlLabel": "Base URL",
+      "modelLabel": "模型"
+    },
+    "models": {
+      "title": "可用模型 & 单价",
+      "subtitle": "按上游通道分组展示。单价以美元 / 百万 token 计算，仅供参考；实际计费以后台配置为准。",
+      "loading": "加载中…",
+      "loadFailed": "加载失败",
+      "empty": "暂无可用模型，请联系管理员配置通道。",
+      "col": {
+        "model": "模型",
+        "input": "输入 $/M",
+        "output": "输出 $/M",
+        "perCall": "单次",
+        "group": "分组"
+      },
+      "perCallNone": "—",
+      "channelLabel": "通道"
+    }
+  },
+  "memory": {
+    "title": "长期记忆",
+    "subtitle": "助手会在你聊天时自动记下「关于你的稳定事实和偏好」，下次对话自动召回。这里可以查看、修改或删除任意一条。",
+    "empty": "还没有任何记忆。多和助手聊几轮，它会自动从对话里抽取「关于你」的稳定信息。",
+    "search": "搜索记忆",
+    "category": "分类",
+    "categories": {
+      "all": "全部",
+      "fact": "事实",
+      "preference": "偏好",
+      "profile": "档案",
+      "project": "项目"
+    },
+    "add": "新增条目",
+    "addManually": "手动添加",
+    "edit": "编辑条目",
+    "content": "内容",
+    "contentPlaceholder": "例：我是一名前端开发，习惯用 TypeScript，正在做一个 SaaS 产品。",
+    "contentLabel": "内容（关于你自己的稳定事实，≤ 500 字）",
+    "importance": "重要程度",
+    "importanceLabel": "重要度（1-10）",
+    "importanceShort": "重要度",
+    "save": "保存",
+    "delete": "删除",
+    "deleteConfirmTitle": "删除记忆？",
+    "deleteConfirm": "删除这条记忆？",
+    "saved": "已保存",
+    "deleted": "已删除",
+    "saveFailed": "保存失败",
+    "deleteFailed": "删除失败",
+    "loadFailed": "加载记忆失败",
+    "lastUsed": "最近使用",
+    "neverUsed": "未使用",
+    "createdAt": "创建于",
+    "loading": "加载中…",
+    "added": "已添加",
+    "addFailed": "添加失败",
+    "cancel": "取消",
+    "submit": "添加",
+    "categoryLabel": "类别",
+    "row": {
+      "importance": "重要度 {n}/10",
+      "lastUsedOn": "最近 {date} 用过",
+      "notUsed": "尚未使用",
+      "createdOn": "创建于 {date}",
+      "edit": "编辑",
+      "delete": "删除"
+    },
+    "count": "{n} 条",
+    "toggle": {
+      "on": "开启",
+      "off": "关闭",
+      "enabled": "已开启长期记忆",
+      "disabled": "已关闭，本次起对话不再注入也不再抽取",
+      "failed": "切换失败"
+    },
+    "disabledHint": "记忆功能已关闭。已存条目仍保留可手动管理；新对话不会自动抽取，对话也不再注入历史记忆。",
+    "disabled": {
+      "title": "长期记忆已关闭",
+      "description": "在「设置 → 偏好」中开启后，新会话才会自动记忆事实。"
+    }
+  },
+  "sidebar": {
+    "modelLibrary": {
+      "searchPlaceholder": "搜索模型…",
+      "loading": "加载中…",
+      "noMatch": "没有匹配的模型"
+    },
+    "modelCategory": {
+      "all": "全部",
+      "chat": "聊天",
+      "code": "编程",
+      "image": "图片",
+      "video": "视频",
+      "audio": "音频"
+    }
+  },
+  "history": {
+    "title": "历史会话",
+    "count": "{n} 条",
+    "empty": "还没有任何对话，先去发个消息吧",
+    "emptySearch": "没找到匹配的会话",
+    "searchPlaceholder": "搜索会话标题…",
+    "seeAll": "查看全部",
+    "filter": {
+      "all": "全部",
+      "pinned": "置顶"
+    },
+    "rel": {
+      "now": "刚刚",
+      "minutesAgo": "{n} 分钟前",
+      "hoursAgo": "{n} 小时前",
+      "daysAgo": "{n} 天前"
+    },
+    "search": {
+      "modeTitle": "搜标题",
+      "modeContent": "搜内容",
+      "modeContentHint": "在所有会话的消息正文里搜索",
+      "contentPlaceholder": "搜索消息内容…",
+      "searching": "搜索中…",
+      "matchInTitle": "匹配标题",
+      "matchInContent": "匹配内容",
+      "matchInBoth": "标题 + 内容均匹配",
+      "openMatch": "跳转到匹配位置"
+    },
+    "export": {
+      "menu": "导出为 Markdown",
+      "exporting": "导出中…",
+      "success": "已导出 {filename}",
+      "failed": "导出失败：{message}",
+      "exportLabel": "导出本对话",
+      "metaLine": "模型：{model} · 创建：{createdAt} · 共 {count} 条消息",
+      "userTurn": "你",
+      "assistantTurn": "助手",
+      "tokensLine": "tokens: {prompt} / {completion}",
+      "emptyAssistant": "_（无文本内容）_"
+    },
+    "share": {
+      "menu": "生成分享链接",
+      "title": "分享对话",
+      "description": "为「{title}」生成只读链接，任何拿到链接的人都能查看。",
+      "minting": "生成中…",
+      "copy": "复制",
+      "copied": "已复制",
+      "copyFailed": "复制失败，请手动选择复制",
+      "readonlyHint": "链接为只读视图，不会暴露其他对话或账号信息。",
+      "revoke": "撤销链接",
+      "revoked": "已撤销",
+      "revokeConfirmTitle": "撤销分享链接？",
+      "revokeConfirm": "撤销后该链接立即失效，访问者会看到 404。",
+      "done": "完成"
+    }
+  },
+  "miniApps": {
+    "title": "智能体",
+    "subtitle": "专属流程的创作工坊 — 上传、规划、生成一站式完成",
+    "loading": "加载中…",
+    "empty": "还没有可用的智能体",
+    "badge": "MINI APP",
+    "createFailed": "创建对话失败"
+  },
+  "promptsLibrary": {
+    "title": "Prompts 库",
+    "subtitle": "选一个预置角色直接开始 · 高质量 prompt 精选",
+    "tabs": {
+      "all": "全部",
+      "mine": "我的"
+    },
+    "sort": {
+      "popular": "最热",
+      "recent": "最新",
+      "alphabetical": "按字母"
+    },
+    "tagCloud": "热门标签",
+    "expandTags": "展开全部",
+    "collapseTags": "收起",
+    "noResults": "未找到匹配的角色",
+    "mineEmpty": "你还没有创建自定义角色"
+  },
+  "agentModal": {
+    "switchAgent": "切换角色",
+    "unbindAgent": "解除绑定",
+    "editAgent": "编辑此角色",
+    "unbindConfirm": "确定要解除当前对话与此角色的绑定吗？已有消息不会受影响。",
+    "switched": "已切换到「{name}」",
+    "unbound": "已解除角色绑定",
+    "systemPromptLabel": "系统提示词",
+    "sourceSystem": "系统预置",
+    "sourceCurated": "精选",
+    "sourceUser": "我创建的",
+    "viewInChinese": "中文",
+    "viewInEnglish": "英文"
+  },
+  "editor": {
+    "title": "图片编辑",
+    "back": "返回",
+    "download": "下载图片",
+    "exportFailed": "导出失败",
+    "toolsLabel": "工具",
+    "addText": "加文字",
+    "addLogo": "加 LOGO",
+    "addWatermark": "加水印",
+    "watermarkDefault": "© 我的品牌",
+    "newText": "双击编辑",
+    "layersLabel": "图层",
+    "noLayers": "尚无图层",
+    "imageLayer": "图片图层",
+    "propertiesLabel": "属性",
+    "selectLayerHint": "选中一个图层查看 / 编辑属性",
+    "text": "文字",
+    "fontSize": "字号",
+    "color": "颜色",
+    "rotation": "旋转",
+    "opacity": "不透明度",
+    "size": "尺寸",
+    "bold": "粗体",
+    "regular": "常规",
+    "reset": "重置",
+    "delete": "删除",
+    "notImage": "请上传图片文件",
+    "openEditor": "打开 P 图"
+  },
+  "workflow": {
+    "storyboard": {
+      "videoGen": {
+        "title": "视频段落生成",
+        "subtitle": "按段执行: Gemini Nano Banana 2 (分镜图作 ref) 出首尾帧 → Veo 3.1 出视频. 每段 30-90 秒, 已完成段会自动播放 + 解锁下一段按钮.",
+        "progress": "进度",
+        "allDone": "全部完成",
+        "segmentTitle": "段 {seq}",
+        "viewPrompt": "查看本段 prompt",
+        "firstFrame": "起始帧",
+        "lastFrame": "结束帧",
+        "readyHint": "点击按钮触发本段生成 (~ 30-90 秒)",
+        "generateNext": "→ 生成段 {seq}",
+        "generating": "生成中…",
+        "waitingPrev": "等待上一段完成",
+        "retrySegment": "↻ 重试本段",
+        "finishedHint": "🎉 所有段已完成!",
+        "finishedHintSub": "页面上方按段展示了所有视频. 可右键单独下载, 或后期用剪辑工具拼接成完整短片.",
+        "statusCompleted": "已完成",
+        "statusFailed": "失败",
+        "statusReady": "可生成",
+        "statusWaiting": "等待中",
+        "statusGenerating": "生成中"
+      },
+      "videoPlan": {
+        "title": "视频段落规划",
+        "subtitle": "AI 已经读了你的分镜图, 拆成 N 段连续的 4-8s 视频. 你可以审查 / 编辑每段的内容描述 + 首尾帧描述 + 时长. 段间会自动衔接 (上段尾帧 = 下段首帧)",
+        "refImageAlt": "分镜信息图缩略",
+        "segmentCount": "段数",
+        "segmentUnit": "段",
+        "totalDuration": "总时长",
+        "estCost": "预估成本",
+        "usd": "USD",
+        "summaryHint": "由 {model} 读图规划. 后续每段会用 Gemini Nano Banana 2 (分镜图作 ref) 出首尾帧 + Veo 3.1 出视频",
+        "segmentTitle": "段 {seq}",
+        "durationTooltip": "时长 4 / 6 / 8s 切换",
+        "promptLabel": "视频内容描述 (送 Veo)",
+        "promptHint": "200-300 字, 描述角色动作 / 镜头运动 / 节奏. Veo 一段只能 1 个连续运镜, 不能切镜",
+        "firstFrameLabel": "起始帧描述",
+        "firstFrameHint": "80-150 字, 只写动作姿态 + 表情 + 镜头角度. 角色 / 服装 / 场景由分镜图 ref 保证一致",
+        "firstFrameLinkedHint": "复用上段尾帧, 不可独立编辑. 改本段尾帧会同步下一段首帧",
+        "linkedFromPrev": "上段尾帧",
+        "lastFrameLabel": "结束帧描述",
+        "lastFrameHint": "80-150 字, 同首帧原则. 这段的尾帧也是下一段的首帧",
+        "expand": "展开",
+        "collapse": "折叠",
+        "regenerate": "↻ 重新规划",
+        "confirm": "开始生成视频 (约 ${cost})",
+        "starting": "准备规划...",
+        "continueToVideoBtn": "→ 继续制作视频"
+      },
+      "review": {
+        "title": "审查并修改分镜提示词",
+        "subtitle": "AI 已整合你的主题和参考图, 输出中英两版完整提示词。你可以独立编辑任一版本, 修改中文后可以一键翻译为英文",
+        "tabZh": "中文版",
+        "tabEn": "英文版",
+        "zhPlaceholder": "中文版完整提示词…",
+        "enPlaceholder": "英文版完整提示词…",
+        "chars": "{n} 字符",
+        "zhDirtyHint": "中文版已修改, 英文版未同步",
+        "translateHint": "中文版有改动 — 一键翻译让英文版同步",
+        "translateBtn": "翻译为英文",
+        "translating": "翻译中…",
+        "reset": "恢复 AI 初版",
+        "resetTooltip": "撤销所有手动修改, 回到 AI 最初生成的两版",
+        "imageModelLabel": "生图模型",
+        "etaGptImage2": "通常 2-3 分钟，请耐心等待",
+        "etaGeneric": "通常 5-30 秒",
+        "generate": "生成图片（{lang}）",
+        "generating": "生成中…",
+        "zhShort": "中",
+        "enShort": "英"
+      }
+    },
+    "imageGen": {
+      "back": "返回",
+      "steps": {
+        "input": "需求",
+        "directions": "方向",
+        "prompts": "Prompt",
+        "results": "生图",
+        "optimizing": "优化",
+        "done": "定稿",
+        "jumpBack": "返回 {name} 步"
+      },
+      "step1": {
+        "title": "告诉我你要生成什么",
+        "subtitle": "上传 1-4 张参考图 + 描述风格 / 场景 / 物品",
+        "useCaseLabel": "用途",
+        "useCase": {
+          "free": {
+            "title": "通用创作",
+            "hint": "AI 自由发挥, 给 4-5 个风格方向供你挑"
+          },
+          "ecommerce": {
+            "title": "电商商品图",
+            "hint": "6 类标准图: 白底 / 卖点 / 场景 / 模特 / 氛围 / 比例",
+            "previewLabel": "AI 将为你生成 6 类电商标准图方向卡",
+            "previewHint": "提交后进入「方向选择」步骤, 6 张固定类目卡, 选 1 张继续",
+            "categories": {
+              "whiteBg": "白底主图",
+              "feature": "卖点放大",
+              "scene": "使用场景",
+              "model": "模特展示",
+              "mood": "氛围故事",
+              "ratio": "尺寸比例"
+            }
+          },
+          "storyboard": {
+            "title": "短片分镜图",
+            "hint": "电影前期制作板, 含 8 镜头分镜 / 角色 / 场景 / 调度 / 灯光 / 声音 / 色彩"
+          }
+        },
+        "refImagesLabel": "参考图 ({current}/{max})",
+        "addMoreRef": "再加一张",
+        "uploadLabel": "参考图",
+        "uploadHint": "点击上传图片",
+        "uploadFormats": "PNG / JPG / WebP，最多 8MB / 张, 最多 4 张",
+        "refLimitReached": "最多 {max} 张参考图",
+        "pinSubject": {
+          "label": "垫图模式 — 产品主体严格一致",
+          "hint": "AI 严格保持参考图中产品的形状/颜色/材质, 仅调整背景/光线/视角. 解决 4 张里只 1 张能用的问题."
+        },
+        "bilingual": {
+          "label": "中英对照 prompt (送英文版给上游通常更稳)"
+        },
+        "uploaded": "已上传",
+        "remove": "移除",
+        "size": "{kb} KB",
+        "tooLarge": "图片超过 8MB",
+        "notImage": "请选择图片文件",
+        "readFailed": "读取失败",
+        "needsLabel": "需求描述",
+        "needsPlaceholder": "比如：电商主图，白底，手机配件，突出 USB 线，4 张不同角度",
+        "plannerLabel": "讨论模型",
+        "plannerHint": "用于规划方向 + 生成 prompt",
+        "imageModelLabel": "生图模型",
+        "aspectLabel": "比例",
+        "aspectMore": "更多",
+        "aspectCollapse": "收起",
+        "tierLabel": "清晰度",
+        "tier4kWarning": "4K 是 OpenAI 标的实验档, 部分 prompt 可能被拒, 慎用",
+        "qualityLabel": "质量档（OpenAI）",
+        "qualityHint": "仅 GPT Image 2 可选: 高档贵但细节稳, 低/中档更省钱",
+        "quality": {
+          "low": { "label": "Low (省)", "hint": "成本最低, 适合草稿 / 批量试" },
+          "medium": { "label": "Medium", "hint": "平衡, 大多数场景够用" },
+          "high": { "label": "High (推荐)", "hint": "细节最丰, 中文文字最稳" }
+        },
+        "sizePreview": "→ 最终",
+        "submit": "开始规划方向",
+        "submitStoryboard": "整合提示词",
+        "submitting": "让 AI 想想…"
+      },
+      "directions": {
+        "title": "选择一个方向",
+        "subtitle": "AI 给了 {n} 个候选风格，挑一个进入 prompt 编辑",
+        "regenerate": "重新出方向",
+        "regenerating": "重新生成…"
+      },
+      "step3": {
+        "title": "审核 prompt 变体",
+        "subtitle": "AI 给的 prompt，可以微调或直接生成。中英对照模式下选定的语言版本会送给上游生图",
+        "promptLabel": "Prompt {n}",
+        "back": "上一步",
+        "generate": "开始生成 {n} 张候选",
+        "langZh": "中文",
+        "langEn": "English",
+        "activeHint": "→ 当前送上游: {lang} 版"
+      },
+      "results": {
+        "title": "选你喜欢的",
+        "subtitle": "{ok}/{total} 张生成成功",
+        "generating": "生成中",
+        "emptyImage": "未生成图片",
+        "retry": "重新生成",
+        "download": "下载",
+        "edit": "P 图",
+        "optimize": "优化这张",
+        "pickFinal": "就选这张",
+        "restart": "重新开始"
+      },
+      "optimize": {
+        "title": "优化这张",
+        "subtitle": "告诉 AI 怎么改, 会基于这张图 + 原参考图重生候选. 可换 LLM 模型, 也可附加 logo / 别的参考图",
+        "sourceLabel": "上轮选定",
+        "improvementLabel": "改进要求",
+        "improvementPlaceholder": "比如：背景再亮一些、加一只猫、字小一点…",
+        "plannerHint": "用哪个 LLM 改写 prompt (默认沿用对话设置)",
+        "extraRefsLabel": "附加参考图 ({current}/{max})",
+        "extraRefsHint": "上传 logo / 装饰元素 / 第二参考图. AI 会读取这些图后写进新 prompt, 同时它们会原样送给生图模型, Gemini 能融入产出",
+        "extraRefsHelp": "PNG / JPG / WebP, 最多 8MB / 张, 最多 3 张",
+        "cancel": "取消",
+        "submit": "重新生成"
+      },
+      "done": {
+        "title": "已选定最终稿",
+        "subtitleFirst": "一次成型 · 下载图片或回头优化",
+        "subtitleIter": "第 {n} 轮迭代 · 下载图片或回头优化",
+        "download": "下载图片"
+      },
+      "history": {
+        "title": "历史轮次",
+        "iterationLabel": "第 {n} 轮",
+        "successCount": "{ok}/{total} 成功",
+        "basedOnPrev": "· 基于上轮选图",
+        "forkedFrom": "from 第 {n} 轮",
+        "editPrompts": "编辑 prompts",
+        "editPromptsHint": "编辑这轮的 4 个 prompt 后重新生成",
+        "failedTile": "失败"
+      },
+      "models": {
+        "gemini-2.5-flash-image": "Nano Banana",
+        "gemini-3-pro-image-preview": "Nano Banana Pro",
+        "gemini-3.1-flash-image-preview": "Nano Banana 2"
+      },
+      "errors": {
+        "callFailed": "调用失败",
+        "networkError": "网络错误"
+      },
+      "generating": {
+        "title": "正在生成 {n} 张候选",
+        "rewritingTitle": "AI 正在改写 prompt",
+        "hint": "通常 5-15 秒, 上游配额紧张时会自动重试",
+        "hintGptImage2": "GPT Image 2 单张通常 2-3 分钟，请耐心等待，不要切走或刷新",
+        "rewritingHint": "讨论模型读取你的改进要求 + 附加图片, 改写出新一轮 prompt 再交给生图模型",
+        "retryingHint": "上游配额耗尽 (429), 退避重试中…",
+        "cellLabel": "生成中",
+        "cellWaiting": "等待 prompt"
+      }
+    }
+  },
+  "agents": {
+    "tab": {
+      "intent": "角色",
+      "discover": "灵感"
+    },
+    "discover": {
+      "title": "灵感广场",
+      "featured": "精选助手",
+      "scenariosTitle": "热门场景",
+      "modelsTitle": "热门模型",
+      "tryIt": "立刻试一下",
+      "viewPrompt": "查看 Prompt",
+      "promptCopied": "Prompt 已复制",
+      "copyPrompt": "复制 Prompt",
+      "goChat": "去对话",
+      "loading": "加载中…",
+      "empty": "暂无精选助手",
+      "miniApp": {
+        "label": "MINI APP",
+        "imageGen": {
+          "title": "一键生图",
+          "subtitle": "上传参考图或描述需求，跟 AI 讨论一下，一键并发生成 4 张候选"
+        }
+      },
+      "scenarios": {
+        "writing_xhs": {
+          "title": "我要写小红书文案",
+          "desc": "种草型 / 干货型，3 个版本备选",
+          "prompt": "请帮我写一条小红书文案，主题是「春日露营装备」。要求：种草风格、配 5 个 emoji、再加 5 个相关 hashtag。"
+        },
+        "product_main_image": {
+          "title": "我要做电商主图",
+          "desc": "Nano Banana 出 4 张候选 + 自动选最优",
+          "prompt": "请基于上传的产品图，生成 4 张电商主图候选：白底背景、突出产品卖点、留出文案空间，每张提供不同的视觉重心。"
+        },
+        "code_review": {
+          "title": "帮我审一段代码",
+          "desc": "找 bug / 提性能 / 给重构建议",
+          "prompt": "请帮我审查以下代码，重点关注：1) 潜在 bug 和边界情况 2) 性能瓶颈 3) 可读性和可维护性的改进建议。代码：\n\n（在这里粘贴代码）"
+        },
+        "translate_doc": {
+          "title": "我要翻译长文档",
+          "desc": "保留格式 / 专业术语 / 多语种",
+          "prompt": "请帮我把以下中文文档翻译成英文，要求：保留原始 Markdown 格式、专业术语用括号注明原文、行业风格保持正式。\n\n（在这里粘贴文档）"
+        },
+        "ecom_listing": {
+          "title": "电商详情页文案",
+          "desc": "标题 + 卖点 + 详情段落一键出",
+          "prompt": "我有一款产品，请帮我写一份完整的电商详情页文案：包括 5 个候选标题、5 个核心卖点、3 段详细介绍（场景化描述）。产品信息：\n\n（在这里描述产品）"
+        },
+        "meeting_notes": {
+          "title": "会议纪要整理",
+          "desc": "录音文字稿 → 结构化纪要",
+          "prompt": "请把以下会议录音转写整理成结构化纪要：1) 会议主题 2) 关键决议 3) 待办事项（含负责人和截止时间）4) 待讨论问题。\n\n（在这里粘贴录音文字稿）"
+        },
+        "video_script": {
+          "title": "短视频脚本",
+          "desc": "钩子 + 节奏 + BGM 提示",
+          "prompt": "请帮我写一条 60 秒短视频脚本，主题：（在此填主题）。结构要求：前 3 秒钩子、中段干货分点、结尾互动。包含画面提示和 BGM 风格建议。"
+        },
+        "legal_review": {
+          "title": "合同条款审查",
+          "desc": "找风险 / 提改条 / 中英双语",
+          "prompt": "请帮我审查以下合同条款，重点找出：1) 对我方不利的条款 2) 模糊或歧义的表述 3) 缺失的关键条款（如违约责任、终止条件）。给出具体修改建议。\n\n（在这里粘贴条款）"
+        }
+      }
+    },
+    "title": "角色 / 助手",
+    "subtitle": "选一个预置角色直接开始，或自己创建专属助手",
+    "create": "新建助手",
+    "edit": "编辑",
+    "delete": "删除",
+    "deleted": "已删除",
+    "deleteFailed": "删除失败",
+    "deleteConfirmTitle": "删除助手？",
+    "deleteConfirm": "确认删除「{name}」？删除后历史会话仍可继续，但不能再以此助手开新会话。",
+    "startChat": "开始对话",
+    "startChatFailed": "无法开启对话",
+    "loadFailed": "加载失败",
+    "empty": "没有匹配的助手",
+    "noDescription": "（无描述）",
+    "systemBadge": "预置",
+    "searchPlaceholder": "搜索助手名称或描述",
+    "startWithModel": "开始时使用模型：",
+    "categories": {
+      "all": "全部",
+      "writing": "写作",
+      "coding": "编程",
+      "learning": "学习",
+      "life": "生活",
+      "productivity": "效率",
+      "creative": "创意",
+      "legal": "法务",
+      "health": "健康",
+      "finance": "金融",
+      "mysticism": "玄学",
+      "other": "其他"
+    },
+    "form": {
+      "newTitle": "新建助手",
+      "editTitle": "编辑助手",
+      "name": "名称",
+      "namePlaceholder": "例如：周报助手",
+      "avatar": "头像（emoji）",
+      "avatarPlaceholder": "🤖",
+      "category": "分类",
+      "description": "简短描述",
+      "descriptionPlaceholder": "一句话说清这个助手是干嘛的",
+      "systemPrompt": "提示词",
+      "systemPromptPlaceholder": "告诉助手该如何回答用户的问题…",
+      "defaultModel": "默认模型（可选）",
+      "defaultModelHint": "留空则使用全局默认模型",
+      "defaultParams": "预设开关",
+      "defaultParamsHint": "新建对话时自动启用这些选项；用户可在对话内手动调整。仅显示当前默认模型支持的选项。",
+      "paramWebSearch": "联网搜索",
+      "paramImageMode": "生成图片",
+      "paramReasoning": "思考深度",
+      "reasoningOff": "关闭",
+      "reasoningMinimal": "极简",
+      "reasoningLow": "低",
+      "reasoningMedium": "中",
+      "reasoningHigh": "高",
+      "save": "保存",
+      "saving": "保存中…",
+      "saved": "已保存",
+      "saveFailed": "保存失败",
+      "loadFailed": "加载助手失败",
+      "back": "返回"
+    },
+    "badge": {
+      "label": "助手"
+    }
+  },
+  "landing": {
+    "header": {
+      "brand": "Open Chat",
+      "signIn": "登录",
+      "signUp": "免费注册"
+    },
+    "hero": {
+      "badge": "13 个主流模型 · 一处订阅",
+      "headline1": "为创作者打造的",
+      "headline2": "AI 工作台",
+      "subtitle": "GPT-5、DeepSeek、Kimi、Grok…对话、生图、文档分析、长期记忆——统一计费、统一历史、统一接口。",
+      "ctaPrimary": "免费开始",
+      "ctaSecondary": "查看支持模型",
+      "socialProof": "无需信用卡 · 注册即送试用额度 · 数据加密存储"
+    },
+    "features": {
+      "title": "一个工作台，所有模型",
+      "subtitle": "把每个模型最擅长的能力组合起来——而不是分别在六个网页之间切换。",
+      "items": {
+        "multiModel": {
+          "title": "13 个主流模型",
+          "desc": "OpenAI / DeepSeek / Moonshot / xAI 一键切换，按调用计费，无月费。"
+        },
+        "agents": {
+          "title": "12 个开箱助手",
+          "desc": "写作、编程、翻译、营养、旅行……每个角色预设系统提示和工具，开聊就用。"
+        },
+        "webSearch": {
+          "title": "联网搜索",
+          "desc": "GPT-5 自动调用 Web Search，得到实时新闻、行情、文档来源链接，可点击查证。"
+        },
+        "docs": {
+          "title": "文档理解",
+          "desc": "PDF / DOCX / Markdown 拖入对话即解析，文本自动入上下文，秒得答案。"
+        },
+        "images": {
+          "title": "对话式生图",
+          "desc": "聊着聊着就出图——gpt-image-2 内嵌 tool，1024×1024 至 2.5K 全分辨率。"
+        },
+        "branching": {
+          "title": "消息分支",
+          "desc": "编辑 / 重生成不会丢历史。每个分支独立保留，随时切回对比。"
+        }
+      }
+    },
+    "models": {
+      "title": "支持的模型家族",
+      "subtitle": "覆盖文本、思考、视觉、绘图。模型阵容随上游持续更新。"
+    },
+    "agents": {
+      "title": "12 个开箱即用助手",
+      "subtitle": "选个角色就能开聊——也可创建只属于自己的私有助手并预设参数。",
+      "items": {
+        "sys-writing": { "name": "写作助手", "desc": "长文、文案、文风改写——句子顺，结构清。" },
+        "sys-coder": { "name": "编程助手", "desc": "代码生成 / 重构 / 调试，全栈语言通吃。" },
+        "sys-translate": { "name": "翻译助手", "desc": "中英互译，保留语气与术语，文学到技术皆可。" },
+        "sys-product": { "name": "产品经理", "desc": "PRD、用户访谈、竞品对比——结构化输出。" },
+        "sys-marketing": { "name": "营销文案", "desc": "标题、详情页、社媒文案——引人转化。" },
+        "sys-tech-blog": { "name": "技术博客", "desc": "把复杂技术写成给同行读的清晰文章。" },
+        "sys-nutrition": { "name": "营养师", "desc": "膳食搭配、热量估算、健身餐方案。" },
+        "sys-travel": { "name": "旅行规划", "desc": "行程规划、城市深度玩法、签证攻略。" }
+      }
+    },
+    "how": {
+      "title": "三步上手",
+      "subtitle": "从注册到第一次对话不到一分钟。",
+      "steps": {
+        "1": { "title": "注册账号", "desc": "邮箱或第三方登录，注册即送试用额度。" },
+        "2": { "title": "选模型 / 助手", "desc": "顶部下拉切换模型；左侧助手画廊一键开聊。" },
+        "3": { "title": "开始对话", "desc": "提问、上传文档、生图、分支重写——所有能力同一个输入框。" }
+      }
+    },
+    "pricing": {
+      "title": "按需付费",
+      "subtitle": "不绑年费、不封顶——和上游一致的 token 计费，余额可随时充值。",
+      "headline": "$0 起步",
+      "headlineNote": "注册即送试用额度",
+      "perks": [
+        "实时按调用计费，余额耗尽自动停",
+        "上游官方价 1:1，不加价不分润",
+        "兑换码 / 邀请奖励多种充值途径",
+        "可随时导出全部对话记录"
+      ],
+      "tableTitle": "主流模型单价（每百万 tokens · 美元参考）",
+      "cols": {
+        "model": "模型",
+        "input": "输入",
+        "output": "输出"
+      },
+      "tableFootnote": "* 实际计费单位为平台内部 quota，500,000 ≈ $1。模型价格以平台后台公布为准。"
+    },
+    "faq": {
+      "title": "常见问题",
+      "subtitle": "没解决的可联系客服，或看 GitHub 文档。",
+      "items": {
+        "data": {
+          "q": "我的对话和文档安全吗？",
+          "a": "对话和文件存储在我们自有数据库 + 容器卷，传输全程 HTTPS。仅你本人能读取；管理员只看得到聚合用量，不接触具体内容。"
+        },
+        "choose": {
+          "q": "这么多模型怎么选？",
+          "a": "中文写作、复杂推理优先 GPT-5.4 / 5.5；快速问答用 GPT-5.4-mini 或 Grok-4 fast；长文档摘要 Kimi 上下文够大；代码 / 数学 DeepSeek 性价比高。每条对话顶部都能切换。"
+        },
+        "topup": {
+          "q": "余额怎么充？",
+          "a": "/purchase 页输入兑换码即可。前期管理员可直接发码给你；后续会接入支付。"
+        },
+        "api": {
+          "q": "支持开放 API 调用吗？",
+          "a": "支持。/keys 页可生成自己的 sk-token，按 OpenAI 兼容协议调用 /v1/chat/completions、/v1/responses、/v1/images/generations 等端点。"
+        },
+        "web": {
+          "q": "联网搜索的范围？",
+          "a": "走 OpenAI Responses API 的 web_search built-in tool，覆盖整个公开互联网，结果带源链接。"
+        },
+        "image": {
+          "q": "生成的图片版权归谁？",
+          "a": "OpenAI 图像生成结果版权归你（用户）。具体条款随上游模型许可，建议商业使用前查阅相应模型说明。"
+        }
+      }
+    },
+    "footer": {
+      "brand": "Open Chat",
+      "tagline": "为创作者打造的统一 AI 工作台。",
+      "product": "产品",
+      "linkFeatures": "功能",
+      "linkPricing": "价格",
+      "linkFAQ": "常见问题",
+      "legal": "法律",
+      "privacy": "隐私政策",
+      "terms": "服务条款",
+      "contact": "联系我们",
+      "copyright": "© 2026 Open Chat · 保留所有权利"
+    }
+  },
+  "errors": {
+    "unauthorized": "未登录或会话已过期，请重新登录",
+    "forbidden": "无权访问",
+    "notFound": "页面不存在",
+    "serverError": "服务器错误，请稍后再试",
+    "rateLimit": "请求过于频繁，请稍后再试"
+  },
+  "admin": {
+    "models": {
+      "title": "模型展示管理",
+      "subtitle": "决定哪些模型展示给 C 端用户，自定义昵称和描述。计费配置请前往 newapi 后台。",
+      "billingHint": "需要调整模型计费 / 倍率，请前往 newapi 后台：",
+      "counts": {
+        "newapi": "newapi 可用模型 {n}",
+        "overrides": "已自定义 {n}",
+        "stale": "失效条目 {n}"
+      },
+      "searchPlaceholder": "搜索模型 ID / 昵称 / 描述",
+      "col": {
+        "modelId": "模型 ID",
+        "displayName": "展示名（昵称）",
+        "description": "描述",
+        "icon": "图标",
+        "enabled": "启用",
+        "sort": "排序",
+        "actions": "操作"
+      },
+      "fallbackHint": "未自定义，使用默认",
+      "noDescription": "（无描述，使用默认）",
+      "empty": "没有匹配的模型",
+      "bulk": {
+        "enableAll": "启用全部 ({n})",
+        "disableAll": "禁用全部 ({n})"
+      },
+      "resetOverride": "重置为默认",
+      "resetSuccess": "已重置",
+      "saveSuccess": "已保存",
+      "saveFailed": "保存失败",
+      "iconPick": "选图标",
+      "iconEdit": "改图标",
+      "iconClear": "用默认图标",
+      "iconPickerTitle": "选择展示图标",
+      "iconCategory": {
+        "all": "全部",
+        "chat": "对话模型",
+        "image": "图像",
+        "video": "视频",
+        "code": "代码",
+        "cloud": "云平台",
+        "misc": "其他"
+      },
+      "edit": {
+        "title": "编辑模型展示",
+        "displayName": "展示名（留空使用默认）",
+        "description": "描述（留空使用默认）",
+        "sortOrder": "排序（数字越小越靠前，留空 = 999 沉底）",
+        "enabled": "对 C 端可见",
+        "save": "保存",
+        "cancel": "取消"
+      }
+    }
+  }
+}
