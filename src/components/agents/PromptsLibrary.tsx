@@ -4,7 +4,12 @@ import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { Loader2, Pencil, Plus, Search, Sparkles, Tag, Trash2 } from 'lucide-react';
+import {
+  Loader2, Pencil, Plus, Search, Sparkles, Tag, Trash2,
+  PenLine, Code2, Languages, GraduationCap, ChefHat, Image,
+  Briefcase, Scale, HeartPulse, TrendingUp, Wand2, LayoutGrid,
+  Bot,
+} from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -384,6 +389,46 @@ export function PromptsLibrary() {
   );
 }
 
+// ── Icon + colour mapping ────────────────────────────────────────────
+// Maps category (or slug prefix) → { Icon, bg, fg } for the avatar tile.
+// bg/fg are raw Tailwind utility strings so they work in dark mode via
+// the design-token layer already defined in globals.css.
+
+type IconSpec = {
+  Icon: React.ComponentType<{ className?: string }>;
+  bg: string;   // background
+  fg: string;   // icon colour
+};
+
+const SLUG_ICON: Record<string, IconSpec> = {
+  'wf-one-click-image': { Icon: Image,       bg: 'bg-violet-100 dark:bg-violet-950', fg: 'text-violet-600 dark:text-violet-400' },
+};
+
+const CATEGORY_ICON: Record<string, IconSpec> = {
+  writing:      { Icon: PenLine,      bg: 'bg-blue-100 dark:bg-blue-950',    fg: 'text-blue-600 dark:text-blue-400'    },
+  coding:       { Icon: Code2,        bg: 'bg-green-100 dark:bg-green-950',  fg: 'text-green-600 dark:text-green-400'  },
+  learning:     { Icon: GraduationCap,bg: 'bg-amber-100 dark:bg-amber-950',  fg: 'text-amber-600 dark:text-amber-400'  },
+  life:         { Icon: ChefHat,      bg: 'bg-orange-100 dark:bg-orange-950',fg: 'text-orange-600 dark:text-orange-400'},
+  productivity: { Icon: Briefcase,    bg: 'bg-sky-100 dark:bg-sky-950',      fg: 'text-sky-600 dark:text-sky-400'      },
+  creative:     { Icon: Wand2,        bg: 'bg-pink-100 dark:bg-pink-950',    fg: 'text-pink-600 dark:text-pink-400'    },
+  legal:        { Icon: Scale,        bg: 'bg-slate-100 dark:bg-slate-800',  fg: 'text-slate-600 dark:text-slate-400'  },
+  health:       { Icon: HeartPulse,   bg: 'bg-rose-100 dark:bg-rose-950',    fg: 'text-rose-600 dark:text-rose-400'    },
+  finance:      { Icon: TrendingUp,   bg: 'bg-emerald-100 dark:bg-emerald-950',fg:'text-emerald-600 dark:text-emerald-400'},
+  mysticism:    { Icon: Sparkles,     bg: 'bg-purple-100 dark:bg-purple-950',fg: 'text-purple-600 dark:text-purple-400'},
+  other:        { Icon: LayoutGrid,   bg: 'bg-zinc-100 dark:bg-zinc-800',    fg: 'text-zinc-500 dark:text-zinc-400'    },
+  // slug starts with 'sys-translator' override
+  translation:  { Icon: Languages,    bg: 'bg-teal-100 dark:bg-teal-950',    fg: 'text-teal-600 dark:text-teal-400'    },
+};
+
+function resolveIconSpec(agent: Agent): IconSpec {
+  if (SLUG_ICON[agent.slug]) return SLUG_ICON[agent.slug];
+  // tag-based override: 'translation' tag → translation icon
+  if (agent.tags?.includes('translation')) return CATEGORY_ICON.translation;
+  return CATEGORY_ICON[agent.category] ?? { Icon: Bot, bg: 'bg-muted', fg: 'text-muted-foreground' };
+}
+
+// ── PromptCard ───────────────────────────────────────────────────────
+
 function PromptCard({
   agent,
   busy,
@@ -397,6 +442,7 @@ function PromptCard({
 }) {
   const t = useTranslations('agents');
   const chips = agent.tags && agent.tags.length > 0 ? agent.tags.slice(0, 2) : [agent.category];
+  const { Icon, bg, fg } = resolveIconSpec(agent);
 
   return (
     <button
@@ -411,8 +457,11 @@ function PromptCard({
     >
       {/* Avatar 行 */}
       <div className="flex w-full items-start justify-between">
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-accent text-xl shadow-[var(--shadow-1)]">
-          {busy ? <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" /> : agent.avatar}
+        <div className={cn('flex h-10 w-10 items-center justify-center rounded-lg', bg)}>
+          {busy
+            ? <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+            : <Icon className={cn('h-5 w-5', fg)} strokeWidth={1.75} />
+          }
         </div>
         {/* 编辑/删除操作 — hover 显 */}
         {agent.editable && (
