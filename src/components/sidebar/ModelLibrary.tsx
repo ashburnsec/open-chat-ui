@@ -211,7 +211,7 @@ function ModelCard({
   onPick: (id: string) => void;
 }) {
   return (
-    <li>
+    <li className={isActive ? 'relative z-10' : undefined}>
       <button
         type="button"
         onClick={() => onPick(model.id)}
