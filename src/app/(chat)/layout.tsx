@@ -5,6 +5,7 @@ import { getCurrentUser } from '@/lib/auth';
 import { AppSidebar } from '@/components/shell/AppSidebar';
 import { TopNav } from '@/components/shell/TopNav';
 import { resolveBrand } from '@/lib/brand';
+import { ConfirmProvider } from '@/hooks/use-confirm';
 
 /**
  * M29-A: top-nav + left-sidebar shell. The right-side WorkspacePanel
@@ -27,20 +28,19 @@ export default async function ChatShellLayout({ children }: { children: React.Re
   const isAdmin = user.role >= 100;
 
   return (
-    // M40+: 用 svh / dvh 取代 100vh, 避开 iOS Safari 地址栏把 composer
-    // 挤出视口. svh 是"小视口"(地址栏出现时的 size), 保证最少能容下;
-    // dvh 是动态值, 地址栏 hide 后会跟着增高. 给 main 一个 minmax 防抖.
-    <div className="flex h-[100svh] max-h-[100dvh] w-screen flex-col overflow-hidden bg-background">
-      <TopNav
-        user={user}
-        quotaPerUnit={quotaPerUnit}
-        systemName={sysName}
-        isAdmin={isAdmin}
-      />
-      <div className="flex min-h-0 flex-1">
-        <AppSidebar systemName={sysName} isAdmin={isAdmin} />
-        <main className="flex min-w-0 flex-1 flex-col">{children}</main>
+    <ConfirmProvider>
+      <div className="flex h-[100svh] max-h-[100dvh] w-screen flex-col overflow-hidden bg-background">
+        <TopNav
+          user={user}
+          quotaPerUnit={quotaPerUnit}
+          systemName={sysName}
+          isAdmin={isAdmin}
+        />
+        <div className="flex min-h-0 flex-1">
+          <AppSidebar systemName={sysName} isAdmin={isAdmin} />
+          <main className="flex min-w-0 flex-1 flex-col">{children}</main>
+        </div>
       </div>
-    </div>
+    </ConfirmProvider>
   );
 }

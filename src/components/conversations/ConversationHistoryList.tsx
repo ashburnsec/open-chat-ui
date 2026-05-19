@@ -243,21 +243,25 @@ export function ConversationHistoryList() {
       : filtered?.length ?? 0;
 
   return (
-    <div className="mx-auto w-full max-w-5xl flex-1 px-4 py-6 sm:px-6 sm:py-8">
-      <div className="mb-4 flex items-center justify-between gap-3">
-        <h1 className="font-display text-2xl font-semibold tracking-tight">{t('title')}</h1>
-        <span className="text-sm text-muted-foreground">
-          {items === null
-            ? tCommon('loading')
-            : searching
-              ? tSearch('searching')
-              : t('count', { n: showCount })}
-        </span>
+    <div className="mx-auto w-full max-w-4xl flex-1 px-4 py-8 sm:px-6">
+      {/* Header */}
+      <div className="mb-6 flex items-center justify-between gap-3">
+        <div>
+          <h1 className="text-lg font-semibold tracking-tight">{t('title')}</h1>
+          <p className="mt-0.5 text-[13px] text-muted-foreground">
+            {items === null
+              ? tCommon('loading')
+              : searching
+                ? tSearch('searching')
+                : t('count', { n: showCount })}
+          </p>
+        </div>
       </div>
 
+      {/* Toolbar */}
       <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Search className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground/60" />
           <input
             type="text"
             value={query}
@@ -267,11 +271,12 @@ export function ConversationHistoryList() {
                 ? tSearch('contentPlaceholder')
                 : t('searchPlaceholder')
             }
-            className="w-full rounded-full border bg-background py-2 pl-9 pr-4 text-sm outline-none transition-colors focus:border-ink"
+            className="w-full rounded-md border border-border bg-background py-2 pl-8 pr-4 text-[13px] text-foreground placeholder:text-muted-foreground/50 outline-none transition-all focus:border-foreground/30"
           />
         </div>
         <div className="flex flex-wrap items-center gap-1.5">
-          <div className="inline-flex rounded-full border bg-card p-0.5">
+          {/* 搜索模式切换 */}
+          <div className="inline-flex rounded-md border border-border bg-background p-0.5">
             {(['title', 'content'] as const).map((m) => (
               <button
                 key={m}
@@ -279,24 +284,18 @@ export function ConversationHistoryList() {
                 onClick={() => setSearchMode(m)}
                 title={m === 'content' ? tSearch('modeContentHint') : undefined}
                 className={cn(
-                  'inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs transition-colors',
+                  'inline-flex items-center gap-1.5 rounded px-2.5 py-1 text-[12px] font-medium transition-all duration-150',
                   searchMode === m
-                    ? 'bg-ink text-primary-foreground'
+                    ? 'bg-foreground text-background'
                     : 'text-muted-foreground hover:text-foreground',
                 )}
               >
-                {m === 'content' ? (
-                  <FileText className="h-3 w-3" />
-                ) : (
-                  <Search className="h-3 w-3" />
-                )}
+                {m === 'content' ? <FileText className="h-3 w-3" /> : <Search className="h-3 w-3" />}
                 {tSearch(m === 'title' ? 'modeTitle' : 'modeContent')}
               </button>
             ))}
           </div>
-          {/* pinned filter 在 content + 有搜索词时不显示 (那时 ContentResults
-           *  接管了渲染), 其他情况下都显示 — 这样 content 模式无搜索词时
-           *  跟 title 模式完全一致, 都能切 all / pinned. */}
+          {/* 置顶过滤 */}
           {!(searchMode === 'content' && query.trim()) &&
             (['all', 'pinned'] as const).map((f) => (
               <button
@@ -304,10 +303,10 @@ export function ConversationHistoryList() {
                 type="button"
                 onClick={() => setFilter(f)}
                 className={cn(
-                  'inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs transition-colors',
+                  'inline-flex items-center gap-1 rounded-md border px-2.5 py-1.5 text-[12px] font-medium transition-all duration-150',
                   filter === f
-                    ? 'bg-ink text-primary-foreground'
-                    : 'border bg-card text-muted-foreground hover:bg-accent hover:text-foreground',
+                    ? 'border-foreground bg-foreground text-background'
+                    : 'border-border text-muted-foreground hover:border-foreground/30 hover:text-foreground',
                 )}
               >
                 {f === 'pinned' && <Pin className="h-3 w-3" />}
@@ -317,9 +316,7 @@ export function ConversationHistoryList() {
         </div>
       </div>
 
-      {/* content 模式 + 有搜索词 → 走 ContentResults (server-side ILIKE).
-       *  content 模式 + 没搜索词 → 跟 title 模式一样显示完整列表
-       *  (上次报: "默认是搜内容选项, 下面不显示对话列表"). */}
+      {/* 列表区域 */}
       {searchMode === 'content' && query.trim() ? (
         <ContentResults
           query={query}
@@ -330,27 +327,39 @@ export function ConversationHistoryList() {
           tCommon={tCommon}
         />
       ) : items === null ? (
-        <p className="px-2 py-12 text-center text-sm text-muted-foreground">
-          {tCommon('loading')}
-        </p>
+        <div className="space-y-px">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="flex items-center gap-3 rounded-lg px-3 py-3">
+              <div className="h-8 w-8 animate-pulse rounded-lg bg-muted" />
+              <div className="flex flex-1 flex-col gap-1.5">
+                <div className="h-3.5 w-48 animate-pulse rounded bg-muted" />
+                <div className="h-3 w-24 animate-pulse rounded bg-muted/60" />
+              </div>
+            </div>
+          ))}
+        </div>
       ) : filtered && filtered.length === 0 ? (
-        <div className="rounded-md border border-dashed bg-card/50 px-6 py-16 text-center">
-          <p className="text-sm text-muted-foreground">
+        <div className="flex flex-col items-center justify-center gap-3 rounded-xl border border-dashed border-border py-20 text-center">
+          <Search className="h-6 w-6 text-muted-foreground/30" />
+          <p className="text-[13px] text-muted-foreground">
             {query.trim() ? t('emptySearch') : t('empty')}
           </p>
         </div>
       ) : (
-        <ul className="divide-y rounded-md border bg-card">
+        <ul className="divide-y divide-border rounded-xl border border-border bg-background overflow-hidden">
           {filtered!.map((c) => {
             const editing = editingId === c.id;
             return (
               <li
                 key={c.id}
-                className="group flex items-center gap-3 px-3 py-3 transition-colors hover:bg-accent/40 sm:px-4"
+                className="group flex items-center gap-3 px-3 py-3 transition-colors hover:bg-accent sm:px-4"
               >
-                <div className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-muted/40 text-muted-foreground sm:flex">
-                  <VendorMonogram model={c.model || ''} size={22} />
+                {/* Model icon */}
+                <div className="hidden h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-border bg-background sm:flex">
+                  <VendorMonogram model={c.model || ''} size={20} />
                 </div>
+
+                {/* Title + meta */}
                 <div className="min-w-0 flex-1">
                   {editing ? (
                     <input
@@ -361,57 +370,50 @@ export function ConversationHistoryList() {
                         if (e.key === 'Enter') rename(c.id, e.currentTarget.value);
                         if (e.key === 'Escape') setEditingId(null);
                       }}
-                      className="w-full bg-transparent text-sm outline-none"
+                      className="w-full rounded bg-accent px-1 text-[13px] outline-none ring-1 ring-foreground/20"
                     />
                   ) : (
                     <Link
                       href={`/c/${c.id}` as never}
-                      className="block truncate text-sm font-medium hover:underline"
+                      className="flex items-center gap-1.5 truncate text-[13px] font-medium text-foreground hover:underline"
                       title={c.title}
                     >
-                      {c.title}
+                      <span className="truncate">{c.title}</span>
                       {c.pinned && (
-                        <Pin className="ml-1.5 inline h-3 w-3 -translate-y-px text-ink" />
+                        <Pin className="h-3 w-3 shrink-0 text-muted-foreground" />
                       )}
                     </Link>
                   )}
-                  <div className="mt-0.5 flex items-center gap-2 text-xs text-muted-foreground">
-                    {c.model && <span className="truncate">{c.model}</span>}
-                    {c.model && <span aria-hidden="true">·</span>}
-                    <time dateTime={c.updatedAt}>
-                      {formatRelative(c.updatedAt, t)}
-                    </time>
+                  <div className="mt-0.5 flex items-center gap-1.5 text-[11px] text-muted-foreground">
+                    {c.model && (
+                      <span className="max-w-[120px] truncate rounded bg-muted px-1.5 py-0.5 font-mono text-[10px]">
+                        {c.model}
+                      </span>
+                    )}
+                    <time dateTime={c.updatedAt}>{formatRelative(c.updatedAt, t)}</time>
                   </div>
                 </div>
+
+                {/* Actions */}
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <button
                       type="button"
-                      className="ml-1 inline-flex h-8 w-8 items-center justify-center rounded text-muted-foreground opacity-100 transition-opacity hover:bg-accent hover:text-foreground sm:opacity-0 sm:group-hover:opacity-100 data-[state=open]:opacity-100"
+                      className="inline-flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground opacity-100 transition-all hover:bg-accent hover:text-foreground sm:opacity-0 sm:group-hover:opacity-100 data-[state=open]:opacity-100"
                       aria-label={tList('actionsMenu')}
                     >
-                      <MoreHorizontal className="h-4 w-4" />
+                      <MoreHorizontal className="h-3.5 w-3.5" />
                     </button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
-                    <DropdownMenuItem
-                      onSelect={() => {
-                        setEditingTitle(c.title);
-                        setEditingId(c.id);
-                      }}
-                    >
+                    <DropdownMenuItem onSelect={() => { setEditingTitle(c.title); setEditingId(c.id); }}>
                       <Pencil className="h-3.5 w-3.5" /> {tList('rename')}
                     </DropdownMenuItem>
                     <DropdownMenuItem onSelect={() => void setPinned(c.id, !c.pinned)}>
-                      {c.pinned ? (
-                        <>
-                          <PinOff className="h-3.5 w-3.5" /> {tList('unpin')}
-                        </>
-                      ) : (
-                        <>
-                          <Pin className="h-3.5 w-3.5" /> {tList('pin')}
-                        </>
-                      )}
+                      {c.pinned
+                        ? <><PinOff className="h-3.5 w-3.5" /> {tList('unpin')}</>
+                        : <><Pin className="h-3.5 w-3.5" /> {tList('pin')}</>
+                      }
                     </DropdownMenuItem>
                     <DropdownMenuItem onSelect={() => void exportConversation(c)}>
                       <Download className="h-3.5 w-3.5" /> {tExport('menu')}
@@ -467,27 +469,34 @@ function ContentResults({
   const trimmed = query.trim();
   if (!trimmed) {
     return (
-      <div className="rounded-md border border-dashed bg-card/50 px-6 py-16 text-center">
-        <p className="text-sm text-muted-foreground">{tSearch('modeContentHint')}</p>
+      <div className="flex flex-col items-center justify-center gap-3 rounded-xl border border-dashed border-border py-20 text-center">
+        <FileText className="h-6 w-6 text-muted-foreground/30" />
+        <p className="text-[13px] text-muted-foreground">{tSearch('modeContentHint')}</p>
       </div>
     );
   }
   if (searching && hits === null) {
     return (
-      <p className="px-2 py-12 text-center text-sm text-muted-foreground">
-        {tCommon('loading')}
-      </p>
+      <div className="space-y-px">
+        {Array.from({ length: 4 }).map((_, i) => (
+          <div key={i} className="flex flex-col gap-1.5 rounded-lg px-3 py-3">
+            <div className="h-3.5 w-56 animate-pulse rounded bg-muted" />
+            <div className="h-3 w-full animate-pulse rounded bg-muted/60" />
+          </div>
+        ))}
+      </div>
     );
   }
   if (!hits || hits.length === 0) {
     return (
-      <div className="rounded-md border border-dashed bg-card/50 px-6 py-16 text-center">
-        <p className="text-sm text-muted-foreground">{tHistory('emptySearch')}</p>
+      <div className="flex flex-col items-center justify-center gap-3 rounded-xl border border-dashed border-border py-20 text-center">
+        <Search className="h-6 w-6 text-muted-foreground/30" />
+        <p className="text-[13px] text-muted-foreground">{tHistory('emptySearch')}</p>
       </div>
     );
   }
   return (
-    <ul className="divide-y rounded-md border bg-card">
+    <ul className="divide-y divide-border rounded-xl border border-border bg-background overflow-hidden">
       {hits.map((h) => {
         const href = h.matchedMessageId
           ? `/c/${h.convId}#m${h.matchedMessageId}`
@@ -501,7 +510,7 @@ function ContentResults({
         return (
           <li
             key={`${h.convId}:${h.matchedMessageId ?? 'title'}`}
-            className="px-3 py-3 transition-colors hover:bg-accent/40 sm:px-4"
+            className="px-3 py-3 transition-colors hover:bg-accent sm:px-4"
           >
             <Link
               href={href as never}
@@ -509,14 +518,14 @@ function ContentResults({
               title={tSearch('openMatch')}
             >
               <div className="flex items-center justify-between gap-3">
-                <span className="truncate text-sm font-medium hover:underline">
+                <span className="truncate text-[13px] font-medium hover:underline">
                   {highlightTerm(h.title, query)}
                 </span>
-                <span className="shrink-0 rounded-full border bg-background px-2 py-0.5 text-[10px] uppercase tracking-wide text-muted-foreground">
+                <span className="shrink-0 rounded-full border border-border px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
                   {matchLabel}
                 </span>
               </div>
-              <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">
+              <p className="mt-1 line-clamp-2 text-[12px] leading-relaxed text-muted-foreground">
                 {highlightTerm(h.snippet, query)}
               </p>
               <div className="mt-1 flex items-center gap-2 text-xs text-muted-foreground">
