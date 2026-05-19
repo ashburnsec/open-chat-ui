@@ -293,20 +293,17 @@ export const MOCK_AGENTS = [
 export const MOCK_CONVERSATIONS = [
   {
     id: 'demo-conv-1',
-    user_id: 1,
+    userId: 1,
     title: 'Welcome to Open Chat',
     model: 'gpt-4o',
-    system_prompt: null,
-    agent_id: null,
-    default_params: null,
-    current_message_id: null,
+    systemPrompt: null,
+    agentId: null,
+    defaultParams: null,
     pinned: false,
-    archived_at: null,
-    share_token: null,
-    collaborators: null,
-    wizard_metadata: null,
-    created_at: new Date(Date.now() - 3600_000).toISOString(),
-    updated_at: new Date(Date.now() - 3600_000).toISOString(),
+    archivedAt: null,
+    wizardMetadata: null,
+    createdAt: new Date(Date.now() - 3600_000).toISOString(),
+    updatedAt: new Date(Date.now() - 3600_000).toISOString(),
   },
 ];
 

@@ -140,7 +140,7 @@ export function ConversationHistoryList() {
     const q = searchMode === 'title' ? query.trim().toLowerCase() : '';
     return items.filter((c) => {
       if (filter === 'pinned' && !c.pinned) return false;
-      if (q && !c.title.toLowerCase().includes(q)) return false;
+      if (q && !(c.title ?? '').toLowerCase().includes(q)) return false;
       return true;
     });
   }, [items, query, filter, searchMode]);
@@ -568,8 +568,10 @@ function highlightTerm(text: string, term: string): React.ReactNode {
  * Lightweight relative time — avoids pulling in date-fns just for this.
  * Falls back to ISO date once over 30 days old.
  */
-function formatRelative(iso: string, t: (key: string, vars?: Record<string, string | number>) => string): string {
+function formatRelative(iso: string | undefined | null, t: (key: string, vars?: Record<string, string | number>) => string): string {
+  if (!iso) return '—';
   const ms = Date.now() - new Date(iso).getTime();
+  if (isNaN(ms) || ms < 0) return iso.slice(0, 10);
   if (ms < 60_000) return t('rel.now');
   const min = Math.floor(ms / 60_000);
   if (min < 60) return t('rel.minutesAgo', { n: min });
