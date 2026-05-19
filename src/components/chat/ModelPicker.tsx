@@ -111,52 +111,55 @@ export function ModelPicker({
       <DropdownMenuTrigger asChild>
         <button
           type="button"
-          className="flex items-center gap-2 rounded-full border bg-card px-3 py-1.5 text-sm transition-colors hover:bg-accent"
+          className="flex h-7 items-center gap-1.5 rounded-full border border-border bg-background px-2.5 text-[13px] font-medium text-foreground transition-all hover:bg-accent hover:border-foreground/25"
         >
           {selected ? (
             <VendorMonogram
               model={selected.id}
-              size={20}
+              size={16}
               iconOverride={findDynamic(dynamicCatalog, selected.id)?.icon}
             />
           ) : (
-            <span className="inline-block h-5 w-5 rounded-full bg-muted" />
+            <span className="inline-block h-4 w-4 rounded-full bg-muted" />
           )}
-          <span className="font-medium">
+          <span className="max-w-[120px] truncate">
             {selected
               ? selected.displayName
               : options.length
                 ? t('pick')
                 : t('empty')}
           </span>
-          <ChevronDown className="h-4 w-4 text-muted-foreground" />
+          <ChevronDown className="h-3 w-3 text-muted-foreground/70" />
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="max-h-[480px] w-[300px] overflow-y-auto">
+      <DropdownMenuContent align="start" className="max-h-[420px] w-[280px] overflow-y-auto">
         {groups.length === 0 ? (
-          <div className="px-3 py-2 text-xs text-muted-foreground">{t('adminHint')}</div>
+          <div className="px-3 py-2 text-[12px] text-muted-foreground">{t('adminHint')}</div>
         ) : (
-          /* Radix Menu walks DOM children to register refs — fragments
-           * keep items as direct children of <DropdownMenuContent>. */
           groups.map((g, i) => (
             <Fragment key={g.vendor}>
               {i > 0 && <DropdownMenuSeparator />}
-              <DropdownMenuLabel>{g.label}</DropdownMenuLabel>
+              <DropdownMenuLabel className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground/60">
+                {g.label}
+              </DropdownMenuLabel>
               {g.items.map((it) => {
                 const active = it.id === value;
                 return (
                   <DropdownMenuItem
                     key={it.id}
                     onSelect={() => onChange(it.id)}
-                    className={cn(active && 'bg-accent text-accent-foreground')}
+                    className={cn(
+                      'gap-2 text-[13px]',
+                      active && 'bg-accent font-medium',
+                    )}
                   >
                     <VendorMonogram
                       model={it.id}
-                      size={18}
+                      size={16}
                       iconOverride={findDynamic(dynamicCatalog, it.id)?.icon}
                     />
                     <span className="flex-1 truncate">{it.displayName}</span>
-                    {active && <Check className="h-3.5 w-3.5 text-ink" />}
+                    {active && <Check className="h-3 w-3 shrink-0 text-foreground" />}
                   </DropdownMenuItem>
                 );
               })}

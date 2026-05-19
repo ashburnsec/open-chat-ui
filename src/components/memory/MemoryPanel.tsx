@@ -2,7 +2,10 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Brain, Loader2, Pencil, Plus, Trash2, X } from 'lucide-react';
+import {
+  Brain, Loader2, Pencil, Plus, Trash2, X,
+  BookOpen, Heart, FolderKanban, Lightbulb, Tag,
+} from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -21,11 +24,15 @@ type Memory = {
   createdAt: string;
 };
 
-const CATEGORY_COLORS: Record<string, string> = {
-  fact: 'bg-blue-500/10 text-blue-700',
-  preference: 'bg-emerald-500/10 text-emerald-700',
-  profile: 'bg-purple-500/10 text-purple-700',
-  project: 'bg-amber-500/10 text-amber-700',
+type CategorySpec = { Icon: React.ComponentType<{ className?: string }>; bg: string; fg: string; ring: string };
+const CATEGORY_SPEC: Record<string, CategorySpec> = {
+  fact:       { Icon: BookOpen,      bg: 'bg-blue-50 dark:bg-blue-950',    fg: 'text-blue-600 dark:text-blue-400',    ring: 'ring-blue-200 dark:ring-blue-800'    },
+  preference: { Icon: Heart,         bg: 'bg-emerald-50 dark:bg-emerald-950', fg: 'text-emerald-600 dark:text-emerald-400', ring: 'ring-emerald-200 dark:ring-emerald-800' },
+  profile:    { Icon: Lightbulb,     bg: 'bg-violet-50 dark:bg-violet-950', fg: 'text-violet-600 dark:text-violet-400', ring: 'ring-violet-200 dark:ring-violet-800' },
+  project:    { Icon: FolderKanban,  bg: 'bg-amber-50 dark:bg-amber-950',  fg: 'text-amber-600 dark:text-amber-400',  ring: 'ring-amber-200 dark:ring-amber-800'  },
+};
+const FALLBACK_SPEC: CategorySpec = {
+  Icon: Tag, bg: 'bg-muted', fg: 'text-muted-foreground', ring: 'ring-border',
 };
 
 export function MemoryPanel() {
@@ -119,41 +126,61 @@ export function MemoryPanel() {
     knownCategories.includes(c as any) ? t(`categories.${c}` as any) : c;
 
   return (
-    <div className="mx-auto w-full max-w-4xl space-y-4 p-6">
-      <div className="flex items-end justify-between">
-        <div>
-          <h1 className="text-xl font-semibold">{t('title')}</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            {t('subtitle')}
-          </p>
+    <div className="mx-auto w-full max-w-4xl space-y-5 p-6">
+      {/* Header */}
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-violet-100 dark:bg-violet-950">
+            <Brain className="h-4.5 w-4.5 text-violet-600 dark:text-violet-400" />
+          </div>
+          <div>
+            <h1 className="text-[15px] font-semibold leading-tight">{t('title')}</h1>
+            <p className="text-[12px] text-muted-foreground">{t('subtitle')}</p>
+          </div>
         </div>
-        {enabled !== null && (
-          <label className="flex items-center gap-2 text-sm">
-            <input
-              type="checkbox"
-              checked={enabled}
-              disabled={busy}
-              onChange={(e) => void toggleEnabled(e.target.checked)}
-              className="h-4 w-4"
-            />
-            <span>{enabled ? t('toggle.on') : t('toggle.off')}</span>
-          </label>
-        )}
+        <div className="flex items-center gap-2.5">
+          {enabled !== null && (
+            <label className="flex cursor-pointer items-center gap-2 select-none">
+              <span className="text-[12px] text-muted-foreground">
+                {enabled ? t('toggle.on') : t('toggle.off')}
+              </span>
+              {/* Custom toggle switch */}
+              <span
+                role="switch"
+                aria-checked={enabled}
+                className={cn(
+                  'relative inline-flex h-5 w-9 shrink-0 rounded-full border-2 border-transparent transition-colors duration-200',
+                  enabled ? 'bg-foreground' : 'bg-muted',
+                  busy && 'opacity-50',
+                )}
+              >
+                <input
+                  type="checkbox"
+                  checked={enabled}
+                  disabled={busy}
+                  onChange={(e) => void toggleEnabled(e.target.checked)}
+                  className="sr-only"
+                />
+                <span
+                  className={cn(
+                    'pointer-events-none inline-block h-4 w-4 rounded-full bg-white shadow ring-0 transition-transform duration-200',
+                    enabled ? 'translate-x-4' : 'translate-x-0',
+                  )}
+                />
+              </span>
+            </label>
+          )}
+          <Button size="sm" onClick={() => setAdding(true)} disabled={adding || busy}>
+            <Plus className="h-3.5 w-3.5" /> {t('addManually')}
+          </Button>
+        </div>
       </div>
 
       {enabled === false && (
-        <Card>
-          <CardContent className="p-4 text-sm text-muted-foreground">
-            {t('disabledHint')}
-          </CardContent>
-        </Card>
+        <div className="rounded-lg border border-dashed border-border px-4 py-3 text-[13px] text-muted-foreground">
+          {t('disabledHint')}
+        </div>
       )}
-
-      <div className="flex justify-end">
-        <Button onClick={() => setAdding(true)} disabled={adding || busy}>
-          <Plus className="h-4 w-4" /> {t('addManually')}
-        </Button>
-      </div>
 
       {adding && (
         <AddForm
@@ -166,34 +193,37 @@ export function MemoryPanel() {
       )}
 
       {items === null ? (
-        <Card>
-          <CardContent className="flex h-32 items-center justify-center text-muted-foreground">
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" /> {t('loading')}
-          </CardContent>
-        </Card>
-      ) : items.length === 0 ? (
-        <Card>
-          <CardContent className="flex h-40 flex-col items-center justify-center text-center text-sm text-muted-foreground">
-            <Brain className="mb-2 h-6 w-6" />
-            {t('empty')}
-          </CardContent>
-        </Card>
-      ) : (
-        grouped.map(([category, ms]) => (
-          <Card key={category}>
-            <CardContent className="p-0">
-              <div className="border-b px-4 py-2 text-sm font-medium">
-                <span
-                  className={cn(
-                    'rounded px-1.5 py-0.5 text-xs',
-                    CATEGORY_COLORS[category] ?? 'bg-muted',
-                  )}
-                >
-                  {labelForCategory(category)}
-                </span>
-                <span className="ml-2 text-muted-foreground">{t('count', { n: ms.length })}</span>
+        <div className="space-y-px">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="flex items-center gap-3 rounded-lg px-4 py-3">
+              <div className="h-7 w-7 animate-pulse rounded-lg bg-muted" />
+              <div className="flex flex-col gap-1.5 flex-1">
+                <div className="h-3.5 w-40 animate-pulse rounded bg-muted" />
+                <div className="h-3 w-full animate-pulse rounded bg-muted/60" />
               </div>
-              <ul>
+            </div>
+          ))}
+        </div>
+      ) : items.length === 0 ? (
+        <div className="flex flex-col items-center justify-center gap-3 rounded-xl border border-dashed border-border py-16 text-center">
+          <Brain className="h-7 w-7 text-muted-foreground/30" />
+          <p className="text-[13px] text-muted-foreground">{t('empty')}</p>
+        </div>
+      ) : (
+        grouped.map(([category, ms]) => {
+          const spec = CATEGORY_SPEC[category] ?? FALLBACK_SPEC;
+          const CatIcon = spec.Icon;
+          return (
+            <div key={category} className="overflow-hidden rounded-xl border border-border bg-background">
+              {/* Category header */}
+              <div className="flex items-center gap-2.5 border-b border-border px-4 py-2.5">
+                <div className={cn('flex h-6 w-6 items-center justify-center rounded-md ring-1', spec.bg, spec.ring)}>
+                  <CatIcon className={cn('h-3.5 w-3.5', spec.fg)} strokeWidth={1.75} />
+                </div>
+                <span className="text-[13px] font-semibold text-foreground">{labelForCategory(category)}</span>
+                <span className="ml-auto text-[11px] text-muted-foreground">{t('count', { n: ms.length })}</span>
+              </div>
+              <ul className="divide-y divide-border">
                 {ms
                   .sort((a, b) => b.importance - a.importance)
                   .map((m) => (
@@ -206,9 +236,9 @@ export function MemoryPanel() {
                     />
                   ))}
               </ul>
-            </CardContent>
-          </Card>
-        ))
+            </div>
+          );
+        })
       )}
     </div>
   );

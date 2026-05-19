@@ -2,11 +2,10 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Loader2 } from 'lucide-react';
+import { Loader2, User, Lock } from 'lucide-react';
 import { toast } from 'sonner';
 import type { SelfUser } from '@/lib/newapi-client';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
@@ -21,28 +20,37 @@ export function ProfileTab({ user }: { user: SelfUser }) {
   const tPwd = useTranslations('settings.security.password');
   return (
     <div className="space-y-4">
-      <Card>
-        <CardContent className="space-y-4 p-4">
-          <div>
-            <h3 className="text-sm font-medium">{t('basicInfo')}</h3>
-            <p className="mt-1 text-xs text-muted-foreground">
-              {t('usernameLocked')}
-            </p>
+      {/* Basic info section */}
+      <div className="overflow-hidden rounded-xl border border-border bg-background">
+        <div className="flex items-center gap-2.5 border-b border-border px-4 py-3">
+          <div className="flex h-7 w-7 items-center justify-center rounded-md bg-blue-100 dark:bg-blue-950">
+            <User className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" strokeWidth={1.75} />
           </div>
+          <div>
+            <h3 className="text-[13px] font-semibold leading-tight">{t('basicInfo')}</h3>
+            <p className="text-[11px] text-muted-foreground">{t('usernameLocked')}</p>
+          </div>
+        </div>
+        <div className="p-4">
           <DisplayNameForm initial={user.display_name || user.username} />
-        </CardContent>
-      </Card>
-      <Card>
-        <CardContent className="space-y-4 p-4">
-          <div>
-            <h3 className="text-sm font-medium">{tPwd('title')}</h3>
-            <p className="mt-1 text-xs text-muted-foreground">
-              {tPwd('hint')}
-            </p>
+        </div>
+      </div>
+
+      {/* Password section */}
+      <div className="overflow-hidden rounded-xl border border-border bg-background">
+        <div className="flex items-center gap-2.5 border-b border-border px-4 py-3">
+          <div className="flex h-7 w-7 items-center justify-center rounded-md bg-amber-100 dark:bg-amber-950">
+            <Lock className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" strokeWidth={1.75} />
           </div>
+          <div>
+            <h3 className="text-[13px] font-semibold leading-tight">{tPwd('title')}</h3>
+            <p className="text-[11px] text-muted-foreground">{tPwd('hint')}</p>
+          </div>
+        </div>
+        <div className="p-4">
           <PasswordForm />
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

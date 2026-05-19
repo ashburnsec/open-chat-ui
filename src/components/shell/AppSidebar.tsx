@@ -35,11 +35,11 @@ export function SidebarBody({
   const pathname = usePathname();
   return (
     <>
-      <div className="flex h-12 shrink-0 items-center justify-between gap-2 border-b border-border px-3">
+      <div className="flex h-12 shrink-0 items-center gap-2 border-b border-border px-3">
         {drawer && (
           <Link
             href={'/welcome' as never}
-            className="truncate text-sm font-semibold tracking-tight text-foreground"
+            className="shrink-0 truncate text-[13px] font-semibold tracking-tight text-foreground"
             title={systemName}
           >
             {systemName}
@@ -54,8 +54,8 @@ export function SidebarBody({
             }
           }}
           className={cn(
-            'inline-flex h-8 items-center justify-center gap-1.5 rounded-md border border-border bg-background px-3 text-[13px] font-medium text-foreground transition-colors hover:bg-accent hover:border-foreground/30',
-            drawer ? 'flex-1' : 'ml-auto flex-1',
+            'inline-flex h-8 flex-1 items-center justify-center gap-1.5 rounded-lg bg-foreground px-3 text-[13px] font-medium text-background transition-all hover:opacity-90 active:scale-[0.98]',
+            !drawer && 'ml-auto',
           )}
         >
           <MessageSquarePlus className="h-3.5 w-3.5" />

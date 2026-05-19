@@ -49,6 +49,18 @@ import { ThemeToggle } from '@/components/theme/ThemeToggle';
 import { LOCALES, LOCALE_LABELS, type Locale } from '@/i18n/locales';
 import { cn } from '@/lib/utils';
 
+/** Deterministic colour bucket for user avatars — consistent across renders. */
+function avatarBg(name: string): string {
+  const palette = [
+    'bg-blue-500', 'bg-violet-500', 'bg-emerald-500',
+    'bg-rose-500',  'bg-amber-500',  'bg-sky-500',
+    'bg-pink-500',  'bg-teal-500',
+  ];
+  let h = 0;
+  for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
+  return palette[h % palette.length];
+}
+
 /**
  * M29-A: top-level app navigation. Replaces the per-page HeaderBar's
  * right-cluster + sidebar's nav links with a single bar that owns:
@@ -219,13 +231,13 @@ export function TopNav({
                 href={item.href as never}
                 title={tNav(item.labelKey)}
                 className={cn(
-                  'inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-2.5 py-1.5 text-[13px] font-medium transition-all duration-150 xl:px-3',
+                  'inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-2 py-1.5 text-[13px] font-medium transition-all duration-150 xl:px-2.5',
                   active
-                    ? 'bg-foreground text-background'
+                    ? 'bg-foreground/90 text-background'
                     : 'text-muted-foreground hover:bg-accent hover:text-foreground',
                 )}
               >
-                <Icon className="h-3.5 w-3.5" strokeWidth={active ? 2.2 : 1.75} />
+                <Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={active ? 2.2 : 1.75} />
                 <span className="hidden xl:inline">{tNav(item.labelKey)}</span>
               </Link>
             );
@@ -250,15 +262,20 @@ export function TopNav({
           <DropdownMenuTrigger asChild>
             <button
               type="button"
-              className="flex items-center gap-2 rounded-md px-1.5 py-1 transition-colors hover:bg-accent"
+              className="flex items-center gap-1.5 rounded-md px-1.5 py-1 transition-colors hover:bg-accent"
               aria-label={tNav('accountMenu')}
             >
-              <Avatar className="h-7 w-7 ring-1 ring-border">
-                <AvatarFallback className="text-[11px] font-semibold">
-                  {(user.username || '?').slice(0, 2).toUpperCase()}
+              <Avatar className="h-6 w-6">
+                <AvatarFallback
+                  className={cn(
+                    'text-[10px] font-bold text-white',
+                    avatarBg(user.username || '?'),
+                  )}
+                >
+                  {(user.username || '?').slice(0, 1).toUpperCase()}
                 </AvatarFallback>
               </Avatar>
-              <span className="hidden max-w-[100px] truncate text-[13px] font-medium lg:inline">
+              <span className="hidden max-w-[96px] truncate text-[13px] font-medium lg:inline">
                 {user.display_name || user.username}
               </span>
             </button>
