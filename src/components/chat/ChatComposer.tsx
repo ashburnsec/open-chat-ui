@@ -425,14 +425,12 @@ export function ChatComposer({
   }
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-3 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:px-6 sm:pb-6">
+    <div className="mx-auto w-full max-w-3xl px-3 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-6 sm:pb-5">
       <div
         className={cn(
-          // M44 follow-up: 输入框视觉重量 — 加 padding (px-4 py-3) + Level 2 阴影,
-          // 让它在页面里更显眼.
-          'flex flex-col gap-2 rounded-md border border-border bg-card px-4 py-3 shadow-[var(--shadow-2)] transition-colors',
-          'focus-within:border-ink focus-within:ring-2 focus-within:ring-ring/15',
-          dragActive && 'border-ink',
+          'flex flex-col gap-2 rounded-xl border border-border bg-background px-4 py-3 shadow-[var(--shadow-3)] transition-all duration-200',
+          'focus-within:border-foreground/30 focus-within:shadow-[var(--shadow-4)]',
+          dragActive && 'border-foreground/40 shadow-[var(--shadow-4)]',
         )}
         onDragEnter={(e) => {
           e.preventDefault();
@@ -507,7 +505,7 @@ export function ChatComposer({
               submit();
             }
           }}
-          className="block w-full resize-none border-0 bg-transparent px-1 py-2.5 text-[15px] leading-7 placeholder:text-mute focus:outline-none disabled:opacity-50"
+          className="block w-full resize-none border-0 bg-transparent px-1 py-2.5 text-[14px] leading-relaxed placeholder:text-muted-foreground/60 focus:outline-none disabled:opacity-50"
           disabled={disabled}
         />
         {attachError && (
@@ -702,10 +700,10 @@ export function ChatComposer({
             <button
               type="button"
               onClick={onStop}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-destructive text-destructive-foreground transition-colors hover:bg-destructive/90"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-background text-muted-foreground transition-colors hover:border-destructive hover:text-destructive"
               aria-label={t('stopGenerating')}
             >
-              <StopCircle className="h-5 w-5" strokeWidth={1.75} />
+              <StopCircle className="h-4 w-4" strokeWidth={1.75} />
             </button>
           ) : (
             <button
@@ -718,7 +716,7 @@ export function ChatComposer({
                 (!text.trim() && attachments.length === 0 && documents.length === 0)
               }
               data-composer-send
-              className="inline-flex h-10 min-w-10 items-center justify-center rounded-lg bg-primary px-3 text-primary-foreground transition-colors hover:bg-primary/90 active:scale-95 disabled:opacity-40 disabled:active:scale-100"
+              className="inline-flex h-8 min-w-8 items-center justify-center rounded-lg bg-foreground px-3 text-background transition-all hover:bg-foreground/90 active:scale-95 disabled:opacity-30 disabled:active:scale-100"
               aria-label={
                 rateLimited
                   ? t('rateLimitedAria', { sec: retrySecondsLeft })
@@ -727,9 +725,9 @@ export function ChatComposer({
               title={rateLimited ? t('rateLimitedTitle', { sec: retrySecondsLeft }) : undefined}
             >
               {rateLimited ? (
-                <span className="font-mono text-xs">{retrySecondsLeft}s</span>
+                <span className="font-mono text-[11px]">{retrySecondsLeft}s</span>
               ) : (
-                <ArrowUp className="h-5 w-5" strokeWidth={2} />
+                <ArrowUp className="h-4 w-4" strokeWidth={2.5} />
               )}
             </button>
           )}
@@ -852,10 +850,10 @@ function ToggleBtn({
       aria-pressed={active}
       onClick={onToggle}
       className={cn(
-        'inline-flex h-8 items-center gap-1.5 rounded-md px-2.5 text-xs transition-colors',
+        'inline-flex h-7 items-center gap-1.5 rounded-md px-2 text-[12px] font-medium transition-all duration-150',
         active
-          ? 'bg-accent text-ink hover:bg-accent/80'
-          : 'text-muted-foreground hover:bg-muted hover:text-foreground',
+          ? 'bg-foreground text-background'
+          : 'text-muted-foreground hover:bg-accent hover:text-foreground',
       )}
     >
       {children}

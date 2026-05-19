@@ -198,18 +198,18 @@ export function TopNav({
   const nextLocale = LOCALES.find((l) => l !== locale) ?? locale;
 
   return (
-    <header className="flex h-14 shrink-0 items-center justify-between gap-2 border-b border-border bg-background px-3 md:px-4">
-      <div className="flex min-w-0 items-center gap-2 md:gap-4">
+    <header className="flex h-12 shrink-0 items-center justify-between gap-2 border-b border-border bg-background/95 px-3 backdrop-blur-sm md:px-4">
+      <div className="flex min-w-0 items-center gap-3 md:gap-4">
         <MobileSidebarToggle systemName={systemName} isAdmin={isAdmin} />
         <Link
           href={'/welcome' as never}
-          className="shrink-0 whitespace-nowrap text-base font-semibold tracking-tight text-foreground"
+          className="shrink-0 whitespace-nowrap text-sm font-semibold tracking-tight text-foreground"
         >
           {systemName}
         </Link>
-        {/* M40+: < md 整组隐藏 (drawer 承接); md-lg 段只显示 icon; lg+ 加文字.
-         *  whitespace-nowrap 防 flex 把文字折成竖排 (796px 视宽截图 repro 过) */}
-        <nav className="hidden items-center gap-0.5 md:ml-4 md:flex xl:ml-6">
+        <div className="hidden h-4 w-px bg-border md:block" />
+        {/* M40+: < md 整组隐藏 (drawer 承接); md-lg 段只显示 icon; lg+ 加文字 */}
+        <nav className="hidden items-center gap-0.5 md:flex">
           {PRIMARY_NAV.map((item) => {
             const active = isNavActive(item.matchPaths, pathname);
             const Icon = item.icon;
@@ -219,49 +219,46 @@ export function TopNav({
                 href={item.href as never}
                 title={tNav(item.labelKey)}
                 className={cn(
-                  'inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-2 py-1.5 text-sm transition-colors duration-150 xl:px-3',
+                  'inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-2.5 py-1.5 text-[13px] font-medium transition-all duration-150 xl:px-3',
                   active
-                    ? 'bg-accent text-primary font-medium'
-                    : 'text-muted-foreground hover:bg-muted hover:text-foreground',
+                    ? 'bg-foreground text-background'
+                    : 'text-muted-foreground hover:bg-accent hover:text-foreground',
                 )}
               >
-                <Icon className="h-4 w-4" strokeWidth={active ? 2 : 1.75} />
+                <Icon className="h-3.5 w-3.5" strokeWidth={active ? 2.2 : 1.75} />
                 <span className="hidden xl:inline">{tNav(item.labelKey)}</span>
               </Link>
             );
           })}
         </nav>
       </div>
-      {/* M40+: 右侧 cluster 分三段
-       *  < sm: 公告 + 主题 + 余额 + 头像 (4 件), 其余进 dropdown
-       *  sm-lg: 加 LanguageToggle, dropdown 仍承接签到/免费积分/常见问题
-       *  lg+: 上 + CheckinButton pill + 免费积分 pill + HelpMenu icon */}
-      <div className="flex shrink-0 items-center gap-1 md:gap-2" data-topnav-actions>
+      {/* 右侧 cluster */}
+      <div className="flex shrink-0 items-center gap-1" data-topnav-actions>
         <div className="hidden lg:contents">
           <CheckinButton quotaPerUnit={quotaPerUnit} />
           <HelpMenu />
         </div>
         <AnnouncementBell />
-        <div className="hidden h-5 w-px bg-border lg:block" />
+        <div className="hidden h-4 w-px bg-border lg:block" />
         <div className="hidden sm:contents">
           <LanguageToggle />
         </div>
         <ThemeToggle />
-        <div className="hidden h-5 w-px bg-border sm:block" />
+        <div className="hidden h-4 w-px bg-border sm:block" />
         <BalancePill initialUser={user} quotaPerUnit={quotaPerUnit} />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button
               type="button"
-              className="flex items-center gap-2 rounded-md px-1.5 py-1 hover:bg-muted transition-colors"
+              className="flex items-center gap-2 rounded-md px-1.5 py-1 transition-colors hover:bg-accent"
               aria-label={tNav('accountMenu')}
             >
-              <Avatar className="h-8 w-8">
-                <AvatarFallback>
+              <Avatar className="h-7 w-7 ring-1 ring-border">
+                <AvatarFallback className="text-[11px] font-semibold">
                   {(user.username || '?').slice(0, 2).toUpperCase()}
                 </AvatarFallback>
               </Avatar>
-              <span className="hidden max-w-[120px] truncate text-sm lg:inline">
+              <span className="hidden max-w-[100px] truncate text-[13px] font-medium lg:inline">
                 {user.display_name || user.username}
               </span>
             </button>

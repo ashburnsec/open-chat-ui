@@ -397,12 +397,28 @@
 
 @layer components {
   .surface-soft {
-    @apply rounded-2xl border border-border/60 bg-card shadow-[var(--shadow-soft)] transition-all duration-200;
+    @apply rounded-xl border border-border/60 bg-card shadow-[var(--shadow-soft)] transition-all duration-200;
   }
   .surface-elevated {
-    @apply rounded-2xl border border-border/60 bg-card shadow-[var(--shadow-soft)] transition-all duration-200;
+    @apply rounded-xl border border-border/60 bg-card shadow-[var(--shadow-soft)] transition-all duration-200;
   }
   .surface-elevated:hover {
-    @apply -translate-y-0.5 border-primary/30 shadow-[var(--shadow-card-hover)];
+    @apply -translate-y-0.5 border-foreground/20 shadow-[var(--shadow-card-hover)];
+  }
+
+  /* Nav item active pill — shared by TopNav and AppSidebar */
+  .nav-item {
+    @apply inline-flex items-center gap-2 rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors duration-150 cursor-pointer select-none;
+  }
+  .nav-item-inactive {
+    @apply text-muted-foreground hover:bg-accent hover:text-foreground;
+  }
+  .nav-item-active {
+    @apply bg-foreground text-background;
+  }
+
+  /* Pill badge */
+  .badge-pill {
+    @apply inline-flex items-center gap-1 rounded-full border border-border bg-background px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground;
   }
 }

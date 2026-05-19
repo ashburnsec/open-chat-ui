@@ -114,12 +114,12 @@ export function MessageList({
   }, []);
 
   return (
-    <div ref={containerRef} className="relative mx-auto w-full max-w-3xl space-y-8 px-3 py-4 sm:px-6 sm:py-6">
+    <div ref={containerRef} className="relative mx-auto w-full max-w-3xl space-y-6 px-3 py-6 sm:px-6 sm:py-8">
       {!stickToBottom && (
         <button
           type="button"
           onClick={() => bottomRef.current?.scrollIntoView({ behavior: 'smooth' })}
-          className="sticky bottom-3 left-1/2 z-10 -translate-x-1/2 inline-flex h-8 w-8 -translate-y-2 items-center justify-center rounded-full border bg-card text-muted-foreground shadow-md hover:text-foreground"
+          className="sticky bottom-4 left-1/2 z-10 -translate-x-1/2 inline-flex h-8 w-8 items-center justify-center rounded-full border border-border bg-background text-muted-foreground shadow-[var(--shadow-3)] transition-colors hover:bg-accent hover:text-foreground"
           aria-label={t('scrollToBottom')}
           style={{ float: 'right' }}
         >
@@ -237,9 +237,9 @@ function MessageBubble({
       <div className={cn('flex w-full gap-3', isUser ? 'justify-end' : 'justify-start')}>
         <div
           className={cn(
-            'text-sm leading-relaxed',
+            'text-[14px] leading-relaxed',
             isUser
-              ? 'max-w-[70%] rounded-md bg-gradient-to-br from-muted to-muted/60 px-4 py-3 text-foreground shadow-[var(--shadow-soft)]'
+              ? 'max-w-[72%] rounded-xl border border-border bg-background px-4 py-3 text-foreground shadow-[var(--shadow-2)]'
               : 'w-full max-w-none px-1',
           )}
         >
@@ -421,10 +421,10 @@ function MessageBubble({
 
 function TypingDots() {
   return (
-    <span className="inline-flex items-center gap-1 text-muted-foreground">
-      <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-current [animation-delay:-0.3s]" />
-      <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-current [animation-delay:-0.15s]" />
-      <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-current" />
+    <span className="inline-flex items-center gap-1.5 py-1 text-muted-foreground">
+      <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-muted-foreground/60 [animation-delay:-0.3s]" />
+      <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-muted-foreground/60 [animation-delay:-0.15s]" />
+      <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-muted-foreground/60" />
     </span>
   );
 }

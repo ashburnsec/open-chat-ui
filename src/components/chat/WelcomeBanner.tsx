@@ -41,31 +41,34 @@ function dispatchPrefill(text: string) {
 export function WelcomeBanner({ systemName }: { systemName: string }) {
   const t = useTranslations('chat.welcome');
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pt-4 pb-3 sm:gap-6 sm:px-6 sm:pt-8 sm:pb-4">
-      <div className="space-y-1.5">
-        <div className="inline-flex items-center gap-1.5 rounded-md bg-accent px-2 py-0.5 text-[11px] font-medium text-ink">
+    <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 pt-8 pb-4 sm:px-6 sm:pt-12">
+      <div className="space-y-3">
+        <div className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-2.5 py-1 text-[11px] font-medium text-muted-foreground shadow-[var(--shadow-2)]">
           <Sparkles className="h-3 w-3" />
           {t('promoStrip')}
         </div>
-        <h1 className="text-xl font-semibold leading-tight tracking-tight text-foreground sm:text-2xl md:text-3xl">
+        <h1 className="text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-3xl md:text-4xl">
           {t.rich('greeting', {
             systemName,
-            brand: (chunks) => <span className="text-ink">{chunks}</span>,
+            brand: (chunks) => <span className="text-foreground">{chunks}</span>,
           })}
         </h1>
+        <p className="text-[14px] leading-relaxed text-muted-foreground">
+          {systemName}
+        </p>
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
         {QUICK_STARTS.map((item) => {
           const Icon = item.Icon;
           const className = cn(
-            'group inline-flex h-9 items-center gap-2 rounded-md border border-border bg-card px-3 text-xs font-medium text-foreground',
-            'transition-colors duration-150',
-            'hover:border-ink hover:text-ink',
+            'group inline-flex h-8 items-center gap-2 rounded-md border border-border bg-background px-3 text-[13px] font-medium text-muted-foreground',
+            'shadow-[var(--shadow-2)] transition-all duration-150',
+            'hover:border-foreground/40 hover:text-foreground hover:-translate-y-px hover:shadow-[var(--shadow-3)]',
           );
           const content = (
             <>
-              <Icon className="h-3.5 w-3.5 text-muted-foreground group-hover:text-ink" />
+              <Icon className="h-3.5 w-3.5 shrink-0 transition-colors" />
               <span>{t(`quickStarts.${item.key}`)}</span>
             </>
           );
